@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "student-fontend-wap",
   "version": "0.0.1",
   "main": "server/isomorphic.js",
   "scripts": {
