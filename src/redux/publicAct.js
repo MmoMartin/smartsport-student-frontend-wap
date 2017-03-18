@@ -1,0 +1,1 @@
+export {publicAct as default} from 'xunyijia';

@@ -1,0 +1,1 @@
+export {NotAuthor as default} from 'xunyijia';

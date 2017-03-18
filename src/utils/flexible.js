@@ -1,0 +1,1 @@
+export {flexible as default} from 'xunyijia';
