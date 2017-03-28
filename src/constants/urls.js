@@ -11,6 +11,7 @@ const DOMAIN3000 = '/proxy3000';
 const DOMAIN3001 = '/proxy3001';
 const DOMAIN3002 = '/proxy3002';
 const DOMAIN3003 = '/proxy3003';
+const DOMAIN3006 = '/proxy3006';
 
 // export {DOMAIN};
 // 行政区域三级接口
@@ -46,9 +47,8 @@ export const CHECK_AVAILABLE_DEVICES = `${DOMAIN}/api/auth/device/check`; // 搜
 export const MY_DEVICES_LIST = `${DOMAIN}/api/auth/device/own`; // 搜索绑定的设备``
 export const BIND_DEVICE = `${DOMAIN}/api/auth/device/bind`; // 绑定设备
 export const UNBIND_DEVICE = `${DOMAIN}/api/auth/device/unbind`; // 解绑设备
-export const SYNC_RUN_DATA = `${DOMAIN}/api/auth/run_walk/import`; // 同步步数数据
-export const SYNC_HRM_DATA = `${DOMAIN}/api/auth/heart/import`; // 同步步数数据
-export const SYNC_BLOOD_DATA = `${DOMAIN}/api/auth/blood/import`; // 同步步数数据
+export const SYNC_RUN_DATA = `${DOMAIN3006}/api/auth/run_walk/import`; // 同步步数数据
+export const SYNC_HRM_DATA = `${DOMAIN3006}/api/auth/heart/import`; // 同步步数数据
+export const SYNC_BLOOD_DATA = `${DOMAIN3006}/api/auth/blood/import`; // 同步步数数据
 export const STUDENT_LICENCE_POLICY = `${DOMAIN}/api/auth/policy/icon`; // 获取阿里 policy
 export const CHENGE_HEAD_PORTRAIT = `${DOMAIN}/api/auth/student_user`;// 更换头像
-

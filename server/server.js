@@ -45,6 +45,10 @@ app.use('/proxy3004', (req, res) => {
   let targetUrl = 'http://s.student.qsntzjk.com';
   pipe(req, res, targetUrl);
 });
+app.use('/proxy3006', (req, res) => {
+  let targetUrl = host + '3006';
+  pipe(req, res, targetUrl);
+});
 const pipe = (req, res, targetUrl) => {
   if ( config.isVirtual && analogData(req, res)) {
     return;

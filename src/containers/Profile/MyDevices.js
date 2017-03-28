@@ -58,39 +58,48 @@ export default class MyDevices extends Component {
     };
     Toast.loading('连接中...', 10000);
     this.postData(obj).then((data) => {
-      const returnData = data.returnData;
       if (data.info === '连接成功') {
-        Toast.info('连接成功', 1);
+        Toast.info('连接成功', 2);
         const params = {
           connectName: '已连接',
           connectStatus: 1,
           connectColor: '#ddd',
         };
         props.chagneConnectStatus(params);
-        if (returnData.runData) {
+        if (data.runData !== []) {
           const objValue = {
-            params: returnData.runData,
+            params: data.runData,
           };
           props.syncRunData(objValue);
         }
-        if (returnData.HRMData) {
+        if (data.HRMData !== [] ) {
           const objValue = {
-            params: returnData.runData,
+            params: data.runData,
           };
-          props.syncRunData(objValue);
+          props.syncHRMData(objValue);
         }
-        if (returnData.bloodData) {
+        if (data.bloodData !== [] ) {
           const objValue = {
-            params: returnData.bloodData,
+            params: data.bloodData,
           };
-          props.syncRunData(objValue);
+          props.syncBloodData(objValue);
         }
+        const testObj = {
+          type: 'testData',
+          data: props
+        };
+        this.postData(testObj).then((returnData) => {
+
+        }).catch((err)=>{
+          this.setState({
+            err
+          });
+        });
       } else {
-        Toast.info(data.info, 1);
+        Toast.info(data.info, 2);
       }
     }).catch((err)=>{
-      Toast.hide();
-      Toast.info(err, 1);
+      // Toast.info(err, 1);
       this.setState({
         err
       });
@@ -155,18 +164,24 @@ export default class MyDevices extends Component {
 
   componentDidMount() {
     if (this.props.ownDevices.length !== 0) {
-      this.connectListener(this.props.ownDevices[0]);
-      this.disConnectListener(this.props.ownDevices[0]);
+      this.connectListener(this.props);
+      this.disConnectListener(this.props);
     }
   }
 
-  connectListener(rowData) {
+  connectListener(props) {
     const obj = {
       type: 'connectListener',
-      data: rowData
+      data: props.ownDevices[0]
     };
     this.postData(obj).then((data) => {
-      Toast.info('已断开', 1);
+      Toast.info('已连接', 1);
+      const params = {
+        connectName: '已连接',
+        connectStatus: 1,
+        connectColor: '#ddd',
+      };
+      props.chagneConnectStatus(params);
     }).catch((err)=>{
       Toast.info(err, 1);
       this.setState({
@@ -175,13 +190,19 @@ export default class MyDevices extends Component {
     });
   }
 
-  disConnectListener(rowData) {
+  disConnectListener(props) {
     const obj = {
       type: 'disConnectListener',
-      data: rowData
+      data: props.ownDevices[0]
     };
     this.postData(obj).then((data) => {
-      Toast.info('已连接', 1);
+      Toast.info('已断开', 1);
+      const params = {
+        connectName: '未连接',
+        connectStatus: 0,
+        connectColor: '#7dc78d',
+      };
+      props.chagneConnectStatus(params);
     }).catch((err)=>{
       Toast.info(err, 1);
       this.setState({
