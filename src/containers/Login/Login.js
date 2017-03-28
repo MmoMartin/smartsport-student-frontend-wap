@@ -34,7 +34,7 @@ class Login extends Component {
       if (!error) {
         const { name, password } = this.props.form.getFieldsValue();
         if ((name.length !== 11 && name.length !== 18)
-          || (name.length === 11 && name.match(MOBILE) === null) 
+          || (name.length === 11 && name.match(MOBILE) === null)
           || (name.length === 18 && notIdCard(name) !== false) ) {
           this.showMessage('账号输入有误，账号必须是手机号或者身份证号');
         } else if (password.length !== 6 || password.match(/^\d{6}$/) === null) {
@@ -57,7 +57,6 @@ class Login extends Component {
   // 激活账号
   gotoActiveUser() {
     this.context.router.push('/activeUser');
-
   }
 
   // 忘记密码
@@ -68,14 +67,14 @@ class Login extends Component {
   render() {
     const logoImg = require('img/logo.png');
     const userIcon = require('img/user.png');
-  	const passIcon = require('img/password.png');
+    const passIcon = require('img/password.png');
     const { getFieldProps, getFieldError } = this.props.form;
     return (
       <div className='myBack'>
         <WingBlank>
   	    	<div className='loginLogo'>
               <img src={logoImg}/>
-  	    	</div>       	 	    	
+  	    	</div>
           <form className='myForm'>
             <div>
               <InputItem
@@ -101,18 +100,18 @@ class Login extends Component {
                 placeholder="请输入密码">
                 <img src={passIcon} className='marginRt30'/>
               </InputItem>
-              
+
             </div>
             <Item className='myFormItem'>
-                <Button onClick={this.loginSubmit} 
-                  type='primary' 
-                  size='large'  
+                <Button onClick={this.loginSubmit}
+                  type='primary'
+                  size='large'
                   className='margin-format'>
                   登录
                 </Button>
-              </Item> 
-          </form>   
-          
+              </Item>
+          </form>
+
   	    	<Flex>
             <Flex.Item className='toActive' onClick={this.gotoActiveUser.bind(this)}>激活账号</Flex.Item>
             <Flex.Item className='forgetPass' onClick={this.gotoHandlePass.bind(this)}>忘记密码?</Flex.Item>

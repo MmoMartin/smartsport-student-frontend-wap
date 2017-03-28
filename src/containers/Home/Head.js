@@ -19,7 +19,7 @@ export default class Head extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 
 }

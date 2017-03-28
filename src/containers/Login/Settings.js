@@ -51,11 +51,11 @@ class Settings extends Component {
         </List>
         <div className='myHeight'></div>
         <List className="my-list">
-          <Item arrow="horizontal" onClick={this.gotoChangePages.bind(this, '/device')}>我的设备</Item>
+          <Item arrow="horizontal" onClick={this.gotoChangePages.bind(this, '/myDevices')}>我的设备</Item>
         </List>
         <div className='myHeight'></div>
         <List className="my-list">
-          <Item arrow="horizontal"  onClick={this.gotoChangePages.bind(this, '/softwareVersion')}>软件版本</Item>
+          <Item arrow="horizontal" onClick={this.gotoChangePages.bind(this, '/softwareVersion')}>软件版本</Item>
         </List>
         <WingBlank className='margin-format-big'>
           <Button type='primary' onClick={this.handleLogout.bind(this)}>退出登录</Button>

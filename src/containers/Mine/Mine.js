@@ -44,7 +44,7 @@ export default class Home extends Component {
       middleContent: '我的',
     });
   }
-  
+
   state = {
     files: [{url: this.props.tudentInfo ? this.props.tudentInfo.name : Sportsprogram}],
   };
@@ -103,9 +103,15 @@ export default class Home extends Component {
       <Flex direction='column' align='stretch' className='margin-right-nones'>
         <Flex.Item onClick={this.gotoChangePages.bind(this, '/point')}><Item name="积分" icon={Integral}/></Flex.Item>
         <Flex.Item><Item name="通讯录" icon={maillist}/></Flex.Item>
-        <Flex.Item onClick={this.gotoChangePages.bind(this, '/healthReport')}><Item name="健康报告" icon={healthreport}/></Flex.Item>
-        <Flex.Item onClick={this.gotoChangePages.bind(this, '/contact')}><Item name="联系我们" icon={contactus}/></Flex.Item>
-        <Flex.Item onClick={this.gotoChangePages.bind(this, '/settings')}><Item name="设置" icon={setup} style={{borderBottom: 'none'}}/></Flex.Item>
+        <Flex.Item onClick={this.gotoChangePages.bind(this, '/healthReport')}>
+          <Item name="健康报告" icon={healthreport}/>
+        </Flex.Item>
+        <Flex.Item onClick={this.gotoChangePages.bind(this, '/contact')}>
+          <Item name="联系我们" icon={contactus}/>
+        </Flex.Item>
+        <Flex.Item onClick={this.gotoChangePages.bind(this, '/settings')}>
+          <Item name="设置" icon={setup} style={{borderBottom: 'none'}}/>
+        </Flex.Item>
       </Flex>
     </div>);
   }

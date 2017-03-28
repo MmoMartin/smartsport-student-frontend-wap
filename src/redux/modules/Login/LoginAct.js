@@ -1,4 +1,11 @@
-import { LOGIN, ACTIVE, VERIFY_CODE, VERIFY, SET_PASSWORD, CHANGE_PASSWORD, CHANGE_TELNUM } from 'constants/urls';
+import {
+  LOGIN, ACTIVE,
+  VERIFY_CODE,
+  VERIFY,
+  SET_PASSWORD,
+  CHANGE_PASSWORD,
+  CHANGE_TELNUM,
+} from 'constants/urls';
 import {fetchList, post, get, put} from 'xunyijia-components/src/redux/publicAct';
 import config from '../../../constants/config';
 

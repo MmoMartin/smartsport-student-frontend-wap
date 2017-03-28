@@ -1,76 +1,44 @@
 .planTitleDiv {
   background-color: white;
-  margin-top: 0.2rem;
+  margin-top: 20px;
 }
 
-.recomendPlanTitle, .recommend{
-  height: 0.9rem;
-  line-height: 0.9rem;
+.recomendPlanTitle {
+  height: 100px;
+  line-height: 100px;
   color: #4fb26b;
-  margin-left: 0.4rem;
+  margin-left: 40px
 }
-.planTitle, .recommend {
-  color: #5cbc7d;
-}
-.planStyle{
-  line-height: 0.3rem;
-  font-size: 0.3rem;
-  color: #949894;
-}
-.planBtn, .planBtnDisabled{
-  float: right;
-  margin-right: 0.1rem;
-  width: 26%;
-  height: 0.5rem;
-  border: none;
-  color: #2bac1e;
-  margin-top: 0.23rem;
-  background: #f8fefa;
-  border: 1px solid #2bac1e;
-}
-.planBtnDisabled{
-  color: #9d9d9d;
-  border: 1px solid #9d9d9d;
-  margin-right: 0.35rem;
-}
-.Conduct{
-  float: left;
-  width: 25%;
-  margin-left: 0.1rem;
-  color: #5cbc7d;
-}
-.recommend{
-  margin-left: 0.1rem;
-}
+
 .myPlanTitle {
-  height: 0.9rem;
-  line-height: 0.9rem;
+  height: 100px;
+  line-height: 100px;
   color: #e1a043;
-  margin-left: 0.1rem;
+  margin-left: 10px
 }
 
 .planNameDiv {
-  height: 0.6rem;
-  line-height: 0.6rem;
+  height: 60px;
+  line-height: 60px;
 }
 
 .planTypeDiv {
-  height: 0.4rem;
-  line-height: 0.4rem;
+  height: 40px;
+  line-height: 40px;
   color: #8a898e;
 }
 
 .planName {
   display: inline-block;
   width: 10%;
-  height: 0.6rem;
+  height: 60px;
 }
 
 .planStatus {
   display: inline-block;
   width: 85%;
-  height: 0.6rem;
-  font-size: 0.28rem;
+  height: 60px;
+  font-size: 28px;
   text-align: right;
   color: #8a898e;
 }
@@ -78,53 +46,52 @@
 .planType {
   display: inline-block;
   width: 20%;
-  height: 0.4rem;
-  font-size: 0.3rem;
+  height: 40px;
+  font-size: 30px;
 }
 
 .planPercent {
   display: inline-block;
   width: 73%;
-  height: 0.4rem;
-  font-size: 0.26rem;
+  height: 40px;
+  font-size: 26px;
   text-align: right;
 }
 
 .stageItem {
   width: 90%;
   margin-left: 5%;
-  margin-top: 0.1rem;
+  margin-top: 10px;
   color: #8a898e;
 }
 
 .stageItemDot {
-  width: 0.2rem;
-  height: 0.2rem;
+  width: 20px;
+  height: 20px;
   margin-left: 5%;
-  border-radius: 50%;
+  border-radius: 10px;
   display: inline-block;
-  background-color: #ee6f50;
 }
 
 .stageItemDate {
   width: 29%;
-  height: 0.8rem;
-  line-height: 0.8rem;
+  height: 80px;
+  line-height: 80px;
   margin-left: 13%;
   display: inline-block;
 }
 
 .stageItemType {
   width: 29%;
-  height: 0.8rem;
-  line-height: 0.8rem;
+  height: 80px;
+  line-height: 80px;
   display: inline-block;
 }
 
 .stageItemStatus {
   width: 29%;
-  height: 0.8rem;
-  line-height: 0.8rem;
+  height: 80px;
+  line-height: 80px;
   display: inline-block;
   text-align: center;
 }

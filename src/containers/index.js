@@ -10,8 +10,6 @@ export Calcul from './Calculate/Calcul';
 export ChangePassword from './Login/ChangePassword';
 export ChangeMobile from './Login/ChangeMobile';
 export MovementPlan from './MovementPlan/MovementPlan';
-export Profile from './Profile/Profile';
-// export Settings from './Profile/Settings';
 export SearchDevice from './Profile/SearchDevice';
 export MyDevices from './Profile/MyDevices';
 export HealthReport from './HealthReport/HealthReport';

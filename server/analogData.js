@@ -243,7 +243,8 @@ const data = [
         "token": ""
       }
     }
-  }, {
+  },
+  {
     url: '/api/expert_user/set_password',
     data: {
       status: {

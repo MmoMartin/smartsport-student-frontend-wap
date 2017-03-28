@@ -1,17 +1,30 @@
 import React, {Component, PropTypes} from 'react';
-import { NavBar, Icon, List, ListView, SwipeAction, RefreshControl, Toast } from 'antd-mobile';
+import { NavBar, Icon, ListView, SwipeAction, RefreshControl, Toast } from 'antd-mobile';
+import {connect} from 'react-redux';
+import {asyncConnect} from 'redux-connect';
+import * as searchDevicesAct from '../../redux/modules/Devices/SearchDevicesAct';
 const styles = require('./Profile.scss');
 const wristwatchImg = require('img/wristwatch@2x.png');
 const braceletImg = require('img/bracelet@2x.png');
 require('../main.css');
+let targetDevice = {};
+
+@connect(
+  ({ searchDevicesRed }) => (searchDevicesRed),
+  searchDevicesAct
+)
 
 export default class SearchDevice extends Component {
+
+  static contextTypes = {
+    router: PropTypes.object.isRequired
+  }
+
   constructor(props) {
     super(props);
     let dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
-      dataSource: dataSource.cloneWithRows(['row 1', 'row 2', 'row 1', 'row 2',
-      'row 1']),
+      dataSource: dataSource.cloneWithRows([]),
       refreshing: false,
     };
   }
@@ -31,15 +44,12 @@ export default class SearchDevice extends Component {
       type: 'scanDevices',
     };
     this.postData(obj).then((data) => {
-      console.log('data return ------- ', data);
-      Toast.info(data, 2, null, false);
-      this.setState({
-        dataSource: this.state.dataSource.cloneWithRows(['row 1', 'row 2', 'row 1', 'row 2',
-        'row 1']),
-        refreshing: false,
-      });
+      let object = {
+        params: data,
+      };
+      this.props.checkAvailableDevices(object);
     }).catch((err)=>{
-      console.log('err ==== ', err);
+      Toast.info(err, 1);
       this.setState({
         err
       });
@@ -53,7 +63,6 @@ export default class SearchDevice extends Component {
       let timeout;
       const fn = (event) => {
         const rtData = event.data;
-        Toast.info(rtData, 5);
         const rtObj = JSON.parse(rtData);
         const rtType = rtObj.type;
 
@@ -72,6 +81,34 @@ export default class SearchDevice extends Component {
     });
   }
 
+  componentWillReceiveProps(nextProps) {
+    let { filterDevices, bindStatus } = nextProps;
+    if (this.props.filterDevices !== filterDevices) {
+      this.setState({
+        dataSource: this.state.dataSource.cloneWithRows(filterDevices),
+        refreshing: !this.state.refreshing,
+      });
+    }
+    if (this.props.bindStatus !== bindStatus) {
+      // const obj = {
+      //   type: 'connectDeviceWhenBinding',
+      //   data: targetDevice
+      // };
+      // Toast.loading('绑定中...', 10000);
+      // this.postData(obj).then((data) => {
+      //   Toast.hide();
+      Toast.info('绑定成功', 1);
+      this.context.router.push('/myDevices');
+      // }).catch((err)=>{
+      //   Toast.hide();
+      //   Toast.info(err, 1);
+      //   this.setState({
+      //     err
+      //   });
+      // });
+    }
+  }
+
   render() {
     const height = window.innerHeight - 320 - 100;
 
@@ -84,8 +121,12 @@ export default class SearchDevice extends Component {
         </div>
           <ListView
             dataSource={this.state.dataSource}
-            renderHeader={() => <span>下来扫描设备</span>}
-            renderFooter={() => <span>向左滑动可选择断开或绑定设备</span>}
+            renderHeader={() => <span>下拉扫描设备</span>}
+            renderFooter={() => {
+              if (this.props.filterDevices.length !== 0) {
+                <span>向左滑动可选择解绑设备</span>;
+              }
+            }}
             renderSeparator={separator}
             refreshControl={<RefreshControl
               refreshing={this.state.refreshing}
@@ -94,19 +135,21 @@ export default class SearchDevice extends Component {
             renderRow={(rowData) => <SwipeAction
             right={[
               {
-                text: '断开',
-                onPress: () => console.log('断开'),
-                style: { backgroundColor: '#ddd', color: 'white' },
-              },
-              {
-                text: '解绑',
-                onPress: () => console.log('解绑'),
-                style: { backgroundColor: '#F4333C', color: 'white' },
+                text: '绑定',
+                onPress: () => {
+                  let obj = {
+                    params: {id: rowData.id, name: rowData.name},
+                    // params: [{id: 'xxxxxxxx', name: 'xxxxxxx手环'}],
+                  };
+                  targetDevice = {id: rowData.id, name: rowData.name};
+                  this.props.bindDevice(obj);
+                },
+                style: { backgroundColor: '#7dc78d', color: 'white' },
               },
             ]}>
             <div className={styles.ringItemDiv}>
               <img src={braceletImg} className={styles.ringItemImg}></img>
-              <span className={styles.ringItemNum}>智能手环    100000000001</span>
+              <span className={styles.ringItemNum}>{rowData.name + '     ' + rowData.id}</span>
             </div>
             </SwipeAction>}
             style={{height: height < 100 ? 100 : height}} className={styles.listView}/>

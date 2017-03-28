@@ -38,6 +38,14 @@ export const EXECUTE_PLAN = `${DOMAIN}/api/auth/my_plan`; // 执行计划
 
 // 健康报告（返回最新5种体质报告）
 export const HEALTH_REPORT = `${DOMAIN}/api/auth/health_report`;
-// export const LOGIN = `${DOMAIN}/api/user/login`;
 export const SOFTWARE_VERSION = `${DOMAIN}/api/app_version`; // 获取软件版本
 export const STUDENT_SELF_INFO = `${DOMAIN}/api/auth/me`; // 获取学生信息
+
+// 手环设备
+export const CHECK_AVAILABLE_DEVICES = `${DOMAIN}/api/auth/device/check`; // 搜索绑定的设备``
+export const MY_DEVICES_LIST = `${DOMAIN}/api/auth/device/own`; // 搜索绑定的设备``
+export const BIND_DEVICE = `${DOMAIN}/api/auth/device/bind`; // 绑定设备
+export const UNBIND_DEVICE = `${DOMAIN}/api/auth/device/unbind`; // 解绑设备
+export const SYNC_RUN_DATA = `${DOMAIN}/api/auth/run_walk/import`; // 同步步数数据
+export const SYNC_HRM_DATA = `${DOMAIN}/api/auth/heart/import`; // 同步步数数据
+export const SYNC_BLOOD_DATA = `${DOMAIN}/api/auth/blood/import`; // 同步步数数据
