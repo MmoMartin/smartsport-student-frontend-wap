@@ -4,6 +4,15 @@ import {
   Home,
   NotFound,
   NotAuthor,
+  Login,
+  Logout,
+  ActiveUser,
+  FindPassFir,
+  FindPassSec,
+  Calcul,
+  ModalTest,
+  ChangePassword,
+  ChangeMobile,
 } from 'containers';
 import config from './constants/config';
 
@@ -28,6 +37,14 @@ export default (store) => {
       </Route> */}
 
       <Route path='/' component={Home}/>
+      <Route path='/login' component={Login}/>
+      <Route path='/logout' component={Logout}/>
+      <Route path='/activeUser' component={ActiveUser}/>
+      <Route path='/findPassFir' component={FindPassFir}/>
+      <Route path='/findPassSec' component={FindPassSec}/>
+      <Route path='/calcul' component={Calcul}/>
+      <Route path='changePassword' component={ChangePassword}/>
+      <Route path='changeMobile' component={ChangeMobile}/>
       <Route path='/not-author' component={NotAuthor}/>
       <Route path='*' component={NotFound} status={404} />
     </Route>

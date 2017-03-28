@@ -1,0 +1,127 @@
+import React, {Component, PropTypes} from 'react';
+import { Button, Flex, WingBlank, Icon, TextareaItem, InputItem, List, Toast } from 'antd-mobile';
+import { createForm } from 'rc-form';
+import {connect} from 'react-redux';
+import {MOBILE} from 'xunyijia-components/src/utils/validation';
+import * as LoginAct from 'redux/modules/Login/LoginAct';
+require('./Login.css');
+
+const Item = List.Item;
+let interval;
+@connect(
+  ({loginRed}) => loginRed, LoginAct
+)
+class FindPassFir extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: '获取验证码',
+    };
+  }
+
+  componentWillUnmount() {
+    interval && clearInterval(interval);
+  }
+
+  sendSucc() {
+    const {count} = this.state;
+
+    let second = 60;
+    this.setState({count: `${second} 秒`});
+    interval = setInterval(()=>{
+      --second;
+      if (second < 1) {
+        this.setState({count: '获取验证码'});
+        clearInterval(interval);
+      } else {
+        this.setState({count: `${second} 秒`});
+      }
+    }, 1000);
+  }
+
+  static contextTypes = {
+    router: PropTypes.object.isRequired
+  }
+
+  showMessage(text) {
+    Toast.info(text, 2);
+  }
+
+  handleSucc() {
+    this.context.router.push('/findPassSec');
+  }
+
+  handleFail(err) {
+    this.showMessage(err);
+  }
+
+  passSubmit = () => {
+    this.props.form.validateFields({ force: true }, (error) => {
+      if (!error) {
+        const { tel, code } = this.props.form.getFieldsValue();
+        if (tel.match(MOBILE) === null) {
+          this.showMessage('输入错误');
+        } else {
+          const obj = {
+            tel, code
+          };
+          const succ = this.handleSucc.bind(this);
+          const fail = this.handleFail.bind(this);
+          this.props.validateMessCode(obj, succ, fail);
+        }
+      }
+    });
+  }
+
+  // 获取验证码
+  getCode = () => {
+    const {count} = this.state;
+    if (count !== '获取验证码') {
+      return;
+    }
+    const {tel} = this.props.form.getFieldsValue();
+    if (tel === undefined || (tel && tel.match(MOBILE) === null)) {
+      this.showMessage('手机号码错误');
+    } else {
+      this.props.getCode({tel}, this.sendSucc.bind(this));
+    }
+  }
+
+  render() {
+    const { getFieldProps, getFieldError } = this.props.form;
+    const {count} = this.state;
+    return (
+      <div className='myActiveBack'>
+        <form className='activeList'>
+          <List>
+            <InputItem
+              {...getFieldProps('tel', {
+                rules: [ { required: true }]
+              })}
+              placeholder="请输入手机号码">
+              手机号码
+            </InputItem>
+            <InputItem
+              {...getFieldProps('code', {
+                rules: [ { required: true} ]
+              })}
+              placeholder="请输入验证码"
+              extra={count}
+              onExtraClick={this.getCode}
+              className='myCode'>
+              手机验证码
+            </InputItem>
+          </List>
+          <Item className='activeNow'>
+            <Button type='primary' size='large'
+            onClick={this.passSubmit.bind(this)}>
+            下一步
+          </Button>
+          </Item>
+        </form>
+
+      </div>
+    );
+  }
+}
+export default createForm()(FindPassFir);

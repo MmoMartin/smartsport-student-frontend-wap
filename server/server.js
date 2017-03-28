@@ -42,6 +42,10 @@ app.use('/proxy3003', (req, res) => {
   let targetUrl = host + '3003';
   pipe(req, res, targetUrl);
 });
+app.use('/proxy3004', (req, res) => {
+  let targetUrl = 'http://192.168.0.105:' + '3004';
+  pipe(req, res, targetUrl);
+});
 const pipe = (req, res, targetUrl) => {
   if ( config.isVirtual && analogData(req, res)) {
     return;

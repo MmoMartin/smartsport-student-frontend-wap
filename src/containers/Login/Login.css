@@ -1,0 +1,160 @@
+/*theme color rgb(32, 203, 106)*/
+.myBack {
+	background-color: #fff;
+	padding: 0 0.1rem;
+	width:100%;
+	height:100%;
+	display: block;
+	position: absolute;
+}
+.loginLogo {
+	width: 100%;
+	height:4rem;
+	position: relative;
+}
+.loginLogo img {
+	width:160px;
+	height:160px;
+	position: absolute;
+	left: 50%;
+	top:50%;
+	margin-left: -80px;
+	margin-top:-80px;
+}
+.toActive {
+	padding: 0px 0;
+  padding-left: 30px;
+	text-align: left;
+	color:rgb(32, 203, 106);
+}
+.forgetPass {
+	padding: 0px 0;
+  padding-right: 30px;
+	text-align: right;
+	color:grey;
+}
+.input-border {
+  border-bottom:1px solid #ccc;
+}
+.margin-format {
+  margin:50px 0 30px 0;
+}
+.margin-format-big {
+  margin:80px 0 30px 0;
+}
+.activeNow{
+  margin:50px 0 30px 0;
+  background-color: transparent;
+}
+.activeNow
+.myActiveBack{
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+}
+.activeList {
+  margin-top: 20px;
+  margin-bottom: 80px;
+}
+.leftCode {
+  width: 70%;
+  display: inline-block;
+}
+.rightCode {
+  display: inline-block;
+  width: 30%;
+  position: relative;
+  right: 0;
+  text-align: right;
+}
+.rigthCodeButton{
+  border: none;
+  color: rgb(32, 203, 106);
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+}
+.width60{
+  width: 60%;
+  display: inline-block;
+}
+.width40{
+  width: 40%;
+  display: inline-block;
+}
+.width100{
+  width: 100%;
+  display: inline-block;
+}
+
+.calScore{
+  text-align: center;
+  font-size: 32px !important;
+  color: rgb(32, 203, 106);
+}
+
+.fir1 {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  width: 84%;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 80px;
+  color: rgb(32, 203, 106);
+}
+.width20 {
+  display: inline-block;
+  width: 17%;
+  text-align: right;
+}
+.width40 {
+  width: 40%;
+  text-align: center;
+}
+.scoreInput {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  width: 50%;
+  text-align: center;
+  padding: 20px 0;
+}
+.modalHeight .am-modal-content {
+  padding-top: 0px !important;
+}
+.modalHeight .am-modal-content .am-modal-body{
+  padding: 0 !important;
+}
+.modalHeight a {
+  height: 100px;
+  line-height: 100px;
+}
+.marginRt30 {
+  margin-right: 30px;
+}
+.am-button-primary {
+    color: #fff;
+    background-color: rgb(32, 203, 106);
+    border: 1px solid rgb(32, 203, 106);
+}
+.am-button-primary .am-button-active {
+  background-color: rgb(32, 203, 106);
+}
+.myHeight {
+  height: 0.2rem;
+  background-color: transparent;
+}
+.myCode .am-input-extra{
+  -webkit-box-flex: initial;
+  -ms-flex: initial;
+  flex: initial;
+  min-width: 0;
+  max-height: 42px;
+  overflow: hidden;
+  padding-right: 0;
+  line-height: 1;
+  color: rgb(32, 203, 106);
+  font-size: 30px;
+  margin-left: 10px;
+}
