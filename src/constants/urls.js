@@ -28,3 +28,7 @@ export const CHANGE_TELNUM = `${DOMAIN}/api/auth/student_user/change_telNum`; //
 // 计算器
 export const TEST_SUBJECT = `${DOMAIN}/api/test_subject`; // 获取测试项目
 export const CALCULATOR = `${DOMAIN}/api/auth/score/calculator`; // 计算测试项目的得分
+
+// 运动计划
+export const MOVEMENTPLAN_LIST = `${DOMAIN}/api/auth/my_plan`; // 运动计划列表
+export const MOVEMENTPLAN_PROGRESS = `${DOMAIN}/api/auth/my_plan/status`; // 运动计划总体完成度

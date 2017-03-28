@@ -1,0 +1,97 @@
+.planTitleDiv {
+  background-color: white;
+  margin-top: 20px;
+}
+
+.recomendPlanTitle {
+  height: 100px;
+  line-height: 100px;
+  color: #4fb26b;
+  margin-left: 40px
+}
+
+.myPlanTitle {
+  height: 100px;
+  line-height: 100px;
+  color: #e1a043;
+  margin-left: 10px
+}
+
+.planNameDiv {
+  height: 60px;
+  line-height: 60px;
+}
+
+.planTypeDiv {
+  height: 40px;
+  line-height: 40px;
+  color: #8a898e;
+}
+
+.planName {
+  display: inline-block;
+  width: 10%;
+  height: 60px;
+}
+
+.planStatus {
+  display: inline-block;
+  width: 85%;
+  height: 60px;
+  font-size: 28px;
+  text-align: right;
+  color: #8a898e;
+}
+
+.planType {
+  display: inline-block;
+  width: 20%;
+  height: 40px;
+  font-size: 30px;
+}
+
+.planPercent {
+  display: inline-block;
+  width: 73%;
+  height: 40px;
+  font-size: 26px;
+  text-align: right;
+}
+
+.stageItem {
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 10px;
+  color: #8a898e;
+}
+
+.stageItemDot {
+  width: 20px;
+  height: 20px;
+  margin-left: 5%;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+.stageItemDate {
+  width: 29%;
+  height: 80px;
+  line-height: 80px;
+  margin-left: 13%;
+  display: inline-block;
+}
+
+.stageItemType {
+  width: 29%;
+  height: 80px;
+  line-height: 80px;
+  display: inline-block;
+}
+
+.stageItemStatus {
+  width: 29%;
+  height: 80px;
+  line-height: 80px;
+  display: inline-block;
+  text-align: center;
+}

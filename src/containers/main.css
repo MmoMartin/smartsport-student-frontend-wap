@@ -1,0 +1,25 @@
+.am-accordion .am-accordion-item .am-accordion-header {
+  height: 120px
+}
+
+.dropDownIcon .am-accordion-item .am-accordion-header i{
+  background-image: url(../img/shrinkyellow@2x.png);
+  top: 45px;
+  transform: rotate(180deg);
+  -ms-transform: rotate(0);
+  -webkit-transform: rotate(180deg);
+}
+.dropDownIcon .am-accordion-item .am-accordion-header[aria-expanded~="true"] i{
+  -webkit-transform: rotate(0);
+  -ms-transform: rotate(180deg);
+  transform: rotate(0);
+}
+
+.am-list-header {
+  text-align: center;
+}
+
+.am-list-footer {
+  text-align: center;
+  font-size: 22px !important;
+}
