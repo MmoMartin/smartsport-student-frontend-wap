@@ -69,6 +69,8 @@ export default (store) => {
       <Route path='changeMobile' component={ChangeMobile}/>
       <Route path='/healthReport' component={HealthReport}/>
       <Route path='/move' component={MovementPlan}/>
+      <Route path='/changePassword' component={ChangePassword}/>
+      <Route path='/changeMobile' component={ChangeMobile}/>
       <Route path='/' component={Home}>
         <Route path='/device' component={SearchDevice}/>
       </Route>

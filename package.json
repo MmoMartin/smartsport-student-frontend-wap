@@ -52,6 +52,7 @@
     "antd-mobile": "^1.0.1",
     "compression": "^1.6.0",
     "echarts-for-react": "^1.1.6",
+    "echarts-liquidfill": "^1.0.4",
     "express": "^4.13.3",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.4",
