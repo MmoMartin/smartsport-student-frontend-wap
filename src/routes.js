@@ -16,6 +16,11 @@ import {
   MovementPlan,
   SearchDevice,
   HealthReport,
+  Mine,
+  SoftwareVersion,
+  ActivityManagement,
+  KnowledgeBase,
+  ScoreRanking,
 } from 'containers';
 import config from './constants/config';
 
@@ -33,24 +38,26 @@ export default (store) => {
   //   document.body.scrollTop = 0;
   // };
   const isWidth = () => {
-    if (typeof window !== 'undefined' && window.innerHeight && window.innerWidth) {
-      return true;
-    } else {
-      return false;
-    }
-  };
-  const gotoNext = (next) => {
-    if (isWidth()) {
-      next();
-    } else {
-      setTimeout(() => {
-        gotoNext(next);
-      }, 100);
-    }
-  };
-  const enterPage = (nextState, replace, next) => {
-    gotoNext(next);
-  };
+    const isSize = typeof window !== 'undefined' && window.innerHeight && window.innerWidth;
+    const isViewport = typeof document !== 'undefined' && document.getElementsByTagName('meta')[0] && document.getElementsByTagName('meta')[0].content;
+       if (isSize && isViewport) {
+           return true;
+       } else {
+           return false;
+       }
+   };
+   const gotoNext = (next) => {
+       if (isWidth()) {
+           next();
+       } else {
+           setTimeout(() => {
+               gotoNext(next);
+           }, 100);
+       }
+   };
+   const enterPage = (nextState, replace, next) => {
+       gotoNext(next);
+   };
 
   return (
     <Route onEnter={enterPage}>
@@ -58,7 +65,6 @@ export default (store) => {
         <IndexRoute name='home' group='homeGroup' component={Home}/>
         <Route path='home1' name='home1' group='homeGroup1' breadcrumbName='测试' component={Home} />
       </Route> */}
-
       <Route path='/login' component={Login}/>
       <Route path='/logout' component={Logout}/>
       <Route path='/activeUser' component={ActiveUser}/>
@@ -74,6 +80,12 @@ export default (store) => {
       <Route path='/' component={Home}>
         <Route path='/device' component={SearchDevice}/>
       </Route>
+      <Route path='/' component={Home}/>
+      <Route path='/mine' component={Mine}/>
+      <Route path='/softwareVersion' component={SoftwareVersion}/>
+      <Route path='/activityManagement' component={ActivityManagement}/>
+      <Route path='/knowledgeBase' component={KnowledgeBase}/>
+      <Route path='/scoreRanking' component={ScoreRanking}/>
       <Route path='/not-author' component={NotAuthor}/>
       <Route path='*' component={NotFound} status={404} />
     </Route>

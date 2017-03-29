@@ -38,3 +38,6 @@ export const EXECUTE_PLAN = `${DOMAIN}/api/auth/my_plan`; // 执行计划
 
 // 健康报告（返回最新5种体质报告）
 export const HEALTH_REPORT = `${DOMAIN}/api/auth/health_report`;
+// export const LOGIN = `${DOMAIN}/api/user/login`;
+export const SOFTWARE_VERSION = `${DOMAIN}/api/app_version`; // 获取软件版本
+export const STUDENT_SELF_INFO = `${DOMAIN}/api/auth/me`; // 获取学生信息

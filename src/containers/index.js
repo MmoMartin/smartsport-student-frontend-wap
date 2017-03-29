@@ -15,3 +15,8 @@ export Settings from './Profile/Settings';
 export SearchDevice from './Profile/SearchDevice';
 export MyDevices from './Profile/MyDevices';
 export HealthReport from './HealthReport/HealthReport';
+export Mine from './Mine/Mine';
+export SoftwareVersion from './SoftwareVersion/SoftwareVersion';
+export ActivityManagement from './Mine/ActivityManagement';
+export KnowledgeBase from './Mine/KnowledgeBase';
+export ScoreRanking from './Mine/ScoreRanking';

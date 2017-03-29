@@ -7,6 +7,7 @@ import calculateRed from './Calculate/CalculateRed';
 import movementPlanRed from './MovementPlan/MovementPlanRed';
 import searchDevicesRed from './Devices/SearchDevicesRed';
 import HealthReportRed from './HealthReport/HealthReportRed';
+import SoftwareVersionRed from './SoftwareVersion/SoftwareVersionRed';
 
 export default combineReducers({
   routing: routerReducer,
@@ -16,4 +17,5 @@ export default combineReducers({
   movementPlanRed,
   searchDevicesRed,
   HealthReportRed,
+  SoftwareVersionRed,
 });
