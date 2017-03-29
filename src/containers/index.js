@@ -14,3 +14,4 @@ export Profile from './Profile/Profile';
 export Settings from './Profile/Settings';
 export SearchDevice from './Profile/SearchDevice';
 export MyDevices from './Profile/MyDevices';
+export HealthReport from './HealthReport/HealthReport';

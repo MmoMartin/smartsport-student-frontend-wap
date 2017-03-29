@@ -1,8 +1,9 @@
-import { MOVEMENTPLAN_LIST, MOVEMENTPLAN_PROGRESS } from 'constants/urls';
+import { MOVEMENTPLAN_LIST, MOVEMENTPLAN_PROGRESS, RECOMMENDED_PLAN } from 'constants/urls';
 import config from '../../../constants/config';
 const initialState = {
   movementPlanList: [],
   progressRate: 0.0,
+  RecommendData: [],
 };
 export default function reducer(state = initialState, {type, data, err = '', ...rest}) {
   switch (type) {
@@ -15,6 +16,11 @@ export default function reducer(state = initialState, {type, data, err = '', ...
       return {
         ...state,
         movementPlanList: data
+      };
+    case `${RECOMMENDED_PLAN}_GET_SUCC`:
+      return {
+        ...state,
+        RecommendData: data,
       };
     default:
       return state;

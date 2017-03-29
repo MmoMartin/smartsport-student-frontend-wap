@@ -32,3 +32,10 @@ export const CALCULATOR = `${DOMAIN}/api/auth/score/calculator`; // 计算测试
 // 运动计划
 export const MOVEMENTPLAN_LIST = `${DOMAIN}/api/auth/my_plan`; // 运动计划列表
 export const MOVEMENTPLAN_PROGRESS = `${DOMAIN}/api/auth/my_plan/status`; // 运动计划总体完成度
+
+// 推荐计划
+export const RECOMMENDED_PLAN = `${DOMAIN}/api/auth/recommended_plan`; // 查看推荐计划
+export const EXECUTE_PLAN = `${DOMAIN}/api/auth/my_plan`; // 执行计划
+
+// 健康报告（返回最新5种体质报告）
+export const HEALTH_REPORT = `${DOMAIN}/api/auth/health_report`;

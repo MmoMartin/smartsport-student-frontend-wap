@@ -16,7 +16,7 @@ function createStageItem(item, index) {
     item.dotColor = '#4fb26b';
   }
   return (
-    <div style={{marginTop: '10px'}} key={item.content + '' + index}>
+    <div style={{marginTop: '0.1rem'}} key={item.content + '' + index}>
       <div>
         <div className={styles.stageItemDot} style={{backgroundColor: item.dotColor}}></div>
         <span className={styles.stageItem}>阶段{item.seq}</span>
