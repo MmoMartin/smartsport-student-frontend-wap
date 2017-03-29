@@ -42,12 +42,10 @@ export function activeUser(obj = {}, succ = {}, fail = {}) {
 
 // 获取手机验证码
 export function getCode( body = {}, succ = ()=>{}, fail = {} ) {
-  setTimeout(() => {
-    succ();
-  }, 1000);
   return post({
     path: VERIFY_CODE,
     body,
+    succ
   });
 }
 

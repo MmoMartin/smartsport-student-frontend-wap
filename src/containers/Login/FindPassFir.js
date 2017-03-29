@@ -7,7 +7,6 @@ import * as LoginAct from 'redux/modules/Login/LoginAct';
 require('./Login.css');
 
 const Item = List.Item;
-let interval;
 @connect(
   ({loginRed}) => loginRed, LoginAct
 )
@@ -20,7 +19,7 @@ class FindPassFir extends Component {
   }
 
   componentWillUnmount() {
-    interval && clearInterval(interval);
+    this.interval && clearInterval(this.interval);
   }
 
   sendSucc() {
@@ -28,11 +27,11 @@ class FindPassFir extends Component {
 
     let second = 60;
     this.setState({count: `${second} 秒`});
-    interval = setInterval(()=>{
+    this.interval = setInterval(()=>{
       --second;
       if (second < 1) {
         this.setState({count: '获取验证码'});
-        clearInterval(interval);
+        clearInterval(this.interval);
       } else {
         this.setState({count: `${second} 秒`});
       }
@@ -44,7 +43,7 @@ class FindPassFir extends Component {
   }
 
   showMessage(text) {
-    Toast.info(text, 2);
+    Toast.fail(text, 3);
   }
 
   handleSucc() {
@@ -55,6 +54,7 @@ class FindPassFir extends Component {
     this.showMessage(err);
   }
 
+  // 找回密码
   passSubmit = () => {
     this.props.form.validateFields({ force: true }, (error) => {
       if (!error) {
@@ -68,6 +68,11 @@ class FindPassFir extends Component {
           const succ = this.handleSucc.bind(this);
           const fail = this.handleFail.bind(this);
           this.props.validateMessCode(obj, succ, fail);
+        }
+      } else {
+        const { tel, code } = this.props.form.getFieldsValue();
+        if (tel === undefined || code === undefined) {
+          this.showMessage('选项不能为空');
         }
       }
     });
@@ -98,6 +103,9 @@ class FindPassFir extends Component {
               {...getFieldProps('tel', {
                 rules: [ { required: true }]
               })}
+              clear
+              type='number'
+              pattern='[0-9]*'
               placeholder="请输入手机号码">
               手机号码
             </InputItem>
@@ -105,6 +113,9 @@ class FindPassFir extends Component {
               {...getFieldProps('code', {
                 rules: [ { required: true} ]
               })}
+              clear
+              type='number'
+              pattern='[0-9]*'
               placeholder="请输入验证码"
               extra={count}
               onExtraClick={this.getCode}

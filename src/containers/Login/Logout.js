@@ -1,10 +1,7 @@
 import React, {Component, PropTypes} from 'react';
-import { Button, Flex, WingBlank, Icon, TextareaItem, InputItem, List, Toast } from 'antd-mobile';
-import {notIdCard} from 'xunyijia-components/src/utils/validation';
-import { createForm } from 'rc-form';
+import { Button, WingBlank, List, Toast } from 'antd-mobile';
 import {connect} from 'react-redux';
 import * as LoginAct from 'redux/modules/Login/LoginAct';
-import config from '../../constants/config';
 require('./Login.css');
 
 const Item = List.Item;
@@ -18,6 +15,7 @@ class Logout extends Component {
   }
 
   gotoLogout() {
+    Toast.success('退出成功', 1);
     this.context.router.push('/login');
   }
 
@@ -30,17 +28,22 @@ class Logout extends Component {
     this.context.router.push('/changePassword');
   }
 
+  // 修改手机号
+  gotoChangeMobile() {
+    this.context.router.push('/changeMobile');
+  }
+
   render() {
     return (
       <div>
         <div className='myHeight'></div>
         <List className="my-list">
           <Item arrow="horizontal" onClick={this.gotoChangePass.bind(this)}>修改密码</Item>
-          <Item arrow="horizontal" onClick={() => {}}>更换手机号码</Item>
+          <Item arrow="horizontal" onClick={this.gotoChangeMobile.bind(this)}>更换手机号码</Item>
         </List>
         <div className='myHeight'></div>
         <List className="my-list">
-          <Item arrow="horizontal" onClick={() => {}}>搜索设备</Item>
+          <Item arrow="horizontal" onClick={() => {}}>我的设备</Item>
         </List>
         <div className='myHeight'></div>
         <List className="my-list">

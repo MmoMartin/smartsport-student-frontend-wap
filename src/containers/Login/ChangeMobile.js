@@ -20,7 +20,8 @@ class ChangeMobile extends Component {
     this.state = {
       visible: false,
       saveState: '',
-      codeTips: '获取验证码'
+      codeTips: '获取验证码',
+      count: '获取验证码',
     };
   }
   componentWillUnmount() {
@@ -28,7 +29,7 @@ class ChangeMobile extends Component {
   }
   // 取消更换手机，返回上一级
   cancelHandler() {
-    this.context.router.push({ pathname: '/changePassword'});
+    this.context.router.push('/logout');
   }
   // 获取验证码
   getCode() {
@@ -37,46 +38,52 @@ class ChangeMobile extends Component {
       return;
     }
     this.props.form.validateFields(['tel'], (err, values) => {
-      console.log("values", values);
       if (values && !err) {
         this.props.getCode({
             tel: values.tel,
           }, this.sendSucc.bind(this), changeState2Fail.bind(this)
         );
       } else {
-        Toast.info('请正确的手机！', 1);
+        Toast.fail('请正确的手机！', 3);
       }
     });
   }
   // 验证码发送成功
   sendSucc() {
-    let secend = 60;
-    this.setState({codeTips: `${secend} 秒`});
-    this.interval = setInterval(() => {
-      this.setState({codeTips: `${--secend} 秒`});
-      if (secend === 0) {
-        this.setState({codeTips: '获取验证码'});
+    const {count} = this.state;
+    let second = 60;
+    this.setState({count: `${second} 秒`});
+    this.interval = setInterval(()=>{
+      --second;
+      if (second < 1) {
+        this.setState({count: '获取验证码'});
         clearInterval(this.interval);
+      } else {
+        this.setState({count: `${second} 秒`});
       }
     }, 1000);
   }
+
+  // 修改手机号失败
+  changeMobileFail(err) {
+    Toast.fail(err, 3);
+  }
+
   // 点击确定按钮，发送数据
   handleChangeMobile(event) {
     event.preventDefault();
-    console.log("form.getFieldsValue", form.getFieldsValue());
     form.validateFields((err, values) => {
       if (!err) {
         changeState2Begin.call(this, '修改中');
-        console.log("this.props", this.props);
         this.props.changeMobile({
             tel: values.tel,
             code: values.code
           },
           this.showModel.bind(this),
-          changeState2Fail.bind(this),
+          this.changeMobileFail.bind(this),
         );
       } else {
-        Toast.info('输入有误！', 1);
+        Toast.fail('输入有误！', 3);
       }
     });
   }
@@ -96,7 +103,7 @@ class ChangeMobile extends Component {
   }
   // Modal对话框
   showModel(event) {
-    Toast.info('修改成功', 1);
+    Toast.success('修改成功', 1);
     this.context.router.push('/login');
     // event.preventDefault();
     // this.setState({
@@ -115,6 +122,7 @@ class ChangeMobile extends Component {
   render() {
     const { getFieldProps, getFieldError } = this.props.form;
     form = this.props.form;
+    const {count} = this.state;
     return (
       <div>
         <NavBar leftContent='' mode='light'
@@ -128,6 +136,7 @@ class ChangeMobile extends Component {
             })}
             placeholder='请输入密码'
             type="password"
+            pattern='[0-9]*'
             maxLength="6"
             minLength="6"
           >密码</InputItem>
@@ -140,7 +149,7 @@ class ChangeMobile extends Component {
             clear
             error={!!getFieldError('tel')}
             onErrorClick={() => {
-              Toast.info(getFieldError('tel'), 1);
+              Toast.fail(getFieldError('tel'), 3);
             }}
             placeholder='请输入手机号码'
           >+86</InputItem>
@@ -151,15 +160,13 @@ class ChangeMobile extends Component {
               ]
             })}
             placeholder='请输入验证码'
-          >验证码
-            <Button
-              style={{ position: "absolute",
-                       right: "0", top: "0px",
-                       margin: "0 25px", color: "#00cd66", fontSize: "30px"}}
-              activeStyle={false} onClick={this.getCode.bind(this)}>获取验证码</Button>
+            extra={count}
+            pattern='[0-9]*'
+            onExtraClick={this.getCode.bind(this)}
+            className='myCode'>验证码
           </InputItem>
           <p style={{fontSize: "25px", margin: "10px 25px", color: "#999"}}>更换手机号码后，下次登录可使用新手机号码登录</p>
-          <Button style={{height: "90px"}} className="btn"
+          <Button style={{height: "90px", margin: '60px 25px'}} className="btn"
             type="primary"
             activeStyle={false}
             onClick={this.handleChangeMobile.bind(this)}>确定</Button>
@@ -172,7 +179,6 @@ class ChangeMobile extends Component {
           onClose={this.onClose}
           footer={[{ text: '知道了',
             onPress: () => {
-              console.log('ok');
               this.onClose(); }}]}
         >
           本次退出账号后，此手机号码将无法登录，下次登录请使用新手机号码登录

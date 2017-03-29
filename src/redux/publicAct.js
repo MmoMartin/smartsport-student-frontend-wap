@@ -1,3 +1,4 @@
+
 export {publicAct as default} from 'xunyijia';
 
 export function fetchList({path, queryObj, succ = (()=>{}), fail = (()=>{}), ...rest}) {

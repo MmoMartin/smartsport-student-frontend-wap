@@ -17,12 +17,10 @@ export default function reducer(state = initialState, {type, data, err = '', ...
         activeFlag: data.success,
       };
     case `${VERIFY_CODE}_POST_SUCC`:
-      console.log(data);
       return {
         ...state
       };
     case `${TEST_SUBJECT}_POST_SUCC`:
-      console.log(data);
       return {
         ...state,
         testSubjectsList: data

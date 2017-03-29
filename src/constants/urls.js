@@ -11,7 +11,6 @@ const DOMAIN3000 = '/proxy3000';
 const DOMAIN3001 = '/proxy3001';
 const DOMAIN3002 = '/proxy3002';
 const DOMAIN3003 = '/proxy3003';
-const DOMAIN3004 = '/proxy3004';
 
 // export {DOMAIN};
 // 行政区域三级接口

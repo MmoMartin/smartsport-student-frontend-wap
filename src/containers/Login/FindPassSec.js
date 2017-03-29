@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import { Button, Flex, WingBlank, Icon, TextareaItem, InputItem, List, Toast } from 'antd-mobile';
+import { Button, InputItem, List, Toast } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import {connect} from 'react-redux';
 import * as LoginAct from 'redux/modules/Login/LoginAct';
@@ -10,13 +10,13 @@ const Item = List.Item;
 @connect(
   ({loginRed}) => loginRed, LoginAct
 )
-class FindPassSec1 extends Component {
+class FindPassSec extends Component {
   static contextTypes = {
     router: PropTypes.object.isRequired
   }
 
   showMessage(text) {
-    Toast.info(text, 2);
+    Toast.fail(text, 3);
   }
 
   handleSucc() {
@@ -27,6 +27,7 @@ class FindPassSec1 extends Component {
     this.showMessage(err);
   }
 
+  // 修改密码
   passSubmit = () => {
     this.props.form.validateFields({ force: true }, (error) => {
       if (!error) {
@@ -35,11 +36,16 @@ class FindPassSec1 extends Component {
           this.showMessage('输入错误');
         } else {
           const token = this.props.setPassToken;
-          console.log(token);
           const obj = { password, token };
           const succ = this.handleSucc.bind(this);
           const fail = this.handleFail.bind(this);
+          Toast.info('正在修改密码', 1);
           this.props.setPassword(obj, succ, fail);
+        }
+      } else {
+        const { password, comfirmPassword } = this.props.form.getFieldsValue();
+        if (password === undefined || comfirmPassword === undefined) {
+          this.showMessage('选项不能为空');
         }
       }
     });
@@ -53,17 +59,21 @@ class FindPassSec1 extends Component {
           <List>
             <InputItem
               {...getFieldProps('password', {
-                initialValue: '123456',
                 rules: [ { required: true }]
               })}
+              clear
+              type='password'
+              pattern='[0-9]*'
               placeholder="请输入6位数字的密码">
               新密码
             </InputItem>
             <InputItem
               {...getFieldProps('comfirmPassword', {
-                initialValue: '123456',
                 rules: [ { required: true} ]
               })}
+              clear
+              type='password'
+              pattern='[0-9]*'
               placeholder="请再次输入新密码">
               确认密码
             </InputItem>        
@@ -79,5 +89,4 @@ class FindPassSec1 extends Component {
     );
   }
 }
-const FindPassSec = createForm()(FindPassSec1);
-export default FindPassSec;
+export default createForm()(FindPassSec);

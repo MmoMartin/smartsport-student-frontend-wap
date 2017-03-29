@@ -1,6 +1,6 @@
 import React, {Component, PropTypes} from 'react';
-import { Button, Flex, WingBlank, Icon, TextareaItem, List, InputItem, Toast } from 'antd-mobile';
-import {notIdCard} from 'xunyijia-components/src/utils/validation';
+import { Button, Flex, WingBlank, List, InputItem, Toast } from 'antd-mobile';
+import {notIdCard, MOBILE} from 'xunyijia-components/src/utils/validation';
 import { createForm } from 'rc-form';
 import {connect} from 'react-redux';
 import * as LoginAct from 'redux/modules/Login/LoginAct';
@@ -16,7 +16,7 @@ class Login extends Component {
   }
 
   showMessage(text) {
-    Toast.info(text, 2);
+    Toast.fail(text, 3);
   }
 
   gotoLogin() {
@@ -32,24 +32,26 @@ class Login extends Component {
     this.props.form.validateFields({ force: true }, (error) => {
       if (!error) {
         const { name, password } = this.props.form.getFieldsValue();
-        if (name === null || password === null) {
-          this.showMessage('账号或密码不能为空');
-        } else if ((name.length !== 11 
+        if ((name.length !== 11 
           && name.length !== 18)
           || password.length !== 6 
           || password.match(/^\d{6}$/ === null)
           ) {
           this.showMessage('账号或密码不正确');
-        } else if (name.length === 11 &&
-          (name.match(/^\d{11}$/) === null || 
-          name.charAt(0) === '0' || name.charAt(1) === '1' || name.charAt(1) === '2')) {
+        } else if (name.length === 11 && name.match(MOBILE) === null) {
           this.showMessage('账号或密码不正确');
         } else if (name.length === 18 && notIdCard(name) !== false) {
           this.showMessage('账号或密码不正确');
         } else {
           const succ = this.gotoLogin.bind(this);
           const fail = this.handleErr.bind(this);
+          Toast.info('正在登录', 1);
           this.props.login({name, password}, succ, fail);
+        }
+      } else {
+        const { name, password } = this.props.form.getFieldsValue();
+        if (name === undefined || password === undefined || name === '' || password === '') {
+          this.showMessage('选项不能为空');
         }
       }
     });
@@ -82,18 +84,21 @@ class Login extends Component {
                 {...getFieldProps('name', {
                   rules: [ { required: true }]
                 })}
+                clear
+                type='number'
                 placeholder="请输入手机号码/身份证号"
                 maxLength={18}
-                labelNumber='8'
-                error={!!getFieldError('name')}>
+                labelNumber='8'>
                 <img src={userIcon} className='marginRt30'/>
               </InputItem>
               <InputItem
                 {...getFieldProps('password', {
                   rules: [ { required: true }]
                 })}
+                clear
                 labelNumber='8'
                 type='password'
+                pattern='[0-9]*'
                 placeholder="请输入密码">
                 <img src={passIcon} className='marginRt30'/>
               </InputItem>

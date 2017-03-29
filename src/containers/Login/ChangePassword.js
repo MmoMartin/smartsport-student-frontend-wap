@@ -33,16 +33,16 @@ class ChangePassword extends Component {
   }
   // 取消返回上一级
   cancelHandler() {
-    this.context.router.push({pathname: '/changeMobile'});
+    this.context.router.push('/logout');
   }
 
   changePassSucc() {
-    Toast.info('密码修改成功', 1);
+    Toast.success('密码修改成功', 1);
     this.context.router.push('/login');
   }
 
   changePassFail(err) {
-    Toast.info(err, 1);
+    Toast.fail(err, 3);
   }
  
   // 点击确认，修改密码
@@ -60,7 +60,7 @@ class ChangePassword extends Component {
           fail: this.changePassFail.bind(this)
         });
       } else {
-        Toast.info('输入有误！', 1);
+        Toast.fail('输入有误！', 3);
       }
     });
   }
@@ -82,6 +82,7 @@ class ChangePassword extends Component {
             })}
             placeholder='请输入旧密码'
             type="password"
+            pattern='[0-9]*'
             maxLength="6"
             minLength="6"
           >旧密码</InputItem>
@@ -95,10 +96,11 @@ class ChangePassword extends Component {
             clear
             error={!!getFieldError('newPwd')}
             onErrorClick={() => {
-              Toast.info(getFieldError('newPwd'), 1);
+              Toast.fail(getFieldError('newPwd'), 3);
             }}
             placeholder='请输入新密码'
             type="password"
+            pattern='[0-9]*'
             maxLength="6"
             minLength="6"
           >新密码</InputItem>
@@ -112,14 +114,15 @@ class ChangePassword extends Component {
             clear
             error={!!getFieldError('confirmPwd')}
             onErrorClick={() => {
-              Toast.info(getFieldError('confirmPwd'), 1);
+              Toast.fail(getFieldError('confirmPwd'), 3);
             }}
             type="password"
+            pattern='[0-9]*'
             placeholder='请再次输入新密码'
             maxLength="6"
             minLength="6"
           >确认密码</InputItem>
-          <Button style={{height: "90px"}} className="btn" type="primary"
+          <Button style={{height: "90px", margin: '60px 25px'}} className="btn" type="primary"
             activeStyle={false}
             onClick={this.handleChangePwd.bind(this)}
           >确定</Button>
