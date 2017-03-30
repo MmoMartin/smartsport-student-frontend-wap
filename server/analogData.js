@@ -221,6 +221,32 @@ const data = [
         code: 0,
         msg: 'request success',
       },
+  },{
+    url: '/api/expert_user/verify_code',
+    data: {
+      status: {
+        code: 0,
+        msg: 'request success'
+      }
+    }
+  }, {
+    url: 'api/expert_user/verify',
+    data: {
+      "status": {
+        "code": 0,
+        "msg": "request success"
+      },
+      "data": {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWFsbSI6Im1hbmFnZW1lbnQtdXNlciIsImlhdCI6MTQ4NDYxODgyNiwiZXhwIjoxNDg0NjI2MDI2LCJzdWIiOiI1ODc4ODk0MDAzMjlmMzFlMjNkOWVmMjQiLCJqdGkiOiI1ODdkN2M0YTA4YzdhZGU5MTZkMjQzMDIifQ.wlV9u9diWGZDqV2r5Uk0GBRz4bkXtn-7-u0qHSqx-W4"
+      }
+    }
+  }, {
+    url: '/api/expert_user/set_password',
+    data: {
+      status: {
+        code: 0,
+        msg: 'request success'
+      }
     }
   }
 ];

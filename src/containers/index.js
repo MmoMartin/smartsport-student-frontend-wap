@@ -20,3 +20,5 @@ export SoftwareVersion from './SoftwareVersion/SoftwareVersion';
 export ActivityManagement from './Mine/ActivityManagement';
 export KnowledgeBase from './Mine/KnowledgeBase';
 export ScoreRanking from './Mine/ScoreRanking';
+export Contact from './Contact/Contact.js';
+export Point from './Point/Point.js';

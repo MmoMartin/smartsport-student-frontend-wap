@@ -58,7 +58,6 @@ export function validateMessCode( body = {}, succ = {}, fail = {}) {
     fail,
   });
 }
-
 // 重置密码
 export function setPassword(body = {}, succ = {}, fail = {}) {
   return post({

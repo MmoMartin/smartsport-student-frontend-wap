@@ -21,6 +21,8 @@ import {
   ActivityManagement,
   KnowledgeBase,
   ScoreRanking,
+  Contact,
+  Point,
 } from 'containers';
 import config from './constants/config';
 
@@ -75,8 +77,6 @@ export default (store) => {
       <Route path='changeMobile' component={ChangeMobile}/>
       <Route path='/healthReport' component={HealthReport}/>
       <Route path='/move' component={MovementPlan}/>
-      <Route path='/changePassword' component={ChangePassword}/>
-      <Route path='/changeMobile' component={ChangeMobile}/>
       <Route path='/' component={Home}>
         <Route path='/device' component={SearchDevice}/>
       </Route>
@@ -86,6 +86,8 @@ export default (store) => {
       <Route path='/activityManagement' component={ActivityManagement}/>
       <Route path='/knowledgeBase' component={KnowledgeBase}/>
       <Route path='/scoreRanking' component={ScoreRanking}/>
+      <Route path='/contact' component={Contact}/>
+      <Route path='/point' component={Point}/>
       <Route path='/not-author' component={NotAuthor}/>
       <Route path='*' component={NotFound} status={404} />
     </Route>
