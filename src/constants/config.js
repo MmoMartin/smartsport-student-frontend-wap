@@ -4,7 +4,7 @@ require('babel-polyfill');
 
 const config = {
   isLogger: true, // 是否控制台打印action
-  isVirtual: true, // 是否使用后台虚拟数据
+  isVirtual: false, // 是否使用后台虚拟数据
   pageSize: 10, // 默认列表显示条数
   tokenKey: 'smartsport/student/token', // 保存当前登陆用户的token，获得通过localStorage.getItem(config.tokenKey)
   userInfoKey: 'smartsport/student/user', // 保存当前登陆用户的用户信息，获得通过localStorage.getItem(config.userInfoKey)
