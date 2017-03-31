@@ -115,7 +115,7 @@ export default class Spine extends Component {
                   <div className={styles.listRight}>
                     <div>腰椎（椎间盘）疾病风险</div>
                     <div className={styles.record}>
-                      {SpineData.data.LumbarDiseaseRisk}
+                      {SpineData.data.lumbarDiseaseRisk}
                     </div>
                   </div>
                 </li>

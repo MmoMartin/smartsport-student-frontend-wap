@@ -67,20 +67,21 @@ export default (store) => {
         <IndexRoute name='home' group='homeGroup' component={Home}/>
         <Route path='home1' name='home1' group='homeGroup1' breadcrumbName='测试' component={Home} />
       </Route> */}
+      <Route path='/' component={Home}>
+        <IndexRoute component={MovementPlan}/>
+        <Route path='calcul' component={Calcul}/>
+        <Route path='healthReport' component={HealthReport}/>
+      </Route>
       <Route path='/login' component={Login}/>
       <Route path='/logout' component={Logout}/>
       <Route path='/activeUser' component={ActiveUser}/>
       <Route path='/findPassFir' component={FindPassFir}/>
       <Route path='/findPassSec' component={FindPassSec}/>
-      <Route path='/calcul' component={Calcul}/>
       <Route path='changePassword' component={ChangePassword}/>
       <Route path='changeMobile' component={ChangeMobile}/>
       <Route path='/healthReport' component={HealthReport}/>
       <Route path='/move' component={MovementPlan}/>
-      <Route path='/' component={Home}>
-        <Route path='/device' component={SearchDevice}/>
-      </Route>
-      <Route path='/' component={Home}/>
+      <Route path='/device' component={SearchDevice}/>
       <Route path='/mine' component={Mine}/>
       <Route path='/softwareVersion' component={SoftwareVersion}/>
       <Route path='/activityManagement' component={ActivityManagement}/>

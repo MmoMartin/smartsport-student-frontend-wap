@@ -25,27 +25,6 @@ class Home extends Component {
     Toast.hide();
     Toast.loading('加载中...');
   }
-  renderContent(index) {
-    switch (index) {
-      case 0: {
-        return (
-          <h1>运动计划</h1>
-        );
-      }
-      case 1: {
-        return (
-          <h1>计算器</h1>
-        );
-      }
-      case 2: {
-        return (
-          <h1>我的</h1>
-        );
-      }
-      default:
-        break;
-    }
-  }
 
   render() {
     return (
@@ -71,13 +50,14 @@ class Home extends Component {
           }
           selected={this.state.selectedTab === 'blueTab'}
           onPress={() => {
+            this.context.router.push('/');
             this.setState({
               selectedTab: 'blueTab',
             });
           }}
           data-seed="logId"
         >
-          {this.renderContent(0)}
+          {this.props.children}
         </TabBar.Item>
 
         <TabBar.Item
@@ -100,12 +80,13 @@ class Home extends Component {
           dot
           selected={this.state.selectedTab === 'greenTab'}
           onPress={() => {
+            this.context.router.push('/calcul');
             this.setState({
               selectedTab: 'greenTab',
             });
           }}
         >
-          {this.renderContent(1)}
+          {this.props.children}
         </TabBar.Item>
         <TabBar.Item
           icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg' }}
@@ -114,12 +95,13 @@ class Home extends Component {
           key="mine"
           selected={this.state.selectedTab === 'yellowTab'}
           onPress={() => {
+            this.context.router.push('/healthReport');
             this.setState({
               selectedTab: 'yellowTab',
             });
           }}
         >
-          {this.renderContent(2)}
+          {this.props.children}
         </TabBar.Item>
       </TabBar>
     );

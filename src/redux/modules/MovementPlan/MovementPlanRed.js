@@ -10,7 +10,7 @@ export default function reducer(state = initialState, {type, data, err = '', ...
     case `${MOVEMENTPLAN_PROGRESS}_GET_SUCC`:
       return {
         ...state,
-        progressRate: data.rate,
+        progressRate: data,
       };
     case `${MOVEMENTPLAN_LIST}_GET_SUCC`:
       return {

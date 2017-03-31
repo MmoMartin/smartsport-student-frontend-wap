@@ -132,7 +132,7 @@ const data = [
         "name": 1,
         "platform": 1,
         "version": "1.1.1",
-        "address": "http://pkg-mt1.fir.im/1be5d587235639d6cca07a1ebfabcf780501f610.apk?filename=app-armeabi-v7a-release.apk_1.0.0.apk",
+        "address": "",
         "description": "I saw thousands of alpacas running on the Gobi Desert.",
         "createBy": "皮蛋.id",
         "createAt": new Date("2017-03-21T03:19:17.829Z"),
@@ -221,7 +221,9 @@ const data = [
         code: 0,
         msg: 'request success',
       },
-  },{
+    }
+  },
+  {
     url: '/api/expert_user/verify_code',
     data: {
       status: {
@@ -229,7 +231,8 @@ const data = [
         msg: 'request success'
       }
     }
-  }, {
+  },
+  {
     url: 'api/expert_user/verify',
     data: {
       "status": {
@@ -237,7 +240,7 @@ const data = [
         "msg": "request success"
       },
       "data": {
-        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZWFsbSI6Im1hbmFnZW1lbnQtdXNlciIsImlhdCI6MTQ4NDYxODgyNiwiZXhwIjoxNDg0NjI2MDI2LCJzdWIiOiI1ODc4ODk0MDAzMjlmMzFlMjNkOWVmMjQiLCJqdGkiOiI1ODdkN2M0YTA4YzdhZGU5MTZkMjQzMDIifQ.wlV9u9diWGZDqV2r5Uk0GBRz4bkXtn-7-u0qHSqx-W4"
+        "token": ""
       }
     }
   }, {

@@ -61,17 +61,23 @@ class MovementPlan extends Component {
     Toast.info("执行失败", 3);
   }
   // 开始执行
-  onBegin(id) {
+  onBegin(id, status) {
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        let obj = {
+        let receivedValues = {
           category: 1,
           id: id,
           startTime: formatDate(new Date(values.date1._d), 'yyyy-mm-dd'),
         };
+        let obj = {
+          body: receivedValues
+        };
         const succ = this.handleSucc.bind(this);
         const fail = this.handleFail.bind(this);
         this.props.executePlan(obj, succ, fail);
+        this.props.movementPlanProgress();
+        this.props.getMovementPlanList();
+        this.props.fetchRecommendedPlan();
       }
     });
   }
@@ -196,7 +202,7 @@ class MovementPlan extends Component {
                             正在进行
                           </button> :
                           <button className={styles.planBtn}
-                                  onClick={this.onBegin.bind(this, item._id)}
+                                  onClick={this.onBegin.bind(this, item._id, item.status)}
                                   type="button">
                             开始
                           </button>
