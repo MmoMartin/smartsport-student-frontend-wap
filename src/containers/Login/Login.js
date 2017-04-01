@@ -4,6 +4,7 @@ import {notIdCard, MOBILE} from 'xunyijia-components/src/utils/validation';
 import { createForm } from 'rc-form';
 import {connect} from 'react-redux';
 import * as LoginAct from 'redux/modules/Login/LoginAct';
+import {handleText} from './publicFun';
 require('./Login.css');
 
 const Item = List.Item;
@@ -60,6 +61,7 @@ class Login extends Component {
   // 激活账号
   gotoActiveUser() {
     this.context.router.push('/activeUser');
+
   }
 
   // 忘记密码
@@ -84,11 +86,11 @@ class Login extends Component {
                 {...getFieldProps('name', {
                   rules: [ { required: true }]
                 })}
-                clear
                 type='number'
                 placeholder="请输入手机号码/身份证号"
-                maxLength={18}
-                labelNumber='8'>
+                onInput={handleText.bind(this, '18')}
+                labelNumber='8'
+                >
                 <img src={userIcon} className='marginRt30'/>
               </InputItem>
               <InputItem
@@ -99,6 +101,7 @@ class Login extends Component {
                 labelNumber='8'
                 type='password'
                 pattern='[0-9]*'
+                maxLength={6}
                 placeholder="请输入密码">
                 <img src={passIcon} className='marginRt30'/>
               </InputItem>

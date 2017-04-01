@@ -8,7 +8,7 @@ const Item = List.Item;
 @connect(
   ({loginRed}) => loginRed, LoginAct
 )
-class Logout extends Component {
+class Settings extends Component {
 
   static contextTypes = {
     router: PropTypes.object.isRequired
@@ -56,4 +56,4 @@ class Logout extends Component {
     );
   }
 }
-export default Logout;
+export default Settings;

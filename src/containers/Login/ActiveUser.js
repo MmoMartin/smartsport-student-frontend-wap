@@ -4,6 +4,7 @@ import {notIdCard, MOBILE} from 'xunyijia-components/src/utils/validation';
 import { createForm } from 'rc-form';
 import {connect} from 'react-redux';
 import * as LoginAct from 'redux/modules/Login/LoginAct';
+import {handleText} from './publicFun';
 require('./Login.css');
 
 const Item = List.Item;
@@ -124,9 +125,9 @@ class ActiveUser extends Component {
               {...getFieldProps('identification', {
                 rules: [ { required: true }]
               })}
+              onInput={handleText.bind(this, '18')}
               clear
               type='number'
-              maxLength={18}
               placeholder="请输入身份证号">
               身份证号
             </InputItem>
@@ -136,7 +137,8 @@ class ActiveUser extends Component {
               })}
               clear
               type='password'
-              pattern='[0-9]*'
+              pattern='[0-9]{6}'
+              maxLength={6}
               placeholder="请输入6位数字的密码">
               密码
             </InputItem>
@@ -145,7 +147,8 @@ class ActiveUser extends Component {
                 rules: [ { required: true }]
               })}
               type='password'
-              pattern='[0-9]*'
+              pattern='[0-9]{6}'
+              maxLength={6}
               placeholder="请再次输入新密码">
               确认密码
             </InputItem>
@@ -155,7 +158,8 @@ class ActiveUser extends Component {
               })}
               clear
               type='number'
-              pattern='[0-9]*'
+              pattern='[0-9]{11}'
+              onInput={handleText.bind(this, '11')}
               placeholder="请输入手机号码">
               手机号码
             </InputItem>
@@ -165,7 +169,8 @@ class ActiveUser extends Component {
               })}
               clear
               type='number'
-              pattern='[0-9]*'
+              pattern='[0-9]{6}'
+              onInput={handleText.bind(this, '6')}
               placeholder="请输入验证码"
               extra={count}
               onExtraClick={this.getCode}

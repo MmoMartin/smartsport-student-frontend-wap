@@ -4,6 +4,7 @@ import { createForm } from 'rc-form';
 import {connect} from 'react-redux';
 import {MOBILE} from 'xunyijia-components/src/utils/validation';
 import * as LoginAct from 'redux/modules/Login/LoginAct';
+import {handleText} from './publicFun';
 require('./Login.css');
 
 const Item = List.Item;
@@ -106,6 +107,7 @@ class FindPassFir extends Component {
               clear
               type='number'
               pattern='[0-9]*'
+              onInput={handleText.bind(this, '11')}
               placeholder="请输入手机号码">
               手机号码
             </InputItem>
@@ -116,6 +118,7 @@ class FindPassFir extends Component {
               clear
               type='number'
               pattern='[0-9]*'
+              onInput={handleText.bind(this, '6')}
               placeholder="请输入验证码"
               extra={count}
               onExtraClick={this.getCode}

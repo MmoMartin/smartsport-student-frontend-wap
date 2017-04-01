@@ -64,6 +64,7 @@ class FindPassSec extends Component {
               clear
               type='password'
               pattern='[0-9]*'
+              maxLength={6}
               placeholder="请输入6位数字的密码">
               新密码
             </InputItem>
@@ -74,6 +75,7 @@ class FindPassSec extends Component {
               clear
               type='password'
               pattern='[0-9]*'
+              maxLength={6}
               placeholder="请再次输入新密码">
               确认密码
             </InputItem>        
