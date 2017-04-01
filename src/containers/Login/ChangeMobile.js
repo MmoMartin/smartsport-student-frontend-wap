@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import { Button, Flex, WingBlank, NavBar, Icon, Grid,
          InputItem, List, WhiteSpace, Toast, Modal} from 'antd-mobile';
 import { createForm } from 'rc-form';
-import { PASSWORD, PASSWORD_TIP, MOBILE, MOBILE_TIP} from 'utils/validation';
+import { MOBILE } from 'utils/validation';
 import {changeState2Begin, changeState2Fail, changeState2Succ} from 'utils/tool';
 import * as actions from 'redux/modules/Login/LoginAct';
 require('./ChangePassword.css');
 let form = [];
 let interval;
+const mobile = MOBILE;
 @connect(()=>({}), actions)
 
 class ChangeMobile extends Component {
@@ -77,9 +78,7 @@ class ChangeMobile extends Component {
   // 点击确定按钮，发送数据
   handleChangeMobile(event) {
     event.preventDefault();
-    const mobile = /^((1705|1709|1700)\d{7})|(13\d|15[0-35-9]|14[57]|17[6-8]|18\d)\d{8}$/;
     form.validateFields((err, values) => {
-      values.tel = values.tel.replace(/\s+/g, '');
       if (!err) {
         Toast.info('修改中', 1);
         if (!mobile.test(values.tel)) {
@@ -99,20 +98,7 @@ class ChangeMobile extends Component {
       }
     });
   }
-  // 验证手机号
-  validateMobile(rule, value, callback) {
-    const mobile = /^((1705|1709|1700)\d{7})|(13\d|15[0-35-9]|14[57]|17[6-8]|18\d)\d{8}$/;
-    if (value) {
-      value = value.replace(/\s+/g, '');
-      if (mobile.test(value)) {
-        callback();
-      } else {
-        Toast.fail('请输入正确的手机号！', 3);
-      }
-    } else {
-      Toast.fail('手机号不能为空！', 3);
-    }
-  }
+
   // Modal对话框
   showModel(event) {
     this.setState({
@@ -162,10 +148,6 @@ class ChangeMobile extends Component {
               ]
             })}
             clear
-            error={!!getFieldError('tel')}
-            onErrorClick={() => {
-              Toast.fail(getFieldError('tel'), 3);
-            }}
             placeholder='请输入手机号码'
             type='number'
             onInput={this.handleText.bind(this, 11)}

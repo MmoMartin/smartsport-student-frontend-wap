@@ -14,21 +14,6 @@ class ChangePassword extends Component {
   static contextTypes = {
     router: PropTypes.object.isRequired
   }
-  // 验证俩次输入新密码是否一致
-  validateConfirmPwd(rule, value, callback) {
-    if (value && form.getFieldValue('newPwd') && value !== form.getFieldValue('newPwd')) {
-      Toast.fail('两次密码不一致', 3);
-      // callback(new Error('两次密码不一致'));
-    }
-  }
-  // 检查新密码
-  validateNewPwd(value, callback) {
-    const map = /^\d{6}$/;
-    if (!map.test(value)) {
-      Toast.fail('请输入6位数字！', 3);
-      // callback(new Error('请输入6位数字！'));
-    }
-  }
   // 取消返回上一级
   cancelHandler() {
     this.context.router.push('/logout');
@@ -46,7 +31,6 @@ class ChangePassword extends Component {
   // 点击确认，修改密码
   handleChangePwd(event) {
     event.preventDefault();
-    // this.validateConfirmPwd.bind(this);
     form.validateFields((err, values) => {
       if (!err) {
         Toast.info('修改中', 1);
@@ -54,7 +38,7 @@ class ChangePassword extends Component {
           Toast.fail('新密码不能与旧密码一致', 3);
           return;
         } else if (!(/^\d{6}$/).test(values.newPwd)) {
-          Toast.fail('请输入6位数字！', 3);
+          Toast.fail('新密码请输入6位数字！', 3);
         }
         else if (values.confirmPwd !== values.newPwd) {
           Toast.fail('两次新密码不一致', 3);
@@ -69,7 +53,7 @@ class ChangePassword extends Component {
           });
         }
       } else {
-        Toast.fail('输入有误！', 3);
+        Toast.fail('输入框不能为空', 3);
       }
     });
   }
@@ -102,10 +86,6 @@ class ChangePassword extends Component {
               ],
             })}
             clear
-            error={!!getFieldError('newPwd')}
-            onErrorClick={() => {
-              Toast.fail(getFieldError('newPwd'), 3);
-            }}
             placeholder='请输入新密码'
             type="password"
             pattern='[0-9]*'
@@ -119,10 +99,6 @@ class ChangePassword extends Component {
               ],
             })}
             clear
-            error={!!getFieldError('confirmPwd')}
-            onErrorClick={() => {
-              Toast.fail(getFieldError('confirmPwd'), 3);
-            }}
             type="password"
             pattern='[0-9]*'
             placeholder='请再次输入新密码'
