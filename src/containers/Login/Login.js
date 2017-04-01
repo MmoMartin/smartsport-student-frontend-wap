@@ -75,7 +75,7 @@ class Login extends Component {
   	const passIcon = require('img/password.png');
     const { getFieldProps, getFieldError } = this.props.form;
     return (
-      <div className='myBack'>      
+      <div className='myBack'>
         <WingBlank>
   	    	<div className='loginLogo'>
               <img src={logoImg}/>

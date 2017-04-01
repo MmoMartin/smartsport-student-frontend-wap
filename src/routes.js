@@ -68,6 +68,7 @@ export default (store) => {
         <Route path='home1' name='home1' group='homeGroup1' breadcrumbName='测试' component={Home} />
       </Route> */}
       <Route path='/' component={Home}>
+        
         <IndexRoute component={MovementPlan}/>
         <Route path='calcul' component={Calcul}/>
         <Route path='healthReport' component={HealthReport}/>
@@ -79,8 +80,8 @@ export default (store) => {
       <Route path='/findPassSec' component={FindPassSec}/>
       <Route path='changePassword' component={ChangePassword}/>
       <Route path='changeMobile' component={ChangeMobile}/>
-      <Route path='/healthReport' component={HealthReport}/>
-      <Route path='/move' component={MovementPlan}/>
+      // <Route path='/healthReport' component={HealthReport}/>
+      // <Route path='/move' component={MovementPlan}/>
       <Route path='/device' component={SearchDevice}/>
       <Route path='/mine' component={Mine}/>
       <Route path='/softwareVersion' component={SoftwareVersion}/>

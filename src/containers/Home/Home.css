@@ -1,0 +1,23 @@
+.headNavBar {
+  width: 100%;
+  height: 0.88rem;
+  line-height: 0.88rem;
+  text-align: center;
+  background-color: #fff;
+}
+.headNavBar .leftHeadNavBar{
+  display: inline-block;
+  width: 15%;
+  border:1px solid red;
+}
+.headNavBar .rightHeadNavBar{
+  display: inline-block;
+  width: 15%;
+  border:1px solid red;
+}
+.headNavBar .middleHeadNavBar{
+  display: inline-block;
+  width: 70%;
+  font-size: 0.34rem;
+  border:1px solid red;
+}
