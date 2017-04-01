@@ -95,8 +95,8 @@ class ActiveUser extends Component {
         }
       } else {
         const { name, identification, password, comfirmPassword, tel, code } = this.props.form.getFieldsValue();
-        if (name === undefined || identification === undefined 
-          || password === undefined || comfirmPassword === undefined 
+        if (name === undefined || identification === undefined
+          || password === undefined || comfirmPassword === undefined
           || tel === undefined || code === undefined) {
           this.showMessage('选项不能为空');
         }
@@ -186,3 +186,4 @@ class ActiveUser extends Component {
     );
   }
 }
+export default createForm()(ActiveUser);

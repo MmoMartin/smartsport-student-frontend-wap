@@ -1,4 +1,4 @@
-import {ACTIVE, VERIFY_CODE, LOGIN, SET_PASSWORD, TEST_SUBJECT, VERIFY, CHANGE_PASSWORD} from 'constants/urls';
+import {ACTIVE, VERIFY_CODE, LOGIN, SET_PASSWORD, TEST_SUBJECT, VERIFY} from 'constants/urls';
 import config from '../../../constants/config';
 const initialState = {
   activeFlag: '',  // 激活状态

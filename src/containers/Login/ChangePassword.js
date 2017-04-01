@@ -17,18 +17,16 @@ class ChangePassword extends Component {
   // 验证俩次输入新密码是否一致
   validateConfirmPwd(rule, value, callback) {
     if (value && form.getFieldValue('newPwd') && value !== form.getFieldValue('newPwd')) {
-      callback(new Error('两次密码不一致'));
-    } else {
-      callback();
+      Toast.fail('两次密码不一致', 3);
+      // callback(new Error('两次密码不一致'));
     }
   }
   // 检查新密码
-  validateNewPwd(rule, value, callback) {
+  validateNewPwd(value, callback) {
     const map = /^\d{6}$/;
     if (!map.test(value)) {
-      callback(new Error('请输入6位数字！'));
-    } else {
-      callback();
+      Toast.fail('请输入6位数字！', 3);
+      // callback(new Error('请输入6位数字！'));
     }
   }
   // 取消返回上一级
@@ -44,21 +42,32 @@ class ChangePassword extends Component {
   changePassFail(err) {
     Toast.fail(err, 3);
   }
- 
+
   // 点击确认，修改密码
   handleChangePwd(event) {
     event.preventDefault();
+    // this.validateConfirmPwd.bind(this);
     form.validateFields((err, values) => {
       if (!err) {
-        changeState2Begin.call(this, '修改中');
-        this.props.changePwd({
-          body: {
-            oldPassword: values.oldPwd,
-            password: values.newPwd
-          },
-          succ: this.changePassSucc.bind(this),
-          fail: this.changePassFail.bind(this)
-        });
+        Toast.info('修改中', 1);
+        if (values.oldPwd === values.newPwd) {
+          Toast.fail('新密码不能与旧密码一致', 3);
+          return;
+        } else if (!(/^\d{6}$/).test(values.newPwd)) {
+          Toast.fail('请输入6位数字！', 3);
+        }
+        else if (values.confirmPwd !== values.newPwd) {
+          Toast.fail('两次新密码不一致', 3);
+        } else {
+          this.props.changePwd({
+            body: {
+              oldPassword: values.oldPwd,
+              password: values.newPwd
+            },
+            succ: this.changePassSucc.bind(this),
+            fail: this.changePassFail.bind(this)
+          });
+        }
       } else {
         Toast.fail('输入有误！', 3);
       }
@@ -90,7 +99,6 @@ class ChangePassword extends Component {
             {...getFieldProps('newPwd', {
               rules: [
                 { required: true },
-                { validator: this.validateNewPwd },
               ],
             })}
             clear
@@ -108,7 +116,6 @@ class ChangePassword extends Component {
             {...getFieldProps('confirmPwd', {
               rules: [
                 { required: true },
-                { validator: this.validateConfirmPwd },
               ],
             })}
             clear

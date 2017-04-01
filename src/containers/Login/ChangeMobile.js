@@ -6,9 +6,9 @@ import { createForm } from 'rc-form';
 import { PASSWORD, PASSWORD_TIP, MOBILE, MOBILE_TIP} from 'utils/validation';
 import {changeState2Begin, changeState2Fail, changeState2Succ} from 'utils/tool';
 import * as actions from 'redux/modules/Login/LoginAct';
-
 require('./ChangePassword.css');
 let form = [];
+let interval;
 @connect(()=>({}), actions)
 
 class ChangeMobile extends Component {
@@ -25,7 +25,7 @@ class ChangeMobile extends Component {
     };
   }
   componentWillUnmount() {
-    this.interval && clearInterval(this.interval);
+    interval && clearInterval(interval);
   }
   // 取消更换手机，返回上一级
   cancelHandler() {
@@ -40,24 +40,29 @@ class ChangeMobile extends Component {
     this.props.form.validateFields(['tel'], (err, values) => {
       if (values && !err) {
         this.props.getCode({
-            tel: values.tel,
-          }, this.sendSucc.bind(this), changeState2Fail.bind(this)
+          tel: values.tel,
+        },
+        this.sendSucc.bind(this),
+        this.getCodeFail.bind(this),
         );
       } else {
-        Toast.fail('请正确的手机！', 3);
+        Toast.fail('请输入正确的手机！', 3);
       }
     });
+  }
+  getCodeFail(err) {
+    Toast.fail(err, 3);
   }
   // 验证码发送成功
   sendSucc() {
     const {count} = this.state;
     let second = 60;
     this.setState({count: `${second} 秒`});
-    this.interval = setInterval(()=>{
+    interval = setInterval(()=>{
       --second;
       if (second < 1) {
         this.setState({count: '获取验证码'});
-        clearInterval(this.interval);
+        clearInterval(interval);
       } else {
         this.setState({count: `${second} 秒`});
       }
@@ -72,18 +77,25 @@ class ChangeMobile extends Component {
   // 点击确定按钮，发送数据
   handleChangeMobile(event) {
     event.preventDefault();
+    const mobile = /^((1705|1709|1700)\d{7})|(13\d|15[0-35-9]|14[57]|17[6-8]|18\d)\d{8}$/;
     form.validateFields((err, values) => {
+      values.tel = values.tel.replace(/\s+/g, '');
       if (!err) {
-        changeState2Begin.call(this, '修改中');
-        this.props.changeMobile({
+        Toast.info('修改中', 1);
+        if (!mobile.test(values.tel)) {
+          Toast.fail('请输入正确的手机号！', 3);
+        } else {
+          this.props.changeMobile({
             tel: values.tel,
-            code: values.code
+            code: values.code,
+            password: values.password
           },
-          this.showModel.bind(this),
-          this.changeMobileFail.bind(this),
-        );
+            this.showModel.bind(this),
+            this.changeMobileFail.bind(this),
+          );
+        }
       } else {
-        Toast.fail('输入有误！', 3);
+        Toast.fail('输入框不能为空', 3);
       }
     });
   }
@@ -95,20 +107,17 @@ class ChangeMobile extends Component {
       if (mobile.test(value)) {
         callback();
       } else {
-        callback(new Error('请输入正确的手机号！'));
+        Toast.fail('请输入正确的手机号！', 3);
       }
     } else {
-      callback(new Error('手机号不能为空！'));
+      Toast.fail('手机号不能为空！', 3);
     }
   }
   // Modal对话框
   showModel(event) {
-    Toast.success('修改成功', 1);
-    this.context.router.push('/login');
-    // event.preventDefault();
-    // this.setState({
-    //   visible: true,
-    // });
+    this.setState({
+      visible: true,
+    });
   }
   // 关闭对话框提示
   onClose() {
@@ -118,6 +127,12 @@ class ChangeMobile extends Component {
     this.context.router.push({
       pathname: '/login',
     });
+  }
+  // 限制input输入长度，传入参数leftContent
+  handleText(len, event) {
+    if (event.target.value.length > len) {
+      event.target.value = event.target.value.slice(0, len);
+    }
   }
   render() {
     const { getFieldProps, getFieldError } = this.props.form;
@@ -143,7 +158,7 @@ class ChangeMobile extends Component {
           <InputItem
             {...getFieldProps('tel', {
               rules: [
-                { validator: this.validateMobile }
+                { required: true},
               ]
             })}
             clear
@@ -152,6 +167,8 @@ class ChangeMobile extends Component {
               Toast.fail(getFieldError('tel'), 3);
             }}
             placeholder='请输入手机号码'
+            type='number'
+            onInput={this.handleText.bind(this, 11)}
           >+86</InputItem>
           <InputItem style={{ position: "relative"}}
             {...getFieldProps('code', {

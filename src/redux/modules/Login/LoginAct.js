@@ -45,7 +45,8 @@ export function getCode( body = {}, succ = ()=>{}, fail = {} ) {
   return post({
     path: VERIFY_CODE,
     body,
-    succ
+    succ,
+    fail
   });
 }
 
