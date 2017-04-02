@@ -4,6 +4,7 @@ import Head  from './Head';
 import MovementPlan from '../MovementPlan/MovementPlan';
 import SearchDevice from '../Profile/SearchDevice';
 import MyDevices from '../Profile/MyDevices';
+require('./Home.css');
 
 class Home extends Component {
 
@@ -14,10 +15,9 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedTab: 'blueTab',
-      leftContent: '箭头',
+      leftContent: '',
       leftHandler: () => {},
-      middleContent: '标题',
+      middleContent: '运动计划',
       middleHandler: () => {},
       rightContent: '',
       rightHandler: () => {},
@@ -35,90 +35,86 @@ class Home extends Component {
     Toast.loading('加载中...');
   }
 
+  // 改变头部导航状态
+  changeNavBar(obj) {
+    const { leftContent, middleContent, rightContent, leftHandler, middleHandler, rightHandler } = obj;
+    this.setState({
+      leftContent: leftContent || '',
+      leftHandler: leftHandler || (()=>{}),
+      middleContent: middleContent || '运动计划',
+      middleHandler: middleHandler || (()=>{}),
+      rightContent: rightContent || '',
+      rightHandler: rightHandler || (()=>{}),
+    })
+  }
+
+  // 改变子页面退回路由
+  changeHeadHandler() {
+    const myPath = this.props.location.pathname;
+    if (!(myPath === '/calcul' || myPath === '/' || myPath === '/mine')) {
+      this.context.router.goBack();
+    }
+  }
+
+  // 切换tabNavBar路由
+  changeRoute(selectedTab) {
+    switch(selectedTab) {
+    case '0':
+      this.changeNavBar({
+        middleContent: '运动计划',
+      });
+      this.context.router.push('/');
+      break;
+    case '1':
+      this.changeNavBar({
+        middleContent: '计算器',
+      });
+      this.context.router.push('/calcul');
+      break;
+    case '2':
+      this.changeNavBar({
+        middleContent: '我的',
+      });
+      this.context.router.push('/mine');
+      break;
+    default:
+      this.context.router.push('/');
+      break;
+    }
+  }
+
   render() {
-    console.log(this.state.leftContent);
+    const userIcon = require('img/user.png');
+    const { leftContent, leftHandler, middleContent } = this.state;
+    let display;
+    if(!(leftContent === null || leftContent === '')){
+      display = 'none';
+    } 
     return (
       <div>
         <Head
-         leftContent={this.state.leftContent}
-         middleContent={this.state.middleContent}/>
-        <TabBar
-          unselectedTintColor="#949494"
-          tintColor="#33A3F4"
-          barTintColor="white"
-        >
-          <TabBar.Item
-            title="运动计划"
-            key="life"
-            icon={<div style={{
-              width: '0.44rem',
-              height: '0.44rem',
-              background: 'url() center center /  0.42rem 0.42rem no-repeat' }}
-            />
-            }
-            selectedIcon={<div style={{
-              width: '0.44rem',
-              height: '0.44rem',
-              background: 'url() center center /  0.42rem 0.42rem no-repeat' }}
-            />
-            }
-            selected={this.state.selectedTab === 'blueTab'}
-            onPress={() => {
-              this.context.router.push('/');
-              this.setState({
-                selectedTab: 'blueTab',
-              });
-            }}
-            data-seed="logId"
-          >
-            {this.props.children}
-          </TabBar.Item>
-
-          <TabBar.Item
-            icon={
-              <div style={{
-                width: '0.44rem',
-                height: '0.44rem',
-                background: 'url() center center /  0.42rem 0.42rem no-repeat' }}
-              />
-            }
-            selectedIcon={
-              <div style={{
-                width: '0.44rem',
-                height: '0.44rem',
-                background: 'url() center center /  0.42rem 0.42rem no-repeat' }}
-              />
-            }
-            title="计算器"
-            key="calculator"
-            dot
-            selected={this.state.selectedTab === 'greenTab'}
-            onPress={() => {
-              this.context.router.push('/calcul');
-              this.setState({
-                selectedTab: 'greenTab',
-              });
-            }}
-          >
-            {this.props.children}
-          </TabBar.Item>
-          
-          <TabBar.Item
-            icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg' }}
-            selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg' }}
-            title="我的"
-            key="mine"
-            selected={this.state.selectedTab === 'yellowTab'}
-            onPress={() => {
-              this.context.router.push('/healthReport');
-              this.setState({
-                selectedTab: 'yellowTab',
-              });
-            }}
-          >
-            {this.props.children}
-          </TabBar.Item>
-        </TabBar>
+         leftContent={leftContent}
+         leftHandler={leftHandler}
+         middleContent={middleContent}
+        />
+         <this.props.children.type 
+           changeNavBar={this.changeNavBar.bind(this)}
+           changeHeadHandler={this.changeHeadHandler.bind(this)}
+         />
+         <div className='footTabBar' style={{display}}>
+            <div className='tabBarItem' onClick={this.changeRoute.bind(this, '0')}>
+              <div className='tabBarImg'><img src={userIcon} className='tabBarIcon'/></div>
+              <span className='tabBarText'>运动计划</span>
+            </div>
+            <div className='tabBarItem' onClick={this.changeRoute.bind(this, '1')}>
+              <div className='tabBarImg'><img src={userIcon} className='tabBarIcon'/></div>
+              <span className='tabBarText'>计算器</span>
+            </div>
+            <div className='tabBarItem' onClick={this.changeRoute.bind(this, '2')}>
+              <div className='tabBarImg'><img src={userIcon} className='tabBarIcon'/></div>
+              <span className='tabBarText'>我的</span>
+            </div>
+         </div>
       </div>
     );
   }

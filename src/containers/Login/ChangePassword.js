@@ -14,11 +14,15 @@ class ChangePassword extends Component {
   static contextTypes = {
     router: PropTypes.object.isRequired
   }
-  // 取消返回上一级
-  cancelHandler() {
-    this.context.router.push('/logout');
+  componentWillMount() {
+    const { changeNavBar, changeHeadHandler } = this.props;
+    changeNavBar({
+      leftContent: <Icon type='left'/>,
+      leftHandler: changeHeadHandler,
+      middleContent: '修改密码',
+    });
   }
-
+  
   changePassSucc() {
     Toast.success('密码修改成功', 1);
     this.context.router.push('/login');

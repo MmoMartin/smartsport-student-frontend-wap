@@ -114,6 +114,10 @@ class Calcul extends Component {
     });
   }
 
+  gotoTest() {
+    this.context.router.push('/settings');
+  }
+
   render() {
     const { testSubjectsList, score } = this.props;
 

@@ -16,7 +16,7 @@ const styles = require('./MovementPlan.scss');
 const myPlanImg = require('img/my@2x.png');
 const planImg = require('img/recommend.png');
 require('../main.css');
-require('echarts-liquidfill/dist/echarts-liquidfill.js');
+// require('echarts-liquidfill/dist/echarts-liquidfill.js');
 // 日期组件
 // const zhNow = moment().locale('zh-cn').utcOffset(8);
 const zhNow = moment().locale('zh-cn');
@@ -124,17 +124,17 @@ class MovementPlan extends Component {
   }
 
   componentDidMount() {
-    const { progressRate } = this.props;
-    this.taskProcess = echarts.init(document.getElementById('main'));
-    this.taskProcess.setOption(this.showTaskProcess(progressRate), true);
+    // const { progressRate } = this.props;
+    // this.taskProcess = echarts.init(document.getElementById('main'));
+    // this.taskProcess.setOption(this.showTaskProcess(progressRate), true);
   }
 
   componentWillReceiveProps(nextProps) {
-    const {progressRate} = this.props;
-    const {progressRate: nextProgressRate} = nextProps;
-    if (progressRate !== nextProgressRate) {
-      this.taskProcess.setOption(this.showTaskProcess(nextProgressRate), true);
-    }
+    // const {progressRate} = this.props;
+    // const {progressRate: nextProgressRate} = nextProps;
+    // if (progressRate !== nextProgressRate) {
+    //   this.taskProcess.setOption(this.showTaskProcess(nextProgressRate), true);
+    // }
   }
 
   render() {

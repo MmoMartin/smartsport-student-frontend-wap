@@ -10,7 +10,7 @@ import {
   FindPassFir,
   FindPassSec,
   Calcul,
-  ModalTest,
+  Settings,
   ChangePassword,
   ChangeMobile,
   MovementPlan,
@@ -72,24 +72,26 @@ export default (store) => {
         <IndexRoute component={MovementPlan}/>
         <Route path='calcul' component={Calcul}/>
         <Route path='healthReport' component={HealthReport}/>
+        <Route path='settings' component={Settings}/>
+        <Route path='/logout' component={Logout}/>
+        <Route path='/activeUser' component={ActiveUser}/>
+        <Route path='/findPassFir' component={FindPassFir}/>
+        <Route path='/findPassSec' component={FindPassSec}/>
+        <Route path='changePassword' component={ChangePassword}/>
+        <Route path='changeMobile' component={ChangeMobile}/>
+        // <Route path='/healthReport' component={HealthReport}/>
+        // <Route path='/move' component={MovementPlan}/>
+        <Route path='/device' component={SearchDevice}/>
+        <Route path='/mine' component={Mine}/>
+        <Route path='/softwareVersion' component={SoftwareVersion}/>
+        <Route path='/activityManagement' component={ActivityManagement}/>
+        <Route path='/knowledgeBase' component={KnowledgeBase}/>
+        <Route path='/scoreRanking' component={ScoreRanking}/>
+        <Route path='/contact' component={Contact}/>
+        <Route path='/point' component={Point}/>
       </Route>
       <Route path='/login' component={Login}/>
-      <Route path='/logout' component={Logout}/>
-      <Route path='/activeUser' component={ActiveUser}/>
-      <Route path='/findPassFir' component={FindPassFir}/>
-      <Route path='/findPassSec' component={FindPassSec}/>
-      <Route path='changePassword' component={ChangePassword}/>
-      <Route path='changeMobile' component={ChangeMobile}/>
-      // <Route path='/healthReport' component={HealthReport}/>
-      // <Route path='/move' component={MovementPlan}/>
-      <Route path='/device' component={SearchDevice}/>
-      <Route path='/mine' component={Mine}/>
-      <Route path='/softwareVersion' component={SoftwareVersion}/>
-      <Route path='/activityManagement' component={ActivityManagement}/>
-      <Route path='/knowledgeBase' component={KnowledgeBase}/>
-      <Route path='/scoreRanking' component={ScoreRanking}/>
-      <Route path='/contact' component={Contact}/>
-      <Route path='/point' component={Point}/>
+      
       <Route path='/not-author' component={NotAuthor}/>
       <Route path='*' component={NotFound} status={404} />
     </Route>

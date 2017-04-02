@@ -5,12 +5,11 @@ require('./Home.css');
 export default class Head extends Component {
 
   render() {
-    console.log(this.props.leftContent);
     return (
       <div>
         <div className='headNavBar'>
           <div className='leftHeadNavBar' onClick={this.props.leftHandler}>
-            {this.props.leftContent}
+            <div className='leftIcon'>{this.props.leftContent}</div>
           </div>
           <div className='middleHeadNavBar' onClick={this.props.middleHandler}>
             {this.props.middleContent}

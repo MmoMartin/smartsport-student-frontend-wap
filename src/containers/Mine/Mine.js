@@ -35,6 +35,16 @@ export default class Home extends Component {
   static contextTypes = {
     router: PropTypes.object.isRequired
   };
+
+  componentWillMount() {
+    const { changeNavBar, changeHeadHandler } = this.props;
+    changeNavBar({
+      leftContent: null,
+      leftHandler: ()=>{},
+      middleContent: '我的',
+    });
+  }
+  
   state = {
     files: [{url: this.props.tudentInfo ? this.props.tudentInfo.name : Sportsprogram}],
   };
@@ -60,6 +70,12 @@ export default class Home extends Component {
       files: [files[index]],
     });
   }
+
+  // 跳转到设置页面
+  gotoSettings() {
+    this.context.router.push('/settings');
+  }
+
   render() {
     const { files } = this.state;
     const { studentInfo } = this.props;
@@ -89,7 +105,7 @@ export default class Home extends Component {
         <Flex.Item><Item name="通讯录" icon={maillist}/></Flex.Item>
         <Flex.Item><Item name="健康报告" icon={healthreport}/></Flex.Item>
         <Flex.Item><Item name="联系我们" icon={contactus}/></Flex.Item>
-        <Flex.Item><Item name="设置" icon={setup} style={{borderBottom: 'none'}}/></Flex.Item>
+        <Flex.Item onClick={this.gotoSettings.bind(this)}><Item name="设置" icon={setup} style={{borderBottom: 'none'}}/></Flex.Item>
       </Flex>
     </div>);
   }

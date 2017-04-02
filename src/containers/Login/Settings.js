@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import { Button, WingBlank, List, Toast } from 'antd-mobile';
+import { Button, WingBlank, List, Toast, Icon } from 'antd-mobile';
 import {connect} from 'react-redux';
 import * as LoginAct from 'redux/modules/Login/LoginAct';
 require('./Login.css');
@@ -12,6 +12,14 @@ class Settings extends Component {
 
   static contextTypes = {
     router: PropTypes.object.isRequired
+  }
+  componentWillMount() {
+    const { changeNavBar, changeHeadHandler } = this.props;
+    changeNavBar({
+      leftContent: <Icon type='left' />,
+      leftHandler: changeHeadHandler,
+      middleContent: '设置',
+    });
   }
 
   gotoLogout() {
