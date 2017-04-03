@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import { Button, Flex, WingBlank, Icon, TextareaItem, InputItem, List, Toast } from 'antd-mobile';
+import { Button, Flex, WingBlank, Icon, TextareaItem, InputItem, List, Toast, NavBar } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import {connect} from 'react-redux';
 import {MOBILE} from 'xunyijia-components/src/utils/validation';
@@ -61,7 +61,9 @@ class FindPassFir extends Component {
       if (!error) {
         const { tel, code } = this.props.form.getFieldsValue();
         if (tel.match(MOBILE) === null) {
-          this.showMessage('输入错误');
+          this.showMessage('手机号输入有误');
+        } else if (code.match(/^\d{6}$/) === null) {
+          this.showMessage('验证码输入有误');
         } else {
           const obj = {
             tel, code
@@ -98,6 +100,9 @@ class FindPassFir extends Component {
     const {count} = this.state;
     return (
       <div className='myActiveBack'>
+        <NavBar leftContent="" mode="light" onLeftClick={() => this.context.router.goBack()}>
+          找回密码
+        </NavBar>
         <form className='activeList'>
           <List>
             <InputItem

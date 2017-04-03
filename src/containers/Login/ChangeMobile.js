@@ -25,12 +25,16 @@ class ChangeMobile extends Component {
       count: '获取验证码',
     };
   }
+  componentWillMount() {
+    const { changeNavBar, changeHeadHandler } = this.props;
+    changeNavBar({
+      leftContent: <Icon type='left' color='#00CC66'/>,
+      leftHandler: changeHeadHandler,
+      middleContent: '手机绑定',
+    });
+  }
   componentWillUnmount() {
     interval && clearInterval(interval);
-  }
-  // 取消更换手机，返回上一级
-  cancelHandler() {
-    this.context.router.push('/logout');
   }
   // 获取验证码
   getCode() {
@@ -126,8 +130,6 @@ class ChangeMobile extends Component {
     const {count} = this.state;
     return (
       <div>
-        <NavBar leftContent='' mode='light'
-          onLeftClick={this.cancelHandler.bind(this)}>手机绑定</NavBar>
         <form style={{marginTop: '20px'}}>
           <InputItem
             {...getFieldProps('password', {

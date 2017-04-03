@@ -15,6 +15,7 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      selectedTab: 'movementPlan',
       leftContent: '',
       leftHandler: () => {},
       middleContent: '运动计划',
@@ -37,8 +38,9 @@ class Home extends Component {
 
   // 改变头部导航状态
   changeNavBar(obj) {
-    const { leftContent, middleContent, rightContent, leftHandler, middleHandler, rightHandler } = obj;
+    const { selectedTab, leftContent, middleContent, rightContent, leftHandler, middleHandler, rightHandler } = obj;
     this.setState({
+      selectedTab : selectedTab || this.state.selectedTab,
       leftContent: leftContent || '',
       leftHandler: leftHandler || (()=>{}),
       middleContent: middleContent || '运动计划',
@@ -62,18 +64,21 @@ class Home extends Component {
     case '0':
       this.changeNavBar({
         middleContent: '运动计划',
+        selectedTab: 'movementPlan',
       });
       this.context.router.push('/');
       break;
     case '1':
       this.changeNavBar({
         middleContent: '计算器',
+        selectedTab: 'calcul',
       });
       this.context.router.push('/calcul');
       break;
     case '2':
       this.changeNavBar({
         middleContent: '我的',
+        selectedTab: 'mine',
       });
       this.context.router.push('/mine');
       break;
@@ -84,7 +89,6 @@ class Home extends Component {
   }
 
   render() {
-    const userIcon = require('img/user.png');
     const { leftContent, leftHandler, middleContent } = this.state;
     let display;
     if(!(leftContent === null || leftContent === '')){
@@ -103,15 +107,21 @@ class Home extends Component {
          />
          <div className='footTabBar' style={{display}}>
             <div className='tabBarItem' onClick={this.changeRoute.bind(this, '0')}>
-              <div className='tabBarImg'><img src={userIcon} className='tabBarIcon'/></div>
+              <div className='tabBarImg'>
+                <div className={this.state.selectedTab === 'movementPlan'? 'tabBarMovementPlanActive': 'tabBarMovementPlan'}/>
+              </div>
               <span className='tabBarText'>运动计划</span>
             </div>
             <div className='tabBarItem' onClick={this.changeRoute.bind(this, '1')}>
-              <div className='tabBarImg'><img src={userIcon} className='tabBarIcon'/></div>
+              <div className='tabBarImg'>
+                <div className={this.state.selectedTab === 'calcul'? 'tabBarCalculActive': 'tabBarCalcul'}/>
+              </div>
               <span className='tabBarText'>计算器</span>
             </div>
             <div className='tabBarItem' onClick={this.changeRoute.bind(this, '2')}>
-              <div className='tabBarImg'><img src={userIcon} className='tabBarIcon'/></div>
+              <div className='tabBarImg'>
+                <div className={this.state.selectedTab === 'mine'? 'tabBarMineActive': 'tabBarMine'}/>
+              </div>
               <span className='tabBarText'>我的</span>
             </div>
          </div>

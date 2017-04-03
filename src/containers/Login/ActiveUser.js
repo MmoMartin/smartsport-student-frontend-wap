@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import { Button, Flex, WingBlank, Icon, TextareaItem, InputItem, List, Toast } from 'antd-mobile';
+import { Button, Flex, WingBlank, Icon, TextareaItem, InputItem, List, Toast, NavBar } from 'antd-mobile';
 import {notIdCard, MOBILE} from 'xunyijia-components/src/utils/validation';
 import { createForm } from 'rc-form';
 import {connect} from 'react-redux';
@@ -80,11 +80,16 @@ class ActiveUser extends Component {
     this.props.form.validateFields({ force: true }, (error) => {
       if (!error) {
         const { name, identification, password, comfirmPassword, tel, code } = this.props.form.getFieldsValue();
-        if ((identification.length === 18 && notIdCard(identification) !== false)
-          || password !== comfirmPassword
-          || password.match(/^\d{6}$/) === null
-          || tel.match(MOBILE) === null) {
-          this.showMessage('输入错误');
+        if (notIdCard(identification) !== false) {
+          this.showMessage('身份证输入有误');
+        } else if (password.match(/^\d{6}$/) === null) {
+          this.showMessage('密码输入有误，密码必须由6位纯数字组成');
+        } else if (password !== comfirmPassword) {
+          this.showMessage('两次密码输入不一致');
+        } else if (tel.match(MOBILE) === null) {
+          this.showMessage('手机号输入错误');
+        } else if (code.match(/^\d{6}$/) === null) {
+          this.showMessage('验证码输入错误');
         } else {
           const obj = {
             name, identification, password, tel, code,
@@ -110,6 +115,9 @@ class ActiveUser extends Component {
     const {count} = this.state;
     return (
       <div className='myActiveBack'>
+        <NavBar leftContent="" mode="light" onLeftClick={() => this.context.router.goBack()}>
+          激活账号
+        </NavBar>
         <form className='activeList'>
           <List>
             <InputItem

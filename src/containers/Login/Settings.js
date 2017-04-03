@@ -16,7 +16,7 @@ class Settings extends Component {
   componentWillMount() {
     const { changeNavBar, changeHeadHandler } = this.props;
     changeNavBar({
-      leftContent: <Icon type='left' />,
+      leftContent: <Icon type='left' color='#00CC66'/>,
       leftHandler: changeHeadHandler,
       middleContent: '设置',
     });
@@ -32,8 +32,8 @@ class Settings extends Component {
   }
 
   // 修改密码
-  gotoChangePass() {
-    this.context.router.push('/changePassword');
+  gotoChangePages(page) {
+    this.context.router.push(page);
   }
 
   // 修改手机号
@@ -46,16 +46,16 @@ class Settings extends Component {
       <div>
         <div className='myHeight'></div>
         <List className="my-list">
-          <Item arrow="horizontal" onClick={this.gotoChangePass.bind(this)}>修改密码</Item>
-          <Item arrow="horizontal" onClick={this.gotoChangeMobile.bind(this)}>更换手机号码</Item>
+          <Item arrow="horizontal" onClick={this.gotoChangePages.bind(this, '/changePassword')}>修改密码</Item>
+          <Item arrow="horizontal" onClick={this.gotoChangePages.bind(this, '/changeMobile')}>更换手机号码</Item>
         </List>
         <div className='myHeight'></div>
         <List className="my-list">
-          <Item arrow="horizontal" onClick={() => {}}>我的设备</Item>
+          <Item arrow="horizontal" onClick={this.gotoChangePages.bind(this, '/device')}>我的设备</Item>
         </List>
         <div className='myHeight'></div>
         <List className="my-list">
-          <Item arrow="horizontal" onClick={() => {}}>软件版本</Item>
+          <Item arrow="horizontal"  onClick={this.gotoChangePages.bind(this, '/softwareVersion')}>软件版本</Item>
         </List>
         <WingBlank className='margin-format-big'>
           <Button type='primary' onClick={this.handleLogout.bind(this)}>退出登录</Button>

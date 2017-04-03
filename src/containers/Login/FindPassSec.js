@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react';
-import { Button, InputItem, List, Toast } from 'antd-mobile';
+import { Button, InputItem, List, Toast, NavBar } from 'antd-mobile';
 import { createForm } from 'rc-form';
 import {connect} from 'react-redux';
 import * as LoginAct from 'redux/modules/Login/LoginAct';
@@ -32,8 +32,10 @@ class FindPassSec extends Component {
     this.props.form.validateFields({ force: true }, (error) => {
       if (!error) {
         const { password, comfirmPassword } = this.props.form.getFieldsValue();
-        if ( password.match(/^1[1-2]\d{9}$/) !== null || password !== comfirmPassword ) {
-          this.showMessage('输入错误');
+        if (password.match(/^\d{6}$/) === null) {
+          this.showMessage('密码输入有误');
+        } else if(password !== comfirmPassword ) {
+          this.showMessage('两次密码输入不一致');
         } else {
           const token = this.props.setPassToken;
           const obj = { password, token };
@@ -55,6 +57,9 @@ class FindPassSec extends Component {
     const { getFieldProps } = this.props.form;
     return (
       <div className='myActiveBack'>
+        <NavBar leftContent="" mode="light" onLeftClick={() => this.context.router.goBack()}>
+          找回密码
+        </NavBar>
         <form className='activeList'>  
           <List>
             <InputItem

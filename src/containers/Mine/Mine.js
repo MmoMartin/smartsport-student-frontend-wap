@@ -72,8 +72,8 @@ export default class Home extends Component {
   }
 
   // 跳转到设置页面
-  gotoSettings() {
-    this.context.router.push('/settings');
+  gotoChangePages(page) {
+    this.context.router.push(page);
   }
 
   render() {
@@ -101,11 +101,11 @@ export default class Home extends Component {
         </Flex.Item>
       </Flex>
       <Flex direction='column' align='stretch' className='margin-right-nones'>
-        <Flex.Item><Item name="积分" icon={Integral}/></Flex.Item>
+        <Flex.Item onClick={this.gotoChangePages.bind(this, '/point')}><Item name="积分" icon={Integral}/></Flex.Item>
         <Flex.Item><Item name="通讯录" icon={maillist}/></Flex.Item>
-        <Flex.Item><Item name="健康报告" icon={healthreport}/></Flex.Item>
-        <Flex.Item><Item name="联系我们" icon={contactus}/></Flex.Item>
-        <Flex.Item onClick={this.gotoSettings.bind(this)}><Item name="设置" icon={setup} style={{borderBottom: 'none'}}/></Flex.Item>
+        <Flex.Item onClick={this.gotoChangePages.bind(this, '/healthReport')}><Item name="健康报告" icon={healthreport}/></Flex.Item>
+        <Flex.Item onClick={this.gotoChangePages.bind(this, '/contact')}><Item name="联系我们" icon={contactus}/></Flex.Item>
+        <Flex.Item onClick={this.gotoChangePages.bind(this, '/settings')}><Item name="设置" icon={setup} style={{borderBottom: 'none'}}/></Flex.Item>
       </Flex>
     </div>);
   }

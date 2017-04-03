@@ -1,10 +1,18 @@
 import React, {Component, PropTypes} from 'react';
 import {Item} from 'components';
-import { Button, Flex, WhiteSpace } from 'antd-mobile';
+import { Button, Flex, WhiteSpace, Icon } from 'antd-mobile';
 const dropyellow = require('img/Dropyellow@3x.png');
 const medal = require('img/medal@3x.png');
 const trophy = require('img/Trophy@3x.png');
 export default class Home extends Component {
+  componentWillMount() {
+    const { changeNavBar, changeHeadHandler } = this.props;
+    changeNavBar({
+      leftContent: <Icon type='left' color='#00CC66'/>,
+      leftHandler: changeHeadHandler,
+      middleContent: '成绩排名',
+    });
+  }
   render() {
     return (<div>
       <Flex direction='column' align='stretch' className='margin-right-nones'>

@@ -33,16 +33,12 @@ class Login extends Component {
     this.props.form.validateFields({ force: true }, (error) => {
       if (!error) {
         const { name, password } = this.props.form.getFieldsValue();
-        if ((name.length !== 11 
-          && name.length !== 18)
-          || password.length !== 6 
-          || password.match(/^\d{6}$/ === null)
-          ) {
-          this.showMessage('账号或密码不正确');
-        } else if (name.length === 11 && name.match(MOBILE) === null) {
-          this.showMessage('账号或密码不正确');
-        } else if (name.length === 18 && notIdCard(name) !== false) {
-          this.showMessage('账号或密码不正确');
+        if ((name.length !== 11 && name.length !== 18)
+          || (name.length === 11 && name.match(MOBILE) === null) 
+          || (name.length === 18 && notIdCard(name) !== false) ) {
+          this.showMessage('账号输入有误，账号必须是手机号或者身份证号');
+        } else if (password.length !== 6 || password.match(/^\d{6}$/) === null) {
+          this.showMessage('密码输入有误，密码必须由6位纯数字组成');
         } else {
           const succ = this.gotoLogin.bind(this);
           const fail = this.handleErr.bind(this);
@@ -80,7 +76,7 @@ class Login extends Component {
   	    	<div className='loginLogo'>
               <img src={logoImg}/>
   	    	</div>       	 	    	
-          <form>
+          <form className='myForm'>
             <div>
               <InputItem
                 {...getFieldProps('name', {
@@ -107,7 +103,7 @@ class Login extends Component {
               </InputItem>
               
             </div>
-            <Item>
+            <Item className='myFormItem'>
                 <Button onClick={this.loginSubmit} 
                   type='primary' 
                   size='large'  

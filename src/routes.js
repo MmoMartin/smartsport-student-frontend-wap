@@ -74,13 +74,10 @@ export default (store) => {
         <Route path='healthReport' component={HealthReport}/>
         <Route path='settings' component={Settings}/>
         <Route path='/logout' component={Logout}/>
-        <Route path='/activeUser' component={ActiveUser}/>
-        <Route path='/findPassFir' component={FindPassFir}/>
-        <Route path='/findPassSec' component={FindPassSec}/>
         <Route path='changePassword' component={ChangePassword}/>
         <Route path='changeMobile' component={ChangeMobile}/>
-        // <Route path='/healthReport' component={HealthReport}/>
-        // <Route path='/move' component={MovementPlan}/>
+        <Route path='/healthReport' component={HealthReport}/>
+        <Route path='/move' component={MovementPlan}/>
         <Route path='/device' component={SearchDevice}/>
         <Route path='/mine' component={Mine}/>
         <Route path='/softwareVersion' component={SoftwareVersion}/>
@@ -91,7 +88,9 @@ export default (store) => {
         <Route path='/point' component={Point}/>
       </Route>
       <Route path='/login' component={Login}/>
-      
+      <Route path='/activeUser' component={ActiveUser}/>
+      <Route path='/findPassFir' component={FindPassFir}/>
+      <Route path='/findPassSec' component={FindPassSec}/>
       <Route path='/not-author' component={NotAuthor}/>
       <Route path='*' component={NotFound} status={404} />
     </Route>

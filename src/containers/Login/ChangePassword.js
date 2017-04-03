@@ -17,7 +17,7 @@ class ChangePassword extends Component {
   componentWillMount() {
     const { changeNavBar, changeHeadHandler } = this.props;
     changeNavBar({
-      leftContent: <Icon type='left'/>,
+      leftContent: <Icon type='left' color='#00CC66'/>,
       leftHandler: changeHeadHandler,
       middleContent: '修改密码',
     });
@@ -67,9 +67,6 @@ class ChangePassword extends Component {
     form = this.props.form;
     return (
       <div style={{ backgroundColor: "#f2f2f2"}}>
-        <NavBar mode='light'
-          onLeftClick={this.cancelHandler.bind(this)}
-        >修改密码</NavBar>
         <form style={{marginTop: '20px'}}>
           <InputItem
             {...getFieldProps('oldPwd', {

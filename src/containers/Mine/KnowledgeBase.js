@@ -1,9 +1,17 @@
 import React, {Component, PropTypes} from 'react';
-import { Button, Flex, WhiteSpace } from 'antd-mobile';
+import { Button, Flex, WhiteSpace, Icon } from 'antd-mobile';
 const knowledgebase1 = require('img/knowledgebase-pic-1@3x.png');
 const knowledgebase2 = require('img/knowledgebase-pic-2@3x.png');
 const knowledgebasePlay = require('img/knowledgebase-play@3x.png');
 export default class Home extends Component {
+  componentWillMount() {
+    const { changeNavBar, changeHeadHandler } = this.props;
+    changeNavBar({
+      leftContent: <Icon type='left' color='#00CC66'/>,
+      leftHandler: changeHeadHandler,
+      middleContent: '知识库',
+    });
+  }
   render() {
     return (<div>
       <Flex direction='column' align='stretch' className='margin-right-nones'>

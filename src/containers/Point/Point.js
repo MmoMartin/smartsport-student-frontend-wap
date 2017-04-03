@@ -1,23 +1,22 @@
 import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
-import {NavBar} from 'antd-mobile';
+import {NavBar, Icon} from 'antd-mobile';
 const styles = require('./Point.scss');
 class Contact extends Component {
   static contextTypes = {
     router: PropTypes.object.isRequired
   }
-  // 取消返回上一级
-  goback() {
-    this.context.router.push({ pathname: '/contact' });
+  componentWillMount() {
+    const { changeNavBar, changeHeadHandler } = this.props;
+    changeNavBar({
+      leftContent: <Icon type='left' color='#00CC66'/>,
+      leftHandler: changeHeadHandler,
+      middleContent: '积分',
+    });
   }
   render() {
     return (
       <div style={{ backgroundColor: "#f2f2f2", width: "100%"}}>
-        <div className="head_navbar" style={{paddingTop: "40px"}}>
-          <NavBar mode='light'
-            onLeftClick={this.goback.bind(this)}
-          >积分</NavBar>
-        </div>
         <div className={styles.point_body}>
           <div className={styles.body_top}>
             <p className={styles.point_help}>使用帮助</p>

@@ -33,6 +33,14 @@ export default class Home extends Component {
   static contextTypes = {
     router: PropTypes.object.isRequired
   };
+  componentWillMount() {
+    const { changeNavBar, changeHeadHandler } = this.props;
+    changeNavBar({
+      leftContent: <Icon type='left' color='#00CC66'/>,
+      leftHandler: changeHeadHandler,
+      middleContent: '软件版本',
+    });
+  }
   componentDidMount() {
     const {appVersion: {version} = {}} = this.props;
     getData({type: 'getAppVersion'}).then(data=>{

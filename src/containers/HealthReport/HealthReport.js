@@ -28,6 +28,14 @@ require('../main.css');
 ])
 
 export default class HealthReport extends Component {
+  componentWillMount() {
+    const { changeNavBar, changeHeadHandler } = this.props;
+    changeNavBar({
+      leftContent: <Icon type='left' color='#00CC66'/>,
+      leftHandler: changeHeadHandler,
+      middleContent: '健康报告',
+    });
+  }
   render() {
     const { data } = this.props;
     let sex = '';
@@ -93,13 +101,6 @@ export default class HealthReport extends Component {
 
     return (
       <div style={{ marginBottom: '1.28rem', marginTop: -5 }} className='DropDown'>
-        <NavBar iconName="false" mode="light"
-          onLeftClick={() => console.log('onLeftClick')}
-          leftContent={<img src={LeftImg} style={{marginLeft: '-0.5rem'}}/>}
-          style={{position: 'fixed', width: '100%', borderBottom: '1px solid #ccc', zIndex: 99}}
-          >
-          健康报告
-        </NavBar>
         <div className={styles.info}>
           <span style={{color: '#ecb25f'}}>基本个人信息:</span>
         <div className='clearfix' style={{marginTop: '0.3rem'}}>

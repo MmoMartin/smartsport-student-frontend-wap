@@ -7,7 +7,7 @@
   line-height: 0.88rem;
   text-align: center;
   background-color: #fff;
-  border: 1px solid blue;
+  border-bottom: 1px solid #ddd;
 }
 .headNavBar .leftHeadNavBar{
   position: absolute;
@@ -16,7 +16,6 @@
   display: inline-block;
   width: 15%;
   height:0.88rem;
-  border:1px solid red;
 }
 .headNavBar .leftHeadNavBar .leftIcon{
   line-height: 0.88rem;
@@ -41,7 +40,6 @@
   height:0.88rem;
   line-height:0.88rem;
   font-size: 0.34rem;
-  border:1px solid red;
 }
 .headNavBar .rightHeadNavBar{
   position: absolute;
@@ -50,7 +48,6 @@
   height:0.88rem;
   top:0;
   left: 85%;
-  border:1px solid red;
 }
 .footTabBar {
   position: fixed;
@@ -83,5 +80,46 @@
   width: 100%;
   height: 0.38rem;
   margin-bottom:0.14rem;
-  
+}
+.footTabBar .tabBarItem .tabBarImg .tabBarMovementPlan{
+  margin-top: 0.14rem;
+  display: inline-block;
+  width: 0.44rem;
+  height: 0.44rem;
+  background: url(../../img/Sportsprogram1.png) center center /  0.42rem 0.42rem no-repeat;
+}
+.footTabBar .tabBarItem .tabBarImg .tabBarMovementPlanActive{
+  margin-top: 0.14rem;
+  display: inline-block;
+  width: 0.44rem;
+  height: 0.44rem;
+  background: url(../../img/Sportsprogram2.png) center center /  0.42rem 0.42rem no-repeat;
+}
+.footTabBar .tabBarItem .tabBarImg .tabBarCalcul{
+  margin-top: 0.14rem;
+  display: inline-block;
+  width: 0.44rem;
+  height: 0.44rem;
+  background: url(../../img/calculator1.png) center center /  0.42rem 0.42rem no-repeat;
+}
+.footTabBar .tabBarItem .tabBarImg .tabBarCalculActive{
+  margin-top: 0.14rem;
+  display: inline-block;
+  width: 0.44rem;
+  height: 0.44rem;
+  background: url(../../img/calculator2.png) center center /  0.42rem 0.42rem no-repeat;
+}
+.footTabBar .tabBarItem .tabBarImg .tabBarMine{
+  margin-top: 0.14rem;
+  display: inline-block;
+  width: 0.44rem;
+  height: 0.44rem;
+  background: url(../../img/my1.png) center center /  0.42rem 0.42rem no-repeat;
+}
+.footTabBar .tabBarItem .tabBarImg .tabBarMineActive{
+  margin-top: 0.14rem;
+  display: inline-block;
+  width: 0.44rem;
+  height: 0.44rem;
+  background: url(../../img/my2.png) center center /  0.42rem 0.42rem no-repeat;
 }

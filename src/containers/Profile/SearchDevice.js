@@ -16,6 +16,15 @@ export default class SearchDevice extends Component {
     };
   }
 
+  componentWillMount() {
+    const { changeNavBar, changeHeadHandler } = this.props;
+    changeNavBar({
+      leftContent: <Icon type='left' color='#00CC66'/>,
+      leftHandler: changeHeadHandler,
+      middleContent: '搜索设备',
+    });
+  }
+
   onRefresh = () => {
     this.setState({ refreshing: true });
     const obj = {
@@ -71,9 +80,6 @@ export default class SearchDevice extends Component {
     );
     return (
       <div>
-        <NavBar leftContent="返回" mode="light" onLeftClick={() => console.log('onLeftClick')}
-          style={{marginTop: 40, backgroundColor: 'yellow'}}
-        >搜索设备</NavBar>
         <div className={styles.cleadFix}>
         </div>
           <ListView
