@@ -11,3 +11,8 @@ export function getNewSwVersion() {
     path: SOFTWARE_VERSION, queryObj
   });
 }
+export function getStudentInfo() {
+  return get({
+    path: STUDENT_SELF_INFO
+  });
+}

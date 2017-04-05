@@ -14,7 +14,7 @@ export default class Home extends Component {
     });
   }
   render() {
-    return (<div>
+    return (<div className='score_img'>
       <Flex direction='column' align='stretch' className='margin-right-nones'>
         <Flex.Item>
           <Item name="50米" icon={trophy} tip='成绩排名尚未开通，敬请期待' style={{height: 'inherit', lineHeight: 'inherit'}} dropyellow={dropyellow}/>

@@ -185,8 +185,17 @@ export default class Home extends Component {
           /> */}
         </div>
         <span className='font-size18 display-block'>{userInfo ? userInfo.name : '昂小米'}</span>
+        <div style={{textAlign: 'center', paddingBottom: 20, background: '#fff'}}>
+          {/* <ImagePicker
+            className='ImagePicker'
+            // files={files}
+            onChange={this.onChange}
+            selectable={true}
+          /> */}
+          {/* <span className='font-size36 display-block'>{studentInfo ? studentInfo.name : '昂小米'}</span> */}
+        </div>
       </div>
-      <Flex direction='row' className='margin-right-nones'>
+      <Flex direction='row' className='margin-right-nones' style={{height: "1.7rem", background: "#f5f5f5"}}>
         <Flex.Item className='padding-bottom10 bg-color-ccc' onClick={this.gotoActivityManagement.bind(this)}>
           <RowItem name="活动管理" icon={Sportsprogram} style={{height: 100}}/>
         </Flex.Item>
