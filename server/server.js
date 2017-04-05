@@ -20,30 +20,29 @@ app.use(compression()); // 压缩响应体
 // app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
 app.use(Express.static(path.join(__dirname, '..', 'static')));
 // 需要转发过去的服务器地址
-let host = 'http://' + config.apiHost + ':';
 // 代理转发，解决跨域问题
 app.use('/proxy', (req, res) => {
-  let targetUrl = host + + config.apiPort;
+  let targetUrl = 'http://s.student.qsntzjk.com';
   pipe(req, res, targetUrl);
 });
 app.use('/proxy3000', (req, res) => {
-  let targetUrl = host + '3000';
+  let targetUrl = 'http://s.admin.qsntzjk.com';
   pipe(req, res, targetUrl);
 });
 app.use('/proxy3001', (req, res) => {
-  let targetUrl = host + '3001';
+  let targetUrl = 'http://s.expert.qsntzjk.com';
   pipe(req, res, targetUrl);
 });
 app.use('/proxy3002', (req, res) => {
-  let targetUrl = host + '3002';
+  let targetUrl = 'http://s.school.qsntzjk.com';
   pipe(req, res, targetUrl);
 });
 app.use('/proxy3003', (req, res) => {
-  let targetUrl = host + '3003';
+  let targetUrl = 'http://s.gov.qsntzjk.com';
   pipe(req, res, targetUrl);
 });
 app.use('/proxy3004', (req, res) => {
-  let targetUrl = 'http://192.168.0.105:' + '3004';
+  let targetUrl = 'http://s.student.qsntzjk.com';
   pipe(req, res, targetUrl);
 });
 const pipe = (req, res, targetUrl) => {
@@ -72,7 +71,7 @@ if (config.port) {
     if (err) {
       console.error(err);
     }
-    console.info('----\n==> ✅  %s is running, talking to API server on %s.', config.app.title, config.apiPort);
+    console.info('----\n==> ✅  %s is running, talking to API server on %s.', config.app.title);
     console.info('==> 💻  Open http://%s:%s in a browser to view the app.', config.host, config.port);
   });
 } else {

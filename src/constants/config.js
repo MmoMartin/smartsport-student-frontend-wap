@@ -23,11 +23,7 @@ const environment = {
 module.exports = Object.assign({
   // process.env给服务端调用的，客户端这个为空，所以要个默认值
   host: process.env.HOST || 'localhost', // 客户端主机
-  port: process.env.PORT || 3000, // 客户端端口, 开发是3000， 生产改为8080
-  // host: process.env.HOST || '120.77.48.80', // 客户端主机
-  // port: process.env.PORT || 8080, // 客户端端口, 开发是3000， 生产改为8080
-  apiHost: process.env.APIHOST || '120.77.48.80', // 转发的主机
-  apiPort: process.env.APIPORT || 3000, // 转发的端口
+  port: process.env.PORT || 8084, // 客户端端口, 开发是3000， 生产改为8080
   app: { // 用于设置html的head
     title: 'sport',
     description: 'description',

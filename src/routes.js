@@ -50,10 +50,16 @@ export default (store) => {
   const enterPage = (nextState, replace, next) => {
     gotoNext(next);
   };
-
+  const requireLogin = (nextState, replace, next) => {
+    const token = window.localStorage.getItem(config.tokenKey);
+    if (!token) {
+      replace('/login');
+    }
+    next();
+  };
   return (
     <Route onEnter={enterPage}>
-      <Route path='/' component={Home}>
+      <Route path='/' component={Home} onEnter={requireLogin}>
         <IndexRoute component={MovementPlan}/>
         <Route path='calcul' component={Calcul}/>
         <Route path='settings' component={Settings}/>
