@@ -3,7 +3,6 @@
 require('babel-polyfill');
 
 const config = {
-  isTestServer: true,
   isLogger: true, // 是否控制台打印action
   isVirtual: false, // 是否使用后台虚拟数据
   pageSize: 10, // 默认列表显示条数
