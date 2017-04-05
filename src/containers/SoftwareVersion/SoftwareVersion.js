@@ -42,10 +42,10 @@ export default class Home extends Component {
     });
   }
   componentDidMount() {
-    const {appVersion: {version} = {}} = this.props;
+    const {appVersion} = this.props;
     getData({type: 'getAppVersion'}).then(data=>{
       this.setState({preVersion: data});
-      if (version && (version !== data)) {
+      if (appVersion[0].version && (appVersion[0].version !== data)) {
         this.setState({
           hasNew: true
         });
@@ -54,10 +54,10 @@ export default class Home extends Component {
   }
   componentWillReceiveProps(nextPros) {
     if (nextPros.appVersion !== this.props.appVersion) {
-      const {appVersion: {version} = {}} = nextPros;
+      const {appVersion} = nextPros;
       getData({type: 'getAppVersion'}).then(data=>{
         this.setState({preVersion: data});
-        if (version && (version !== data)) {
+        if (appVersion[0].version && (appVersion[0].version !== data)) {
           this.setState({
             hasNew: true
           });
@@ -74,7 +74,7 @@ export default class Home extends Component {
     const {hasNew} = this.state;
     const {appVersion} = this.props;
     if (hasNew) {
-      const sendData = JSON.stringify({type: "updateApp", data: appVersion.address});
+      const sendData = JSON.stringify({type: "updateApp", data: appVersion[0].address});
       const listen = listenData(sendData);
       // postData({type: 'updateApp', data: appVersion.address});
       listen.begin((data)=>{

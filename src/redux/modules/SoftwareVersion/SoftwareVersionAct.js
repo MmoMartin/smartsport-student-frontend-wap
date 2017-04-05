@@ -1,7 +1,12 @@
 import {fetchList, get} from 'redux/publicAct';
 import {SOFTWARE_VERSION, STUDENT_SELF_INFO} from 'constants/urls';
 export function getNewSwVersion() {
-  const queryObj = {'filters': { "name": 1, "platform": 1 }};
+  const queryObj = {
+    filters: { "name": 1, "platform": 1 },
+    perPage: 1,
+    sortField: 'createAt',
+    sortDir: 'DESC'
+  };
   return fetchList({
     path: SOFTWARE_VERSION, queryObj
   });

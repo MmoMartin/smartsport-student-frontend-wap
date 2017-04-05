@@ -127,16 +127,16 @@ const data = [
   }, {
     url: '/api/app_version',
     data: {
-      "data": {
+      "data": [{
         "_id": "58d09bb6d64a0c3fc5d0b1c5",
         "name": 1,
         "platform": 1,
         "version": "1.1.1",
-        "address": "",
+        "address": "http://pkg-mt1.fir.im/1be5d587235639d6cca07a1ebfabcf780501f610.apk?filename=app-armeabi-v7a-release.apk_1.0.0.apk",
         "description": "I saw thousands of alpacas running on the Gobi Desert.",
         "createBy": "皮蛋.id",
         "createAt": new Date("2017-03-21T03:19:17.829Z"),
-      },
+      }],
       "status": {
         "code": 0,
         "msg": "request success"
