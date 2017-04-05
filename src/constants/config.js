@@ -8,6 +8,7 @@ const config = {
   pageSize: 10, // 默认列表显示条数
   tokenKey: 'smartsport/student/token', // 保存当前登陆用户的token，获得通过localStorage.getItem(config.tokenKey)
   userInfoKey: 'smartsport/student/user', // 保存当前登陆用户的用户信息，获得通过localStorage.getItem(config.userInfoKey)
+  headPortrait: 'smartsport/student/headPortrait', // 保存当前登陆用户的用户头像
 };
 // 环境
 const environment = {

@@ -5,3 +5,4 @@
 // export const _FAIL = '_FAIL';
 
 export const CHANGE_OPEN_KEY = 'CHANGE_OPEN_KEY';
+export const HEAD_PORTRAIT = 'HEAD_PORTRAIT';

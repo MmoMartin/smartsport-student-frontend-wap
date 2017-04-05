@@ -49,3 +49,6 @@ export const UNBIND_DEVICE = `${DOMAIN}/api/auth/device/unbind`; // 解绑设备
 export const SYNC_RUN_DATA = `${DOMAIN}/api/auth/run_walk/import`; // 同步步数数据
 export const SYNC_HRM_DATA = `${DOMAIN}/api/auth/heart/import`; // 同步步数数据
 export const SYNC_BLOOD_DATA = `${DOMAIN}/api/auth/blood/import`; // 同步步数数据
+export const STUDENT_LICENCE_POLICY = `${DOMAIN}/api/auth/policy/icon`; // 获取阿里 policy
+export const CHENGE_HEAD_PORTRAIT = `${DOMAIN}/api/auth/student_user`;// 更换头像
+

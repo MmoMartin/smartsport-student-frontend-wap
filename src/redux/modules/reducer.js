@@ -9,6 +9,7 @@ import searchDevicesRed from './Devices/SearchDevicesRed';
 import HealthReportRed from './HealthReport/HealthReportRed';
 import SoftwareVersionRed from './SoftwareVersion/SoftwareVersionRed';
 import myDevicesRed from './Devices/MyDevicesRed';
+import MineRed from './Mine/MineRed';
 
 export default combineReducers({
   routing: routerReducer,
@@ -20,4 +21,5 @@ export default combineReducers({
   HealthReportRed,
   SoftwareVersionRed,
   myDevicesRed,
+  MineRed,
 });

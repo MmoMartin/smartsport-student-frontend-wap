@@ -246,6 +246,38 @@ const data = [
   },
   {
     url: '/api/expert_user/set_password',
+  }, {
+    url: '/api/auth/me', // 获取头像
+    data: {
+      "data": {
+        "_id": "58bface6305563089b432b9c",
+        "name": "广州甄子丹69",
+        "num": "111122",
+        "sex": 2,
+        "identification": "530422198109158136",
+        "activeSchool": [
+          "58b7ceffeab1d9056ed37489"
+        ],
+        "activeClass": [
+          {
+            "_id": "58ba4d08fbf2ba43cd94cf0e",
+            "status": 8
+          }
+        ],
+        "guardian": ["pidan的ID"], // 监护人，fk:student_parent
+        "telNum": "110", // 手机号码
+        isActivated: true, // 是否激活：默认为false
+        icon: "https://www.pidan_son_bichi.com", // 头像
+        device: {}, // 设备
+        plans: [{}]// 我的计划
+      },
+      "status": {
+        "code": 0,
+        "msg": "request success"
+      }
+    }
+  }, {
+    url: '/api/auth/student_user', // 更换头像
     data: {
       status: {
         code: 0,
