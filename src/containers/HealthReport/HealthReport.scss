@@ -1,27 +1,27 @@
 .info{
-  padding: 1.28rem 0.3rem 0.3rem;
+  padding: 0.3rem 0.42rem;
   background-color: #fff;
+  font-size: 0.22rem;
 }
 
 .info .infoName{
   float: left;
   width: 21%;
-  font-size: 0.35rem;
-  text-align: center;
+  font-size: 0.3rem;
+  color: #333333;
 }
 
 .info .infoDetails{
   float: left;
-  width: 76%;
-  font-size: 0.29rem;
+  width: 79%;
+  font-size: 0.22rem;
   color: #e7e7e7;
-  margin-left: 3%;
   margin-top: 3px;
 }
 
 .info .infoDetails span{
   display: inline-block;
-  margin: 0 0.15rem 0.3rem;
+  margin: 0 0.18rem 0.3rem;
   color: #363636;
 }
 

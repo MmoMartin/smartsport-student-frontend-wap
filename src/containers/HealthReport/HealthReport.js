@@ -100,9 +100,9 @@ export default class HealthReport extends Component {
     });
 
     return (
-      <div style={{ marginBottom: '1.28rem', marginTop: -5 }} className='DropDown'>
+      <div className='DropDown'>
         <div className={styles.info}>
-          <span style={{color: '#ecb25f'}}>基本个人信息:</span>
+          <span style={{color: '#EBAE55'}}>基本个人信息:</span>
         <div className='clearfix' style={{marginTop: '0.3rem'}}>
             <div className={styles.infoName}>{ data.personal && data.personal.name}</div>
             <div className={styles.infoDetails}>
