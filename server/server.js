@@ -46,7 +46,7 @@ app.use('/proxy3004', (req, res) => {
   pipe(req, res, targetUrl);
 });
 app.use('/proxy3006', (req, res) => {
-  let targetUrl = host + '3006';
+  let targetUrl = 'http://s.wristband.qsntzjk.com';
   pipe(req, res, targetUrl);
 });
 const pipe = (req, res, targetUrl) => {
