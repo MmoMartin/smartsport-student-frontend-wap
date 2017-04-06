@@ -78,7 +78,7 @@ export default class Home extends Component {
     const imgBase64 = localStorage.getItem(config.headPortrait);
     const { userInfo } = this.props;
     return (<div>
-      <div style={{textAlign: 'center', paddingBottom: 20}}>
+      <div style={{textAlign: 'center', paddingBottom: 20, background: '#fff'}}>
         <div style={{display: "inline-block", padding: '0.2rem'}} onClick={this.onClickImagePicker.bind(this)}>
           <div className='outer-circle border-radius50'>
             <div className='inner-circle wh100 border-radius50'>

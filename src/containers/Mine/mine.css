@@ -74,7 +74,7 @@
   padding: 0.1rem;
   width: 2rem;
   height: 2rem;
-  border: 0.1rem solid rgba(109,201,155,0.5);
+  border: 0.04rem solid rgba(109,201,155,0.5);
 }
 .inner-circle{
   border: 0.1rem solid #6dc99b;
