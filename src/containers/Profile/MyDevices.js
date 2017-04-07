@@ -145,15 +145,15 @@ export default class MyDevices extends Component {
     };
     Toast.loading('断开中...', 10000);
     this.postData(obj).then((data) => {
-      if (data.info === '断开成功') {
-        Toast.info('断开成功', 1);
-        const params = {
-          connectName: '未连接',
-          connectStatus: 0,
-          connectColor: '#7dc78d',
-        };
-        props.chagneConnectStatus(params);
-      }
+      // if (data.info === '断开成功') {
+      Toast.info('断开成功', 1);
+      const params = {
+        connectName: '未连接',
+        connectStatus: 0,
+        connectColor: '#7dc78d',
+      };
+      props.chagneConnectStatus(params);
+      // }
     }).catch((err)=>{
       Toast.info(err, 1);
       this.setState({
