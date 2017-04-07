@@ -7,7 +7,7 @@ const initialState = {
 export default function reducer(state = initialState, {type, data, err = '', ...rest}) {
   switch (type) {
     case `${STUDENT_SELF_INFO}_GET_SUCC`:
-      // localStorage.setItem(config.headPortrait, data.icon);
+      localStorage.setItem(config.headPortrait, data.icon);
       return {
         ...state,
         userInfo: data,

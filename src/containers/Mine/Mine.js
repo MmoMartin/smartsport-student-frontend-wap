@@ -31,9 +31,6 @@ require('./mine.css');
     }) => {
       const promises = [];
       promises.push(dispatch(MineAct.getUserInfo()));
-      // if (!localStorage.getItem(config.headPortrait)) {
-      //   promises.push(dispatch(MineAct.getUserInfo()));
-      // }
       return Promise.all(promises);
     }
   }
@@ -53,22 +50,14 @@ export default class Home extends Component {
   }
 
   state = {
-    imgBase64: this.props.headPortrait,
-    // imgBase64: localStorage.getItem(config.headPortrait) || this.props.headPortrait,
-    // files: [{url: localStorage.getItem(config.headPortrait) || this.props.headPortrait }],
+    imgBase64: localStorage.getItem(config.headPortrait) || this.props.headPortrait,
   };
-  // componentWillMount() {
-  //   if (!localStorage.getItem(config.headPortrait)) {
-  //     this.props.getUserInfo();
-  //   }
-  // }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.userInfo !== nextProps.userInfo) {
-      // const headPortrait = localStorage.getItem(config.headPortrait);
+      const headPortrait = localStorage.getItem(config.headPortrait);
       this.setState({
         imgBase64: nextProps.userInfo.icon,
-        // files: [{url: headPortrait || nextProps.headPortrait}],
       });
     }
   }
