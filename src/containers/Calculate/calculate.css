@@ -4,6 +4,7 @@
   height:100%;
   display: block;
   position: absolute;
+  font-size: 0.26rem !important;
 }
 .selectProject{
   background-color: #eee;
@@ -11,6 +12,7 @@
 .selectProject .am-icon {
   position: absolute;
   right: 1rem;
+  margin-top: 0.18rem;
 }
 .leftScore {
   display: inline-block;
@@ -18,48 +20,59 @@
   text-align: right;
 }
 .score {
-  font-size: 32px;
+  font-size: 0.3rem;
   text-align: right;
   display: inline-block;
   width: 5%;
   padding-left: 0.3rem;
-  bottom: 45px;
+  bottom: 0.45rem;
 }
 .fir1 {
   border: none;
   border-bottom: 1px solid #ccc;
   width: 84%;
   text-align: center;
-  padding: 20px 0;
-  font-size: 80px;
+  padding: 0.2rem 0;
+  font-size: 0.8rem;
   color: rgb(32, 203, 106);
 }
 .decorateHeight {
-  height: 30px;
+  height: 0.2rem;
   background-color: #eee;
 }
 .bulbIcon {
-  margin:0 10px;
+  width: 0.26rem;
+  margin:0 0.1rem;
   margin-top: -0.1rem;
 }
 .padding50 {
-  padding: 10px 20px 10px 60px;
+  padding: 0.1rem 0.2rem 0.1rem 0.6rem;
   color: #999;
 }
 .padding50 li{
-  padding-bottom:20px;
+  padding-bottom:0.2rem;
+  font-size: 0.26rem;
+  color:#999;
 }
 
 .tipTitle {
-  padding: 20px 0 10px 0;
-  font-size: 34px;
+  padding: 0.2rem 0 0.1rem 0;
+  font-size: 0.3rem;
 }
 .modalHeight {
   height: 8rem !important;
   overflow: scroll;
 }
+.modalHeight .am-button {
+  line-height:1rem;
+  height:1rem;
+  font-size: 0.26rem;
+  border:none;
+  border-bottom:1px solid #dcdcdc;
+  border-radius: 0;
+}
 .calculButton {
-  margin:60px 0;
+  margin:0.8rem 0;
   width:30%;
   background-color: #ffbb39;
   position:relative;
@@ -67,18 +80,24 @@
   border:none;
   text-decoration: none;
   color:#fff;
-  border-radius: 6px;
+  border-radius: 0.1rem;
+}
+.calculButton a span{
+  font-size: 0.32rem !important;
+  color:#fff !important;
 }
 .calculButton .decoBtn{
   margin: 0;
   border:none;
-
 }
 .calculButton .am-button-primary{
   background-color: #ffbb39;
   color:#fff;
   text-decoration: none;
   outline: none;
+  font-size: 0.32rem;
+  height: 0.9rem;
+  line-height: 0.9rem;
 }
 .calculButton .am-button-primary .am-button-active{
   background-color: #ffbb39;
@@ -86,9 +105,9 @@
   text-decoration: none;
   outline: none;
 }
-.myScore .am-input-control input {
+.myScore .am-list-item .am-input-control input {
   color: rgb(32, 203, 106);
-  font-size: 80px;
+  font-size: 0.8rem;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -99,5 +118,69 @@
   line-height: 1;
   box-sizing: border-box;
   text-align: center;
-  margin-left:-60px;
+  margin-left:-0.6rem;
+}
+.myScore .am-list-item .am-input-extra {
+  font-size: 0.3rem;
+}
+.calculForm {
+  padding: 0.8rem 0 1rem 0;
+}
+.calculForm span {
+  font-size: 0.3rem;
+  color:#333;
+}
+.calculForm .am-list-item .am-input-label {
+    font-size: 0.3rem;
+}
+.calculForm .am-list-item.am-input-item {
+    padding: 0.3rem;
+    height: 0.9rem;
+    font-size: 0.3rem;
+}
+.calculFormItem {
+  font-size:0.3rem;
+  color:#333;
+  padding: 0 0.3rem;
+}
+.myHeightWhite80{
+  width: 100%;
+  height:0.8rem;
+  background-color: #fff;
+}
+.calculFormItem .am-button {
+    display: block;
+    outline: 0 none;
+    -webkit-appearance: none;
+    -webkit-box-sizing: border-box;
+    padding: 0;
+    text-align: center;
+    font-size: 0.3rem;
+    height: 0.84rem;
+    line-height: 0.84rem;
+    border-top-left-radius: 0.1rem;
+    border-top-right-radius: 0.1rem;
+    border-bottom-left-radius: 0.1rem;
+    border-bottom-right-radius: 0.1rem;
+    -webkit-background-clip: padding-box;
+    color: #000;
+    background-color: #fff;
+    border: 1PX solid #ddd;
+}
+.calculFormItem .am-button .am-icon-md {
+    width: 0.44rem;
+    height: 0.44rem;
+}
+.calculForm .am-list-item {
+  min-height: 0.9rem;
+}
+.calculForm .am-list-item .am-input-label.am-input-label-5 {
+    width: 1.7rem;
+}
+.calculForm .am-list-item .am-input-extra {
+  font-size: 0.3rem;
+}
+.myRecords.am-list-item .am-input-control input{
+  font-size: 0.3rem;
+  line-height: 1.2rem;
 }

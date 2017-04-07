@@ -75,7 +75,7 @@ class Login extends Component {
   	    	<div className='loginLogo'>
               <img src={logoImg}/>
   	    	</div>
-          <form className='myForm'>
+          <form className='loginForm'>
             <div>
               <InputItem
                 {...getFieldProps('name', {
@@ -85,6 +85,7 @@ class Login extends Component {
                 placeholder="请输入手机号码/身份证号"
                 onInput={handleText.bind(this, '18')}
                 labelNumber='8'
+                className='userItem'
                 >
                 <img src={userIcon} className='marginRt30'/>
               </InputItem>
@@ -97,6 +98,7 @@ class Login extends Component {
                 type='password'
                 pattern='[0-9]*'
                 maxLength={6}
+                className='userItem'
                 placeholder="请输入密码">
                 <img src={passIcon} className='marginRt30'/>
               </InputItem>

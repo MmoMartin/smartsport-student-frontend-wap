@@ -16,12 +16,14 @@ class Home extends Component {
     super(props);
     this.state = {
       selectedTab: 'movementPlan',
-      leftContent: '',
+      leftContent: null,
       leftHandler: () => {},
       middleContent: '运动计划',
       middleHandler: () => {},
       rightContent: '',
       rightHandler: () => {},
+      hasBorder: 1, // 是否有底边框，默认是1有边界，2是没有边界
+      headDisplay: 'block', // 显示隐藏头部导航
     };
   }
 
@@ -38,15 +40,19 @@ class Home extends Component {
 
   // 改变头部导航状态
   changeNavBar(obj) {
-    const { selectedTab, leftContent, middleContent, rightContent, leftHandler, middleHandler, rightHandler } = obj;
+    const { selectedTab, leftContent, middleContent, rightContent, leftHandler,
+      middleHandler, rightHandler, hasBorder, headDisplay } = obj;
+    const hasBorders = (hasBorder === undefined ? 1 : 2);
     this.setState({
       selectedTab: selectedTab || this.state.selectedTab,
       leftContent: leftContent || '',
       leftHandler: leftHandler || (()=>{}),
-      middleContent: middleContent || '运动计划',
+      middleContent: middleContent || '',
       middleHandler: middleHandler || (()=>{}),
       rightContent: rightContent || '',
       rightHandler: rightHandler || (()=>{}),
+      hasBorder: hasBorders,
+      headDisplay: headDisplay || 'block',
     });
   }
 
@@ -89,9 +95,10 @@ class Home extends Component {
   }
 
   render() {
-    const { leftContent, leftHandler, middleContent } = this.state;
+    const { leftContent, leftHandler, middleContent, hasBorder, headDisplay } = this.state;
     let display;
-    if (!(leftContent === null || leftContent === '')) {
+    const pathUrl = this.props.location.pathname;
+    if (!(pathUrl === '/' || pathUrl === '/calcul' || pathUrl === '/mine')) {
       display = 'none';
     }
     return (
@@ -100,6 +107,8 @@ class Home extends Component {
          leftContent={leftContent}
          leftHandler={leftHandler}
          middleContent={middleContent}
+         hasBorder={hasBorder}
+         headDisplay={headDisplay}
         />
          <this.props.children.type
            changeNavBar={this.changeNavBar.bind(this)}

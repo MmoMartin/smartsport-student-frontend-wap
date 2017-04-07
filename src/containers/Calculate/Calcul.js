@@ -123,20 +123,22 @@ class Calcul extends Component {
 
     const { getFieldProps } = this.props.form;
     const bulbIcon = require('img/bulb.png');
-    const buttonGroup = testSubjectsList.map( item => {return (<Button size='large' key={item._id} 
-      onClick={this.onClose.bind(this, item)}>{item.name}</Button>) } );
+    const buttonGroup = testSubjectsList.map( item => {return (<Button size='large' key={item._id}
+      onClick={this.onClose.bind(this, item)}>{item.name}</Button>)});
     return (
       <div className='myBackCal'>
-        <form style={{padding: '60px 0 30px 0'}}>
+        <form className='calculForm'>
           <div>
-            <div style={{ padding: '15px 28px', fontSize: '32px'}}>
+            <div className='calculFormItem'>
               <span>项目：</span>
               <div style={{display: 'inline-block', width: '80%'}}>
-                <Button onClick={this.showModal} inline='true' style={{width: '100%'}} icon='down' className='selectProject'>
+                <Button onClick={this.showModal} inline='true' style={{width: '100%'}} icon='down'
+                  className='selectProject'>
                   {this.state.project}
                 </Button>
               </div>
             </div>
+            <div className='myHeightWhite80'></div>
             <InputItem
               {...getFieldProps('unit', {
                 rules: [{ required: true }]
@@ -144,31 +146,32 @@ class Calcul extends Component {
               clear
               extra={this.state.units}
               style={{width: '94%'}}
+              className='myRecords'
               >
               成绩：
             </InputItem>
             <div className='calculButton' >
-              <Button onClick={this.calculSubmit} 
-                type='primary' 
-                size='large'  
+              <Button onClick={this.calculSubmit}
+                type='primary'
+                size='large'
                 className='decoBtn'>
                 计算
               </Button>
-            </div>   
+            </div>
             <div className='myScore'>
               <InputItem
-              {...getFieldProps('score')}
-              extra='分'
-              className=''
-              style={{width: '94%'}}
-              value={score}>
-              得分：
-            </InputItem> 
+                {...getFieldProps('score')}
+                extra='分'
+                className=''
+                style={{width: '94%'}}
+                value={score}>
+                得分：
+              </InputItem>
             </div>
           </div>
         </form>
         <div className='decorateHeight'></div>
-        <div style={{padding: '0px 30px'}}>
+        <div style={{padding: '0 0.3rem'}}>
           <div className='tipTitle'>
             <img src={bulbIcon} alt="bulbIcon" className='bulbIcon' />
             锻炼小诀窍：

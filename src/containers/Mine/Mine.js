@@ -43,9 +43,7 @@ export default class Home extends Component {
   componentWillMount() {
     const { changeNavBar, changeHeadHandler } = this.props;
     changeNavBar({
-      leftContent: null,
-      leftHandler: ()=>{},
-      middleContent: '我的',
+      headDisplay: 'none',
     });
   }
   gotoActivityManagement(event) {
