@@ -20,14 +20,17 @@ export function getImgStr(url) {
 }
 export function changeHeadPortrait(body) {
   return (dispatch, req) => {
-    dispatch({
-      type: `${STUDENT_SELF_INFO}_GET_SUCC`,
-      data: {
-        icon: body
-    });
     dispatch(put({
       path: CHENGE_HEAD_PORTRAIT,
       body: {icon: body},
+      succ: ()=>{
+        dispatch({
+          type: `${STUDENT_SELF_INFO}_GET_SUCC`,
+          data: {
+            icon: body
+          }
+         });
+      }
     }));
   };
 }
