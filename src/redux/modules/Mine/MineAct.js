@@ -28,7 +28,6 @@ export function changeHeadPortrait(body) {
     dispatch(put({
       path: CHENGE_HEAD_PORTRAIT,
       body: {icon: body},
-      succ: () => {dispatch(getUserInfo());}
     }));
   };
 }
