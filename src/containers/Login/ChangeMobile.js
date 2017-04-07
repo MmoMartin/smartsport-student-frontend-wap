@@ -130,7 +130,7 @@ class ChangeMobile extends Component {
     const {count} = this.state;
     return (
       <div>
-        <form style={{marginTop: '20px'}}>
+        <form style={{marginTop: '0.2rem'}}>
           <InputItem
             {...getFieldProps('password', {
               rules: [
@@ -166,8 +166,8 @@ class ChangeMobile extends Component {
             onExtraClick={this.getCode.bind(this)}
             className='myCode'>验证码
           </InputItem>
-          <p style={{fontSize: "25px", margin: "10px 25px", color: "#999"}}>更换手机号码后，下次登录可使用新手机号码登录</p>
-          <Button style={{height: "90px", margin: '60px 25px'}} className="btn"
+          <p style={{fontSize: "0.25rem", margin: "0.10rem 0.25rem", color: "#999"}}>更换手机号码后，下次登录可使用新手机号码登录</p>
+          <Button style={{height: "0.9rem", margin: '0.60rem 0.25rem', lineHeight: '0.9rem'}} className="btn"
             type="primary"
             activeStyle={false}
             onClick={this.handleChangeMobile.bind(this)}>确定</Button>

@@ -29,16 +29,19 @@ html,body{
 .earn{
   background: url(../../img/earn@2x.png) no-repeat center;
   background-color: #fff;
+  background-size: 70%;
 }
 .spend{
   background: url(../../img/Spendmoney@2x.png) no-repeat center;
   background-color: #fff;
+  background-size: 70%;
 }
 .body_bottom span{
   position: absolute;
   margin-left: 0.1rem;
   line-height: 0.7rem;
   color: #fff;
+  font-size: 0.32rem;
 }
 .point_detail{
   line-height: 0.9rem;
@@ -63,6 +66,7 @@ html,body{
   height: 0.25rem;
   display: inline-block;
   margin-left: 0.1rem;
+  background-size: 100%;
 }
 .point_help{
   float: right;

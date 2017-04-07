@@ -18,9 +18,9 @@ class Contact extends Component {
   render() {
     return (
       <div style={{ backgroundColor: "#f2f2f2", width: "100%"}}>
-        <div className="head_navbar" style={{paddingTop: "40px"}}>
+        <div className="head_navbar" style={{paddingTop: "0.4rem"}}>
         </div>
-        <div className={styles.contact_Body} style={{height: "7.2rem"}}></div>
+        <div className={styles.contact_Body} style={{height: "4.2rem", margin: '1.4rem auto'}}></div>
         <div className={styles.tel} style={{borderBottom: "1px solid rgb(198, 193, 193)"}}>
           <p className={styles.name}>客服电话</p>
           <p className={styles.num}>020-38550695</p>

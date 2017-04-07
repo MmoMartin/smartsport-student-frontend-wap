@@ -22,7 +22,7 @@ class ChangePassword extends Component {
       middleContent: '修改密码',
     });
   }
-  
+
   changePassSucc() {
     Toast.success('密码修改成功', 1);
     this.context.router.push('/login');
@@ -67,7 +67,7 @@ class ChangePassword extends Component {
     form = this.props.form;
     return (
       <div style={{ backgroundColor: "#f2f2f2"}}>
-        <form style={{marginTop: '20px'}}>
+        <form style={{marginTop: '0.2rem'}}>
           <InputItem
             {...getFieldProps('oldPwd', {
               rules: [
@@ -106,7 +106,7 @@ class ChangePassword extends Component {
             maxLength="6"
             minLength="6"
           >确认密码</InputItem>
-          <Button style={{height: "90px", margin: '60px 25px'}} className="btn" type="primary"
+          <Button style={{height: "0.9rem", margin: '0.60rem 0.3rem', lineHeight: '0.9rem', borderRadius: '0.1rem'}} className="btn" type="primary"
             activeStyle={false}
             onClick={this.handleChangePwd.bind(this)}
           >确定</Button>
