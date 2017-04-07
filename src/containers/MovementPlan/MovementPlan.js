@@ -111,9 +111,9 @@ class MovementPlan extends Component {
             formatter: '{c}\n{b}',
             textStyle: {
               name: 'hha',
-              color: '#addcb9',
+              color: '#3e7846',
               insideColor: '#306637',
-              fontSize: 25,
+              fontSize: 25
             }
           }
         },
@@ -150,9 +150,9 @@ class MovementPlan extends Component {
       <div style={{ marginBottom: '1rem' }} className='DropDown'>
           <div id='main' style={{width: '100%', height: '4rem'}}>
           </div>
-          <div className={styles.planTitleDiv} style={{marginTop: '0.2rem'}}>
+          <div className={styles.planTitleDiv}>
             <img src={planImg}
-              style={{width: '0.27rem', height: '0.27rem', marginLeft: '0.3rem', marginTop: '-0.05rem'}}>
+              style={{width: '0.27rem', height: '0.27rem', marginLeft: '0.3rem'}}>
             </img>
             <span className={styles.myPlanTitle}>推荐计划</span>
           </div>
@@ -190,8 +190,8 @@ class MovementPlan extends Component {
                     </div>
                   }>
                     <div className='planList'>
-                      <div className='clearfix' style={{padding: '0.1rem 0.5rem 0', backgroundColor: '#f5fff8'}}>
-                        <List style={{float: 'left', width: '50%', marginLeft: '0.2rem'}}>
+                      <div className='clearfix' style={{padding: '0.3rem 0.5rem', backgroundColor: '#f5fff8'}}>
+                        <List style={{float: 'left', width: '60%', marginLeft: '0.2rem'}}>
                           <DatePicker
                             mode="date"
                             title="选择日期"
@@ -228,7 +228,7 @@ class MovementPlan extends Component {
           </Accordion>
           <div className={styles.planTitleDiv}>
             <img src={myPlanImg}
-              style={{width: '0.27rem', height: '0.27rem', marginLeft: '0.3rem', marginTop: '-0.05rem'}}>
+              style={{width: '0.27rem', height: '0.27rem', marginLeft: '0.3rem'}}>
             </img>
             <span className={styles.myPlanTitle} style={{color: '#ebae55'}}>我的计划</span>
           </div>

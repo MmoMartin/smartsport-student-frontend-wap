@@ -10,11 +10,11 @@ export default ({ RecommendedPlanItems = [] }) => {
 
 function createRecomItem(item, index) {
   return (
-    <div style={{padding: "0.3rem 0.5rem", fontSize: '0.22rem'}}
+    <div style={{padding: "0.3rem 0", fontSize: '0.22rem'}}
          className='clearfix'
          key={item.seq}>
       <div className='fl' style={{width: '50%'}}>
-        <div className={styles.stageItemDot}></div>
+        <div className={styles.stageItemDot} style={{marginLeft: '0.5rem'}}></div>
       <span style={{display: 'inline-block', marginLeft: '0.25rem'}}>阶段{item.seq}</span>
       </div>
       <div className='cycle'>

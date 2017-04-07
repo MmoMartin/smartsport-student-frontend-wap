@@ -16,14 +16,14 @@ function createStageItem(item, index) {
     item.dotColor = '#4fb26b';
   }
   return (
-    <div style={{marginTop: '10px'}} key={item.content + '' + index}>
+    <div style={{marginTop: '0.22rem', fontSize: '0.22rem'}} key={item.content + '' + index}>
       <div>
         <div className={styles.stageItemDot} style={{backgroundColor: item.dotColor}}></div>
         <span className={styles.stageItem}>阶段{item.seq}</span>
       </div>
       {
         Object.entries(item.timeStatus) && Object.entries(item.timeStatus).map((timeItem) => {
-          const color = timeItem[1] ? '#4fb26b' : '#f18269';
+          const color = timeItem[1] ? '#4fb26b' : '#f68461';
           return (
             <div key={timeItem[0]}>
               <span className={styles.stageItemDate}>{timeItem[0]}</span>

@@ -1,6 +1,8 @@
 .planTitleDiv {
   background-color: white;
   margin-top: 0.2rem;
+  height: 0.7rem;
+  line-height: 0.7rem;
 }
 
 .recomendPlanTitle, .recommend{
@@ -24,7 +26,6 @@
   height: 0.36rem;
   border: none;
   color: #2bac1e;
-  margin-top: 0.3rem;
   background: #f8fefa;
   border: 2px solid #2bac1e;
   border-radius: 0.04rem;
@@ -46,11 +47,10 @@
   margin-left: 0.1rem;
 }
 .myPlanTitle {
-  height: 0.7rem;
-  line-height: 0.7rem;
   color: #5dbc7e;
   margin-left: 0.1rem;
   font-size: 0.28rem;
+  vertical-align: middle;
 }
 
 .planNameDiv {
@@ -97,30 +97,31 @@
 
 .stageItem {
   width: 90%;
-  margin-left: 5%;
-  margin-top: 0.1rem;
+  margin-left: 0.3rem;
+  margin-top: 0.22rem;
   color: #8a898e;
 }
 
 .stageItemDot {
-  width: 0.18rem;
-  height: 0.18rem;
-  margin-left: 5%;
+  width: 0.22rem;
+  height: 0.22rem;
+  margin-left: 0.6rem;
   border-radius: 50%;
   display: inline-block;
   background-color: #ee6f50;
+  vertical-align: text-top;
 }
 
 .stageItemDate {
-  width: 29%;
+  width: 28%;
   height: 0.8rem;
   line-height: 0.8rem;
-  margin-left: 13%;
+  margin-left: 1.12rem;
   display: inline-block;
 }
 
 .stageItemType {
-  width: 29%;
+  width: 25%;
   height: 0.8rem;
   line-height: 0.8rem;
   display: inline-block;

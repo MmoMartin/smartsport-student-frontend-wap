@@ -21,6 +21,8 @@
   background-image: url(../img/shrinkyellow@2x.png);
   top: 40%;
   right: 0.4rem;
+  height: 0.3rem;
+  width: 0.3rem;
   transform: rotate(180deg);
   -ms-transform: rotate(0);
   -webkit-transform: rotate(180deg);
@@ -46,6 +48,8 @@
   background-image: url(../img/dropgreen@2x.png);
   top: 40%;
   right: 0.4rem;
+  height: 0.3rem;
+  width: 0.3rem;
   transform: rotate(0);
   -ms-transform: rotate(0);
   -webkit-transform: rotate(0);
@@ -96,9 +100,18 @@
 }
 .planList .am-list-item .am-list-line .am-list-arrow{
   background-image: url(../img/calendaricon@2x.png);
+  margin-left: 0.2rem;
 }
 .planList .am-list-item{
   background-color: #f5fff8;
+  min-height: 0;
+  padding-left: 0.2rem;
+}
+.planList .am-list-item .am-list-line .am-list-extra{
+  padding: 0;
+}
+.planList .am-list-item .am-list-line{
+  min-height: 0;
 }
 .planList .am-list-item .am-list-line .am-list-arrow{
   width: 0.24rem;
@@ -106,7 +119,6 @@
 }
 .planList .am-list-body{
   border: none;
-  margin-top: 0.04rem;
 }
 .planList .am-list-body:after{
   width: 0;
@@ -125,4 +137,33 @@
 }
 p{
   font-size: 0.32rem;
+}
+.am-picker-popup-item{
+  font-size: 0.3rem;
+  padding: 0.18rem 0.3rem;
+}
+.am-picker-col-indicator{
+  height: 0.68rem;
+  top: 2.04rem;
+  border-bottom-color: #000;
+  border-top-color: #000;
+}
+.am-picker-col{
+  height: 4.76rem;
+}
+.am-picker-popup{
+  height: 45%;
+}
+.am-picker-col-mask{
+  height: 0;
+}
+.am-picker-col-item{
+  font-size: 0.32rem;
+  height: 0.68rem;
+  line-height: 0.68rem;
+  color: #333;
+}
+/*更改提示文字大小*/
+.am-toast-text{
+  font-size: 0.25rem;
 }
