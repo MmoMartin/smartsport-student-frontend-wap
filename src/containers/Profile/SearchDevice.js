@@ -76,7 +76,7 @@ export default class SearchDevice extends Component {
       timeout = setTimeout(()=>{
         document.removeEventListener('message', fn);
         reject('超时！');
-      }, 15000);
+      }, 50000);
       document.addEventListener('message', fn);
       window.postMessage(postData);
     });
@@ -91,22 +91,22 @@ export default class SearchDevice extends Component {
       });
     }
     if (this.props.bindStatus !== bindStatus) {
-      // const obj = {
-      //   type: 'connectDeviceWhenBinding',
-      //   data: targetDevice
-      // };
-      // Toast.loading('绑定中...', 10000);
-      // this.postData(obj).then((data) => {
-      //   Toast.hide();
-      Toast.info('绑定成功', 1);
-      this.context.router.push('/myDevices');
-      // }).catch((err)=>{
-      //   Toast.hide();
-      //   Toast.info(err, 1);
-      //   this.setState({
-      //     err
-      //   });
-      // });
+      const obj = {
+        type: 'connectDeviceWhenBinding',
+        data: targetDevice
+      };
+      Toast.loading('绑定中...', 10000);
+      this.postData(obj).then((data) => {
+        Toast.hide();
+        Toast.info('绑定成功', 1);
+        this.context.router.push('/myDevices');
+      }).catch((err)=>{
+        Toast.hide();
+        Toast.info(err, 1);
+        this.setState({
+          err
+        });
+      });
     }
   }
 

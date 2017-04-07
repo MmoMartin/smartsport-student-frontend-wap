@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import { NavBar, Icon, List, ListView, SwipeAction, Toast } from 'antd-mobile';
 import {connect} from 'react-redux';
 import {asyncConnect} from 'redux-connect';
+import {listenData, postData} from 'xunyijia-components/src/utils/rnBridge';
 import * as myDevicesAct from '../../redux/modules/Devices/MyDevicesAct';
 const styles = require('./Profile.scss');
 const wristwatchImg = require('img/wristwatch@2x.png');
@@ -41,6 +42,23 @@ export default class MyDevices extends Component {
     this.state = {
       dataSource: dataSource.cloneWithRows([this.props.ownDevices || '']),
     };
+  }
+
+  componentWillMount() {
+    const disConnectListenerData = {
+      type: 'disConnectListener'
+    };
+    const listen = listenData(disConnectListenerData);
+    listen.begin((listenerData)=>{
+      Toast.info(listenerData.info, 1);
+      const params = {
+        connectName: '未连接',
+        connectStatus: 0,
+        connectColor: '#7dc78d',
+      };
+      this.props.chagneConnectStatus(params);
+      listen.end();
+    });
   }
 
   deviceManager(rowData, props) {
@@ -84,54 +102,13 @@ export default class MyDevices extends Component {
           };
           props.syncBloodData(objValue);
         }
-        const testObj = {
-          type: 'testData',
-          data: props
-        };
-        this.postData(testObj).then((returnData) => {
-
-        }).catch((err)=>{
-          this.setState({
-            err
-          });
-        });
       } else {
-        Toast.info(data.info, 2);
+        Toast.info(data.info, 1);
       }
+      Toast.hide();
     }).catch((err)=>{
       // Toast.info(err, 1);
-      this.setState({
-        err
-      });
-    });
-  }
-
-  syncProcess() {
-    const obj = {
-      type: 'syncProcess',
-    };
-    this.postData(obj).then((data) => {
-      Toast.info(data, 1);
-    }).catch((err)=>{
-      Toast.info(err, 1);
-      this.setState({
-        err
-      });
-    });
-  }
-
-  syncData() {
-    const obj = {
-      type: 'syncData',
-    };
-
-    Toast.loading('同步数据...', 10000);
-    this.postData(obj).then((data) => {
       Toast.hide();
-      Toast.info('同步数据完成', 1);
-    }).catch((err)=>{
-      Toast.hide();
-      Toast.info(err, 1);
       this.setState({
         err
       });
@@ -145,7 +122,7 @@ export default class MyDevices extends Component {
     };
     Toast.loading('断开中...', 10000);
     this.postData(obj).then((data) => {
-      // if (data.info === '断开成功') {
+      Toast.hide();
       Toast.info('断开成功', 1);
       const params = {
         connectName: '未连接',
@@ -163,53 +140,77 @@ export default class MyDevices extends Component {
   }
 
   componentDidMount() {
-    if (this.props.ownDevices.length !== 0) {
-      this.connectListener(this.props);
-      this.disConnectListener(this.props);
-    }
-  }
-
-  connectListener(props) {
-    const obj = {
-      type: 'connectListener',
-      data: props.ownDevices[0]
-    };
-    this.postData(obj).then((data) => {
-      Toast.info('已连接', 1);
-      const params = {
-        connectName: '已连接',
-        connectStatus: 1,
-        connectColor: '#ddd',
-      };
-      props.chagneConnectStatus(params);
-    }).catch((err)=>{
-      Toast.info(err, 1);
-      this.setState({
-        err
-      });
+    // if (this.props.ownDevices.length !== 0) {
+    //   this.connectListener(this.props);
+    //   this.disConnectListener(this.props);
+    // }
+    const { changeNavBar, changeHeadHandler } = this.props;
+    changeNavBar({
+      leftContent: <Icon type='left' color='#00CC66'/>,
+      leftHandler: changeHeadHandler,
+      middleContent: '我的设备',
     });
   }
 
-  disConnectListener(props) {
-    const obj = {
-      type: 'disConnectListener',
-      data: props.ownDevices[0]
-    };
-    this.postData(obj).then((data) => {
-      Toast.info('已断开', 1);
-      const params = {
-        connectName: '未连接',
-        connectStatus: 0,
-        connectColor: '#7dc78d',
-      };
-      props.chagneConnectStatus(params);
-    }).catch((err)=>{
-      Toast.info(err, 1);
-      this.setState({
-        err
-      });
-    });
-  }
+  // connectListener(props) {
+  //   const obj = {
+  //     type: 'connectListener',
+  //     data: props.ownDevices[0]
+  //   };
+  //   this.postData(obj).then((data) => {
+  //     Toast.info('已连接', 1);
+  //     const params = {
+  //       connectName: '已连接',
+  //       connectStatus: 1,
+  //       connectColor: '#ddd',
+  //     };
+  //     props.chagneConnectStatus(params);
+  //     if (data.runData) {
+  //       let syncData = {
+  //         params: data.runData
+  //       };
+  //       props.syncRunData(syncData);
+  //     }
+  //     if (data.HRMData) {
+  //       let syncData = {
+  //         params: data.HRMData
+  //       };
+  //       props.syncHRMData(syncData);
+  //     }
+  //     if (data.bloodData) {
+  //       let syncData = {
+  //         params: data.bloodData
+  //       };
+  //       props.syncBloodData(syncData);
+  //     }
+  //   }).catch((err)=>{
+  //     Toast.info(err, 1);
+  //     this.setState({
+  //       err
+  //     });
+  //   });
+  // }
+  //
+  // disConnectListener(props) {
+  //   const obj = {
+  //     type: 'disConnectListener',
+  //     data: props.ownDevices[0]
+  //   };
+  //   this.postData(obj).then((data) => {
+  //     Toast.info('已断开', 1);
+  //     const params = {
+  //       connectName: '未连接',
+  //       connectStatus: 0,
+  //       connectColor: '#7dc78d',
+  //     };
+  //     props.chagneConnectStatus(params);
+  //   }).catch((err)=>{
+  //     Toast.info(err, 1);
+  //     this.setState({
+  //       err
+  //     });
+  //   });
+  // }
 
   componentWillReceiveProps(nextProps) {
     const { ownDevices, message, unbindStatus } = nextProps;
@@ -235,7 +236,7 @@ export default class MyDevices extends Component {
 
   postData(data) {
     const type = data.type;
-    const postData = JSON.stringify(data);
+    const postRNData = JSON.stringify(data);
     return new Promise((resolve, reject) => {
       let timeout;
       const fn = (event) => {
@@ -254,7 +255,7 @@ export default class MyDevices extends Component {
         reject('超时！');
       }, 50000);
       document.addEventListener('message', fn);
-      window.postMessage(postData);
+      window.postMessage(postRNData);
     });
   }
 
