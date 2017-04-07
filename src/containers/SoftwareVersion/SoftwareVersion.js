@@ -98,15 +98,15 @@ export default class Home extends Component {
   render() {
     const { hasNew } = this.state;
     const img = require('../../img/logo@3x.png');
-    const newIcon = hasNew ? <span className='newIcon cl-white'>New</span> : '';
+    const newIcon = hasNew ? <span className='newIcon cl-white h029 lh029 w057 font-size017'>New</span> : '';
     return (<div>
-      <div style={{textAlign: 'center', height: 300, padding: 50}}><img src={img}/><div>智慧体育</div></div>
+      <div style={{textAlign: 'center'}} className='padding04'><img src={img}/><div className='padding02'>智慧体育</div></div>
       <Flex direction='column' align='stretch' className='margin-right-nones'>
         <Flex.Item onClick={this.gotoMine.bind(this)}>
-          <Item name="当前版本信息" rightText={'V' + this.state.preVersion} isRightarrow={false} style={{paddingLeft: 10}}/>
+          <Item name="当前版本信息" rightText={'V' + this.state.preVersion} isRightarrow={false} paddingLeft033={true} className='font-size03'/>
         </Flex.Item>
         <Flex.Item onClick={this.onUpdateAppVersion.bind(this)}>
-          <Item name="检查更新" style={{borderBottom: 'none', paddingLeft: 10}} newIcon={newIcon}/>
+          <Item name="检查更新" className='font-size03' style={{borderBottom: 'none'}} newIcon={newIcon} paddingLeft033={true}/>
         </Flex.Item>
       </Flex>
       <Modal

@@ -18,8 +18,8 @@ export default class Home extends Component {
         <Flex.Item>
           <div className='position-relative'>
             <div className='middle cl-white text-center w100'>
-              <div className='font-size24'>篮球比赛</div>
-              <div className='font-size20'>敬请期待</div>
+              <div className='font-size04'>篮球比赛</div>
+              <div className='font-size024 h038 lh038'>敬请期待</div>
             </div>
             <img src={activitymanagement1} className='wh100'/>
           </div>
@@ -28,8 +28,8 @@ export default class Home extends Component {
         <Flex.Item>
           <div className='position-relative'>
             <div className='middle cl-white text-center w100'>
-              <div className='font-size24'>200米接力赛</div>
-              <div className='font-size20'>敬请期待</div>
+              <div className='font-size04'>200米接力赛</div>
+              <div className='font-size024 h038 lh038'>敬请期待</div>
             </div>
             <img src={activitymanagement2} className='wh100'/>
           </div>
@@ -38,8 +38,8 @@ export default class Home extends Component {
         <Flex.Item>
           <div className='position-relative text-center w100'>
             <div className='middle cl-white'>
-              <div className='font-size24'>400米比赛</div>
-              <div className='font-size20'>敬请期待</div>
+              <div className='font-size04'>400米比赛</div>
+              <div className='font-size024 h038 lh038'>敬请期待</div>
             </div>
             <img src={activitymanagement3} className='wh100'/>
           </div>

@@ -84,11 +84,11 @@ export default class Home extends Component {
             </div>
           </div>
         </div>
-        <span className='font-size18 display-block'>{userInfo ? userInfo.name : '昂小米'}</span>
-        <div style={{textAlign: 'center', paddingBottom: 20, background: '#fff'}}>
-        </div>
+        <span className='h082 lh082 display-block'>{userInfo ? userInfo.name : '昂小米'}</span>
+        {/* <div style={{textAlign: 'center', paddingBottom: 20, background: '#fff'}}>
+        </div> */}
       </div>
-      <Flex direction='row' className='margin-right-nones' style={{height: "1.7rem", background: "#f5f5f5"}}>
+      <Flex direction='row' className='margin-right-nones' style={{height: "1.71rem", background: "#f5f5f5"}}>
         <Flex.Item className='padding-bottom10 bg-color-ccc' onClick={this.gotoActivityManagement.bind(this)}>
           <RowItem name="活动管理" icon={Sportsprogram} style={{height: 100}}/>
         </Flex.Item>

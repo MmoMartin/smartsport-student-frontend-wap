@@ -17,15 +17,15 @@ export default class Home extends Component {
     return (<div className='score_img'>
       <Flex direction='column' align='stretch' className='margin-right-nones'>
         <Flex.Item>
-          <Item name="50米" icon={trophy} tip='成绩排名尚未开通，敬请期待' style={{height: 'inherit', lineHeight: 'inherit'}} dropyellow={dropyellow}/>
+          <Item name="50米" icon={trophy} tip='成绩排名尚未开通，敬请期待' style={{height: '1.2rem', lineHeight: 'inherit'}} dropyellow={dropyellow} isRightarrow={false}/>
         </Flex.Item>
         <WhiteSpace size="sm" />
         <Flex.Item>
-          <Item name="100米" icon={medal} tip='成绩排名尚未开通，敬请期待' style={{height: 'inherit', lineHeight: 'inherit'}} dropyellow={dropyellow}/>
+          <Item name="100米" icon={medal} tip='成绩排名尚未开通，敬请期待' style={{height: '1.2rem', lineHeight: 'inherit'}} dropyellow={dropyellow} isRightarrow={false}/>
         </Flex.Item>
         <WhiteSpace size="sm" />
         <Flex.Item>
-          <Item name="1500米" icon={trophy} tip='成绩排名尚未开通，敬请期待' style={{height: 'inherit', lineHeight: 'inherit'}} dropyellow={dropyellow}/>
+          <Item name="1500米" icon={trophy} tip='成绩排名尚未开通，敬请期待' style={{height: '1.2rem', lineHeight: 'inherit'}} dropyellow={dropyellow} isRightarrow={false}/>
         </Flex.Item>
     </Flex>
     </div>);

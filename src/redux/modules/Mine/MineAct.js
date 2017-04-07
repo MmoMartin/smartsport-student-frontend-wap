@@ -29,7 +29,7 @@ export function changeHeadPortrait(body) {
           data: {
             icon: body
           }
-         });
+        });
       }
     }));
   };
