@@ -48,19 +48,6 @@ export default class Home extends Component {
       middleContent: '我的',
     });
   }
-
-  state = {
-    imgBase64: localStorage.getItem(config.headPortrait) || this.props.headPortrait,
-  };
-
-  componentWillReceiveProps(nextProps) {
-    if (this.props.userInfo !== nextProps.userInfo) {
-      const headPortrait = localStorage.getItem(config.headPortrait);
-      this.setState({
-        imgBase64: nextProps.userInfo.icon,
-      });
-    }
-  }
   gotoActivityManagement(event) {
     this.context.router.push({
       pathname: '/activityManagement',
@@ -78,75 +65,8 @@ export default class Home extends Component {
   }
   onClickImagePicker() {
     getData({type: 'upHeadPortrait'}).then((data) => {
-      // this.setState({imgBase64: data});
       this.props.changeHeadPortrait(data);
-      // this.getPolicy.call(this, data);
     });
-  }
-
-  onChange = (files, type) => {
-    const index = files.length - 1;
-    this.setState({
-      imgBase64: files[index].url,
-    });
-    this.getPolicy.call(this);
-  }
-  getPolicy(imgBase64) {
-    const Authorization = JSON.parse(localStorage.getItem(config.userInfoKey)) || '';
-    this.policy = {};
-    let xmlhttp;
-    if (window.XMLHttpRequest) {
-      xmlhttp = new XMLHttpRequest();
-    } else if (window.ActiveXObject) {
-      // code for IE5 and IE6
-      xmlhttp = new window.ActiveXObject("Microsoft.XMLHTTP");
-    }
-    if (xmlhttp !== null) {
-      xmlhttp.onreadystatechange = ()=>{
-        // 4 = "loaded"
-        if (xmlhttp.readyState === 4) {
-          // 200 = OK
-          if (xmlhttp.status === 200) {
-            const response = xmlhttp.response;
-            const data = JSON.parse(response).data;
-            // console.log('data', data);
-            this.policy.key = data.dir + Authorization._id + '/userInfo-img22';
-            this.policy.policy = data.policy;
-            this.policy.signature = data.signature;
-            this.policy.success_action_status = 200;
-            this.policy.OSSAccessKeyId = data.accessid;
-            this.policy.file = imgBase64;
-            const host = data.host;
-
-            const formData = new FormData();
-            Object.keys(this.policy).forEach(key => {
-              formData.append(key, this.policy[key]);
-            });
-            const options1 = {
-              body: formData,
-              method: 'POST'
-            };
-            fetch(host, options1).then(res=>{
-              // console.log('res', res);
-              const headPortraitUrl = host + '/' + this.policy.key;
-              this.props.changeHeadPortrait(imgBase64);
-              // succ
-              // 调用一个action保存头像地址 this.policy.key 成功调用一次用户信息，更新localstoarge里面的userinfo
-            }).catch(err=>{
-              alert('err', err);
-              // console.log(err);
-              // fail
-            });
-          } else {
-            console.log('获取验证失败');
-          }
-        }
-      };
-      const token = localStorage.getItem('smartsport/student/token');
-      xmlhttp.open("GET", STUDENT_LICENCE_POLICY, false);
-      xmlhttp.setRequestHeader("authorization", token);
-      xmlhttp.send(null);
-    }
   }
 
   // 跳转到设置页面
@@ -155,33 +75,19 @@ export default class Home extends Component {
   }
 
   render() {
-    const { imgBase64 } = this.state;
+    const imgBase64 = localStorage.getItem(config.headPortrait);
     const { userInfo } = this.props;
     return (<div>
       <div style={{textAlign: 'center', paddingBottom: 20}}>
         <div style={{display: "inline-block", padding: '0.2rem'}} onClick={this.onClickImagePicker.bind(this)}>
           <div className='outer-circle border-radius50'>
             <div className='inner-circle wh100 border-radius50'>
-              <img src={imgBase64} className='wh100 border-radius50'/>
+              {imgBase64 && <img src={imgBase64} className='wh100 border-radius50'/>}
             </div>
           </div>
-          {/* <ImagePicker
-            // onClick={this.onClickImagePicker.bind(this)}
-            className='ImagePicker'
-            files={files}
-            onChange={this.onChange}
-            selectable={true}
-          /> */}
         </div>
         <span className='font-size18 display-block'>{userInfo ? userInfo.name : '昂小米'}</span>
         <div style={{textAlign: 'center', paddingBottom: 20, background: '#fff'}}>
-          {/* <ImagePicker
-            className='ImagePicker'
-            // files={files}
-            onChange={this.onChange}
-            selectable={true}
-          /> */}
-          {/* <span className='font-size36 display-block'>{studentInfo ? studentInfo.name : '昂小米'}</span> */}
         </div>
       </div>
       <Flex direction='row' className='margin-right-nones' style={{height: "1.7rem", background: "#f5f5f5"}}>
