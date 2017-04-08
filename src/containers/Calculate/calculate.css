@@ -59,6 +59,7 @@
 .tipTitle {
   padding: 0.2rem 0 0.1rem 0;
   font-size: 0.3rem;
+  margin-left:-0.1rem;
 }
 .modalHeight {
   height: 8rem !important;
@@ -135,14 +136,14 @@
     font-size: 0.3rem;
 }
 .calculForm .am-list-item.am-input-item {
-    padding: 0.3rem;
+    padding: 0.4rem;
     height: 0.9rem;
     font-size: 0.3rem;
 }
 .calculFormItem {
   font-size:0.3rem;
   color:#333;
-  padding: 0 0.3rem;
+  padding: 0 0.4rem;
 }
 .myHeightWhite80{
   width: 100%;
@@ -183,7 +184,7 @@
 }
 .myRecords.am-list-item .am-input-control input{
   font-size: 0.3rem;
-  line-height: 1.2rem;
+  line-height: 0.9rem;
 }
 .myHeight100 {
   height: 1rem;

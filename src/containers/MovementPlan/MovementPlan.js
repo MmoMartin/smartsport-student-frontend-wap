@@ -155,7 +155,7 @@ class MovementPlan extends Component {
     const { getFieldProps } = this.props.form;
     const { date } = this.state;
     return (
-      <div style={{ marginBottom: '1rem' }} className='DropDown'>
+      <div className='DropDown'>
           <div id='main' style={{width: '100%', height: '4rem'}}>
           </div>
           <div className={styles.planTitleDiv}>

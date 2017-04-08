@@ -1,3 +1,17 @@
+html {
+    -ms-overflow-style:none;
+    overflow:-moz-scrollbars-none;
+}
+html::-webkit-scrollbar{width:0px}
+
+.childrenContent {
+  width: 100%;
+  position: absolute;
+  overflow-y: scroll;
+}
+.childrenContent::-webkit-scrollbar{
+  width:0;
+}
 .headNavBar {
   position: fixed;
   z-index: 9999;

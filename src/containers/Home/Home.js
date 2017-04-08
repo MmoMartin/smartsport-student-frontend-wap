@@ -93,17 +93,30 @@ class Home extends Component {
         break;
     }
   }
+  // 计算高度
+  calcHeight(headDisplay, display) {
+    let finalHeight;
+    if (headDisplay === 'block' && display === 'block') {
+      finalHeight = 'calc(100% - 1.88rem)';
+    } else if (headDisplay === 'none' && display === 'block') {
+      finalHeight = 'calc(100% - 1rem)';
+    } else if (headDisplay === 'block' && display === 'none') {
+      finalHeight = 'calc(100%-0.88rem)';
+    }
+    return finalHeight;
+  }
 
   render() {
     const { leftContent, leftHandler, middleContent, hasBorder, headDisplay } = this.state;
-    let display;
+    let display = 'block';
     const pathUrl = this.props.location.pathname;
     if (!(pathUrl === '/' || pathUrl === '/calcul' || pathUrl === '/mine')) {
       display = 'none';
     }
+    const finalHeight = this.calcHeight(headDisplay, display);
     const contentStyle = {
-      marginTop: headDisplay === 'block' ? '0.88rem' : '0',
-      marginBottom: display === 'none' ? '0' : '1rem',
+      top: headDisplay === 'block' ? '0.88rem' : '0',
+      height: finalHeight,
     };
     return (
       <div style={{height: '100%', width: '100%'}}>
@@ -114,7 +127,7 @@ class Home extends Component {
          hasBorder={hasBorder}
          headDisplay={headDisplay}
         />
-          <div style={contentStyle}>
+          <div style={contentStyle} className='childrenContent'>
             <this.props.children.type
               changeNavBar={this.changeNavBar.bind(this)}
               changeHeadHandler={this.changeHeadHandler.bind(this)}
