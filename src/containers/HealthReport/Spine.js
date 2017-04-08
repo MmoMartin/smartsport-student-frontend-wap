@@ -36,7 +36,7 @@ export default class Spine extends Component {
                lineHeight: '0.6rem',
                color: '#6b6b6b',
                padding: '0 0.3rem',
-               fontSize: '0.28rem',
+               fontSize: '0.22rem',
                marginBottom: 5,
              }}>
           <div className='fl'>测评时间：{formatDate(new Date(SpineData.time), 'yyyy-mm-dd')}</div>
@@ -51,7 +51,7 @@ export default class Spine extends Component {
                 </div>
               </div>
           }>
-            <div style={{fontSize: '0.28rem'}}>
+            <div style={{fontSize: '0.22rem'}}>
               <ul className={styles.reporData}>
                 <li className='clearfix'>
                   <div className={styles.listLeft}>

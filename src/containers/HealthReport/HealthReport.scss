@@ -25,7 +25,7 @@
   color: #363636;
 }
 .info .infoDetails i{
-  margin: 0 0.2rem;
+  margin: 0 0.15rem;
   color: #eaeaea;
 }
 .report{
@@ -37,7 +37,7 @@
 
 .report .reportNameLeft{
   float: left;
-  font-size: 0.36rem;
+  font-size: 0.3rem;
 }
 
 .reporData{
@@ -61,9 +61,11 @@
 .reporData .listLeft img{
   width: 0.25rem;
   height: 0.25rem;
+  margin-top: -0.1rem;
 }
 .reporData .listRight{
   float: left;
+  font-size: 0.22rem;
 }
 .reporData .record{
   color: #2bac1e;

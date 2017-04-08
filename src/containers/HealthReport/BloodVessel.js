@@ -16,7 +16,7 @@ export default class BloodVessel extends Component {
                lineHeight: '0.6rem',
                color: '#6b6b6b',
                padding: '0 0.3rem',
-               fontSize: '0.28rem'
+               fontSize: '0.22rem'
              }}>
           <div className='fl'>测评时间：{formatDate(new Date(BloodVesselData.time), 'yyyy-mm-dd')}</div>
           <div className='fr'>测评次数：{BloodVesselData.count}次</div>
@@ -30,7 +30,7 @@ export default class BloodVessel extends Component {
               </div>
             </div>
           }>
-            <div style={{fontSize: '0.28rem'}}>
+            <div style={{fontSize: '0.22rem'}}>
               <ul className={styles.reporData}>
                 <li className='clearfix'>
                   <div className={styles.listLeft}>

@@ -30,7 +30,7 @@ export default class BoneDensity extends Component {
                lineHeight: '0.6rem',
                color: '#6b6b6b',
                padding: '0 0.3rem',
-               fontSize: '0.28rem'
+               fontSize: '0.22rem'
              }}>
           <div className='fl'>测评时间：{formatDate(new Date(BoneDensityData.time), 'yyyy-mm-dd')}</div>
           <div className='fr'>测评次数：{BoneDensityData.count}次</div>
@@ -42,7 +42,7 @@ export default class BoneDensity extends Component {
               <div className='reportNameRight'>{BoneDensityData.data.situation}</div>
             </div>
           }>
-            <div style={{fontSize: '0.28rem'}}>
+            <div style={{fontSize: '0.22rem'}}>
               <div style={{paddingLeft: '0.4rem', color: '#999'}}>
                 测试部位：{BoneDensityData.data.part}
               </div>
