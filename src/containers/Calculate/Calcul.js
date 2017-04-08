@@ -33,7 +33,12 @@ class Calcul extends Component {
       performance: '' // 成绩
     };
   }
-
+  componentWillMount() {
+    const { changeNavBar, changeHeadHandler } = this.props;
+    changeNavBar({
+      middleContent: '计算器',
+    });
+  }
   static contextTypes = {
     router: PropTypes.object.isRequired
   }
@@ -181,6 +186,7 @@ class Calcul extends Component {
             <li>每天更新一些锻炼的小技巧或者是根据测试的项目及所得的成绩给用户一些建议。</li>
           </ol>
         </div>
+        <div className='myHeight100'></div>
         <Modal
           className='modalHeight'
           transparent

@@ -1,10 +1,11 @@
 .myBackCal {
   background-color: #fff;
   width:100%;
-  height:100%;
+  /*height:100%;*/
   display: block;
   position: absolute;
   font-size: 0.26rem !important;
+  margin-top: -0.12rem;
 }
 .selectProject{
   background-color: #eee;
@@ -183,4 +184,8 @@
 .myRecords.am-list-item .am-input-control input{
   font-size: 0.3rem;
   line-height: 1.2rem;
+}
+.myHeight100 {
+  height: 1rem;
+  background-color: #fff;
 }

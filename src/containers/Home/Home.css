@@ -1,5 +1,6 @@
 .headNavBar {
-  position: relative;
+  position: fixed;
+  z-index: 9999;
   width: 100%;
   height: 0.88rem;
   top: 0;

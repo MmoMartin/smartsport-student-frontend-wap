@@ -50,6 +50,12 @@ class MovementPlan extends Component {
   state = {
     date: zhNow,
   }
+  componentWillMount() {
+    const { changeNavBar, changeHeadHandler } = this.props;
+    changeNavBar({
+      middleContent: '运动计划',
+    });
+  }
   ExecutionTips() {
     Toast.info("已存在进行的计划", 3);
   }
@@ -87,6 +93,8 @@ class MovementPlan extends Component {
   }
 
   showTaskProcess(progressRate) {
+    const rem = document.documentElement.style.fontSize.replace('px', '');
+    const echartsFontSize = rem * 0.25;
     const option = {
       backgroundColor: '#7dc78d',
       series: [{
@@ -113,7 +121,7 @@ class MovementPlan extends Component {
               name: 'hha',
               color: '#3e7846',
               insideColor: '#306637',
-              fontSize: 25
+              fontSize: echartsFontSize
             }
           }
         },

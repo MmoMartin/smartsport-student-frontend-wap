@@ -18,7 +18,7 @@ class Home extends Component {
       selectedTab: 'movementPlan',
       leftContent: null,
       leftHandler: () => {},
-      middleContent: '运动计划',
+      middleContent: '',
       middleHandler: () => {},
       rightContent: '',
       rightHandler: () => {},
@@ -83,8 +83,8 @@ class Home extends Component {
         break;
       case '2':
         this.changeNavBar({
-          middleContent: '我的',
           selectedTab: 'mine',
+          headDisplay: 'none',
         });
         this.context.router.push('/mine');
         break;
@@ -101,8 +101,12 @@ class Home extends Component {
     if (!(pathUrl === '/' || pathUrl === '/calcul' || pathUrl === '/mine')) {
       display = 'none';
     }
+    const contentStyle = {
+      marginTop: headDisplay === 'block' ? '0.88rem' : '0',
+      marginBottom: display === 'none' ? '0' : '1rem',
+    };
     return (
-      <div>
+      <div style={{height: '100%', width: '100%'}}>
         <Head
          leftContent={leftContent}
          leftHandler={leftHandler}
@@ -110,10 +114,12 @@ class Home extends Component {
          hasBorder={hasBorder}
          headDisplay={headDisplay}
         />
-         <this.props.children.type
-           changeNavBar={this.changeNavBar.bind(this)}
-           changeHeadHandler={this.changeHeadHandler.bind(this)}
-         />
+          <div style={contentStyle}>
+            <this.props.children.type
+              changeNavBar={this.changeNavBar.bind(this)}
+              changeHeadHandler={this.changeHeadHandler.bind(this)}
+            />
+          </div>
          <div className='footTabBar' style={{display}}>
             <div className='tabBarItem' onClick={this.changeRoute.bind(this, '0')}>
               <div className='tabBarImg'>
