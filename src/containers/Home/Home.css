@@ -28,6 +28,8 @@
 }
 .headNavBar .leftHeadNavBar .leftIcon svg{
   line-height: 0.88rem;
+  width: 0.44rem;
+  height:0.44rem;
   display: flex;
   justify-content: center;
   align-items: center;
