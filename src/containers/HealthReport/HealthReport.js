@@ -106,11 +106,19 @@ export default class HealthReport extends Component {
         <div className='clearfix' style={{marginTop: '0.3rem'}}>
             <div className={styles.infoName}>{ data.personal && data.personal.name}</div>
             <div className={styles.infoDetails}>
-              <span>性别：{data.personal && data.personal.sex === 1 ? '男' : '女' }</span>|
-              <span>年龄：{data.personal && data.personal.age}</span>|
-              <span>身高：{data.personal && data.personal.height}cm</span>
-              <span>体重：{data.personal && data.personal.weight}kg</span>|
-              <span>学号：{data.personal && data.personal.num}</span>
+              {sex ? <span>性别：{sex}<i>|</i></span> : ''}
+              {data.personal && data.personal.age ?
+                <span>年龄：{data.personal && data.personal.age}<i>|</i></span> : ''
+              }
+              {data.personal && data.personal.height ?
+                <span>身高：{data.personal && data.personal.height}cm<i>|</i></span> : ''
+              }
+              {data.personal && data.personal.weight ?
+                <span>体重：{data.personal && data.personal.weight}kg<i>|</i></span> : ''
+              }
+              {data.personal && data.personal.num ?
+                <span>学号：{data.personal && data.personal.num}</span> : ''
+              }
             </div>
           </div>
         </div>

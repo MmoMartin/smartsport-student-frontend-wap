@@ -12,8 +12,8 @@
 }
 
 .info .infoDetails{
-  float: left;
-  width: 79%;
+  float: right;
+  width: 76%;
   font-size: 0.22rem;
   color: #e7e7e7;
   margin-top: 3px;
@@ -21,10 +21,13 @@
 
 .info .infoDetails span{
   display: inline-block;
-  margin: 0 0.18rem 0.3rem;
+  margin-bottom: 0.3rem;
   color: #363636;
 }
-
+.info .infoDetails i{
+  margin: 0 0.2rem;
+  color: #eaeaea;
+}
 .report{
   background-color: #fff;
   border: 1px solid #d1d1d3;
