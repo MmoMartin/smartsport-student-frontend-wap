@@ -28,7 +28,8 @@ export default class Home extends Component {
     hasNew: false,
     progress: null,
     modal: false,
-    preVersion: ''
+    preVersion: '',
+    isIos: true
   };
   static contextTypes = {
     router: PropTypes.object.isRequired
@@ -44,10 +45,11 @@ export default class Home extends Component {
   componentDidMount() {
     const {appVersion} = this.props;
     getData({type: 'getAppVersion'}).then(data=>{
-      this.setState({preVersion: data});
-      if (appVersion[0].version && (appVersion[0].version !== data)) {
+      this.setState({preVersion: data.nowVersion});
+      if (appVersion[0].version && (appVersion[0].version !== data.nowVersion)) {
         this.setState({
-          hasNew: true
+          hasNew: true,
+          isIos: data.isIos
         });
       }
     });
@@ -56,10 +58,11 @@ export default class Home extends Component {
     if (nextPros.appVersion !== this.props.appVersion) {
       const {appVersion} = nextPros;
       getData({type: 'getAppVersion'}).then(data=>{
-        this.setState({preVersion: data});
-        if (appVersion[0].version && (appVersion[0].version !== data)) {
+        this.setState({preVersion: data.nowVersion});
+        if (appVersion[0].version && (appVersion[0].version !== data.nowVersion)) {
           this.setState({
-            hasNew: true
+            hasNew: true,
+            isIos: data.isIos
           });
         }
       });
@@ -71,7 +74,7 @@ export default class Home extends Component {
     });
   }
   handleOk(event) {
-    const {hasNew} = this.state;
+    const {hasNew, isIos} = this.state;
     const {appVersion} = this.props;
     if (hasNew) {
       const sendData = JSON.stringify({type: "updateApp", data: appVersion[0].address});
@@ -96,7 +99,7 @@ export default class Home extends Component {
     ]);
   }
   render() {
-    const { hasNew } = this.state;
+    const { hasNew, isIos } = this.state;
     const img = require('../../img/logo@3x.png');
     const newIcon = hasNew ? <span className='newIcon cl-white h029 lh029 w057 font-size017'>New</span> : '';
     return (<div>
@@ -105,9 +108,9 @@ export default class Home extends Component {
         <Flex.Item onClick={this.gotoMine.bind(this)}>
           <Item name="当前版本信息" rightText={'V' + this.state.preVersion} isRightarrow={false} paddingLeft033={true} className='font-size03'/>
         </Flex.Item>
-        <Flex.Item onClick={this.onUpdateAppVersion.bind(this)}>
+        {isIos ? '' : <Flex.Item onClick={this.onUpdateAppVersion.bind(this)}>
           <Item name="检查更新" className='font-size03' style={{borderBottom: 'none'}} newIcon={newIcon} paddingLeft033={true}/>
-        </Flex.Item>
+        </Flex.Item>}
       </Flex>
       <Modal
         transparent
