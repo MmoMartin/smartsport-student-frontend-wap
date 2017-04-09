@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import * as LoginAct from 'redux/modules/Login/LoginAct';
 import config from '../../constants/config';
 require('./Login.css');
+const LeftImg = require('img/return@2x.png');
 
 const Item = List.Item;
 @connect(
@@ -34,7 +35,7 @@ class FindPassSec extends Component {
         const { password, comfirmPassword } = this.props.form.getFieldsValue();
         if (password.match(/^\d{6}$/) === null) {
           this.showMessage('密码输入有误');
-        } else if(password !== comfirmPassword ) {
+        } else if (password !== comfirmPassword ) {
           this.showMessage('两次密码输入不一致');
         } else {
           const token = this.props.setPassToken;
@@ -57,10 +58,12 @@ class FindPassSec extends Component {
     const { getFieldProps } = this.props.form;
     return (
       <div className='myActiveBack'>
-        <NavBar leftContent="" mode="light" onLeftClick={() => this.context.router.goBack()}>
+        <NavBar leftContent={<img style={{width: '0.42rem', marginTop: '-0.1rem'}}
+          src={LeftImg}/>} mode="light"
+          onLeftClick={() => this.context.router.goBack()}>
           找回密码
         </NavBar>
-        <form className='activeList'>  
+        <form className='activeList'>
           <List>
             <InputItem
               {...getFieldProps('password', {
@@ -83,10 +86,10 @@ class FindPassSec extends Component {
               maxLength={6}
               placeholder="请再次输入新密码">
               确认密码
-            </InputItem>        
+            </InputItem>
           </List>
           <Item className='activeNow'>
-            <Button type='primary' size='large' 
+            <Button type='primary' size='large'
               onClick={this.passSubmit.bind(this)}>
               确定
             </Button>

@@ -77,7 +77,6 @@
 	height: 0.9rem;
 	font-size: 0.3rem;
 	padding: 0 0.3rem;
-	line-height: 0.9rem;
 }
 .activeList .am-list-item .am-input-label, .activeList .am-list-item .am-input-control, .activeList .am-list-item .am-input-control input{
 	font-size: 0.3rem;
@@ -377,4 +376,7 @@
 	color: #000;
 	background-color: #00cc66;
 	border: 1PX solid #ddd;
+}
+.myActiveBack .am-navbar-left svg{
+	display: none;
 }

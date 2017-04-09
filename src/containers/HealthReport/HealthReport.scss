@@ -1,5 +1,5 @@
 .info{
-  padding: 0.3rem 0.42rem;
+  padding: 0.3rem 0.42rem 0;
   background-color: #fff;
   font-size: 0.22rem;
 }
@@ -20,7 +20,7 @@
 
 .info .infoDetails span{
   display: inline-block;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0.35rem;
   color: #333;
 }
 .info .infoDetails i{
@@ -55,16 +55,16 @@
   list-style-type: none;
   padding: 0.2rem 0.3rem 0.2rem 0;
   border-bottom: 1px solid #e7e7e7;
-  margin-left: 0.9rem;
+  margin-left: 0.72rem;
 }
 .reporData .listLeft{
   float: left;
-  margin-left: -0.5rem;
+  margin-left: -0.44rem;
 }
 .reporData .listLeft img{
-  width: 0.25rem;
-  height: 0.25rem;
-  margin-top: -0.1rem;
+  width: 0.2rem;
+  height: 0.2rem;
+  margin-top: -0.16rem;
 }
 .reporData .listRight{
   float: left;

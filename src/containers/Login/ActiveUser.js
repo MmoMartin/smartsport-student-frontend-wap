@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import * as LoginAct from 'redux/modules/Login/LoginAct';
 import {handleText} from './publicFun';
 require('./Login.css');
+const LeftImg = require('img/return@2x.png');
 
 const Item = List.Item;
 @connect(
@@ -115,7 +116,9 @@ class ActiveUser extends Component {
     const {count} = this.state;
     return (
       <div className='myActiveBack'>
-        <NavBar leftContent="" mode="light" onLeftClick={() => this.context.router.goBack()}>
+        <NavBar leftContent={<img style={{width: '0.42rem', marginTop: '-0.1rem'}}
+          src={LeftImg}/>} mode="light"
+          onLeftClick={() => this.context.router.goBack()}>
           激活账号
         </NavBar>
         <form className='activeList'>

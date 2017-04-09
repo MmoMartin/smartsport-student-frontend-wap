@@ -27,7 +27,7 @@
   border: none;
   color: #2bac1e;
   background: #f8fefa;
-  border: 2px solid #2bac1e;
+  border: 0.02rem solid #2bac1e;
   border-radius: 0.04rem;
   font-size: 0.22rem;
 }
@@ -41,6 +41,8 @@
   color: #666;
   font-size: 0.22rem;
   text-align: center;
+  line-height: 0.9rem;
+  margin-top: 0.06rem;
 }
 .recommend{
   margin-left: 0.1rem;

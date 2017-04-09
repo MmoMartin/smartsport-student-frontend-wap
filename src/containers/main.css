@@ -200,5 +200,14 @@ p{
 }
 /*公共样式*/
 .am-list-item .am-input-label{
-  color: #333;
+  color: #333 !important;
+}
+.am-list-item .am-input-clear{
+  width: 0.42rem !important;
+  height: 0.42rem !important;
+  background-size: 0.42rem auto !important;
+  background-position: 0.04rem 0.04rem !important;
+}
+.am-list-item .am-input-control input, .am-list-item .am-input-label{
+  line-height: 0.3rem !important;
 }

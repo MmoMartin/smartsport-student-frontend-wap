@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import {MOBILE} from 'xunyijia-components/src/utils/validation';
 import * as LoginAct from 'redux/modules/Login/LoginAct';
 import {handleText} from './publicFun';
+const LeftImg = require('img/return@2x.png');
 require('./Login.css');
 
 const Item = List.Item;
@@ -100,7 +101,9 @@ class FindPassFir extends Component {
     const {count} = this.state;
     return (
       <div className='myActiveBack'>
-        <NavBar leftContent="" mode="light" onLeftClick={() => this.context.router.goBack()}>
+        <NavBar leftContent={<img style={{width: '0.42rem', marginTop: '-0.1rem'}}
+          src={LeftImg}/>} mode="light"
+          onLeftClick={() => this.context.router.goBack()}>
           找回密码
         </NavBar>
         <form className='activeList'>
