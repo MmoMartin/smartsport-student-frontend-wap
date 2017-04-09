@@ -20,33 +20,48 @@ app.use(compression()); // 压缩响应体
 // app.use(favicon(path.join(__dirname, '..', 'static', 'favicon.ico')));
 app.use(Express.static(path.join(__dirname, '..', 'static')));
 // 需要转发过去的服务器地址
+const isTestServer = config.isTestServer;
+const protocol = 'http://s.';
+const isTest = isTestServer ? '.test' : '';
+const domain = '.qsntzjk.com';
+// 代理转发，解决跨域问题
+const getUrl = function(host) {
+  return `${protocol}${host}${isTest}${domain}`;
+};
 // 代理转发，解决跨域问题
 app.use('/proxy', (req, res) => {
-  let targetUrl = 'http://s.student.qsntzjk.com';
+  const host = 'student';
+  const targetUrl = getUrl(host);
   pipe(req, res, targetUrl);
 });
 app.use('/proxy3000', (req, res) => {
-  let targetUrl = 'http://s.admin.qsntzjk.com';
+  const host = 'admin';
+  const targetUrl = getUrl(host);
   pipe(req, res, targetUrl);
 });
 app.use('/proxy3001', (req, res) => {
-  let targetUrl = 'http://s.expert.qsntzjk.com';
+  const host = 'expert';
+  const targetUrl = getUrl(host);
   pipe(req, res, targetUrl);
 });
 app.use('/proxy3002', (req, res) => {
-  let targetUrl = 'http://s.school.qsntzjk.com';
+  const host = 'school';
+  const targetUrl = getUrl(host);
   pipe(req, res, targetUrl);
 });
 app.use('/proxy3003', (req, res) => {
-  let targetUrl = 'http://s.gov.qsntzjk.com';
+  const host = 'school';
+  const targetUrl = getUrl(host);
   pipe(req, res, targetUrl);
 });
 app.use('/proxy3004', (req, res) => {
-  let targetUrl = 'http://s.student.qsntzjk.com';
+  const host = 'student';
+  const targetUrl = getUrl(host);
   pipe(req, res, targetUrl);
 });
 app.use('/proxy3006', (req, res) => {
-  let targetUrl = 'http://s.wristband.qsntzjk.com';
+  const host = 'wristband';
+  const targetUrl = getUrl(host);
   pipe(req, res, targetUrl);
 });
 const pipe = (req, res, targetUrl) => {
