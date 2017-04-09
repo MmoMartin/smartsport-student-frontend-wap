@@ -45,11 +45,12 @@ export default class Home extends Component {
   componentDidMount() {
     const {appVersion} = this.props;
     getData({type: 'getAppVersion'}).then(data=>{
-      this.setState({preVersion: data.nowVersion});
-      if (appVersion[0].version && (appVersion[0].version !== data.nowVersion)) {
+      const gData = JSON.parse(data);
+      const {nowVersion, isIos} = gData;
+      this.setState({preVersion: nowVersion, isIos: isIos});
+      if (appVersion[0].version && (appVersion[0].version !== nowVersion)) {
         this.setState({
-          hasNew: true,
-          isIos: data.isIos
+          hasNew: true
         });
       }
     });
@@ -58,11 +59,12 @@ export default class Home extends Component {
     if (nextPros.appVersion !== this.props.appVersion) {
       const {appVersion} = nextPros;
       getData({type: 'getAppVersion'}).then(data=>{
-        this.setState({preVersion: data.nowVersion});
-        if (appVersion[0].version && (appVersion[0].version !== data.nowVersion)) {
+        const gData = JSON.parse(data);
+        const {nowVersion, isIos} = gData;
+        this.setState({preVersion: nowVersion, isIos: isIos});
+        if (appVersion[0].version && (appVersion[0].version !== nowVersion)) {
           this.setState({
-            hasNew: true,
-            isIos: data.isIos
+            hasNew: true
           });
         }
       });
@@ -105,8 +107,13 @@ export default class Home extends Component {
     return (<div>
       <div style={{textAlign: 'center'}} className='padding04'><img src={img}/><div className='padding02'>智慧体育</div></div>
       <Flex direction='column' align='stretch' className='margin-right-nones'>
-        <Flex.Item onClick={this.gotoMine.bind(this)}>
-          <Item name="当前版本信息" rightText={'V' + this.state.preVersion} isRightarrow={false} paddingLeft033={true} className='font-size03'/>
+        <Flex.Item>
+          <Item name="当前版本信息"
+            rightText={'V' + this.state.preVersion}
+            isRightarrow={false} paddingLeft033={true}
+            className='font-size03'
+            style={isIos ? {borderBottom: 'none'} : {}}
+          />
         </Flex.Item>
         {isIos ? '' : <Flex.Item onClick={this.onUpdateAppVersion.bind(this)}>
           <Item name="检查更新" className='font-size03' style={{borderBottom: 'none'}} newIcon={newIcon} paddingLeft033={true}/>
