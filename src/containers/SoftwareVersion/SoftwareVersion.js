@@ -79,7 +79,7 @@ export default class Home extends Component {
     const {hasNew, isIos} = this.state;
     const {appVersion} = this.props;
     if (hasNew) {
-      const sendData = JSON.stringify({type: "updateApp", data: appVersion[0].address});
+      const sendData = {type: "updateApp", data: appVersion[0].address};
       const listen = listenData(sendData);
       // postData({type: 'updateApp', data: appVersion.address});
       listen.begin((data)=>{
