@@ -43,7 +43,7 @@ export default class BoneDensity extends Component {
             </div>
           }>
             <div style={{fontSize: '0.22rem'}}>
-              <div style={{paddingLeft: '0.4rem', color: '#999'}}>
+              <div style={{paddingLeft: '0.3rem', color: '#999'}}>
                 测试部位：{BoneDensityData.data.part}
               </div>
               <ul className={styles.reporData}>

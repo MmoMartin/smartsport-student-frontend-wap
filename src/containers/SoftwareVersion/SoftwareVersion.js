@@ -7,6 +7,7 @@ import * as SoftwareVersionAct from 'redux/modules/SoftwareVersion/SoftwareVersi
 import {getData, postData, listenData} from 'xunyijia-components/src/utils/rnBridge';
 const maillist = require('../../img/maillist@3x.png');
 const setup = require('../../img/setup@3x.png');
+const LeftImg = require('img/return@2x.png');
 const alert = Modal.alert;
 @connect(({SoftwareVersionRed}) => SoftwareVersionRed, SoftwareVersionAct)
 @asyncConnect([
@@ -37,7 +38,7 @@ export default class Home extends Component {
   componentWillMount() {
     const { changeNavBar, changeHeadHandler } = this.props;
     changeNavBar({
-      leftContent: <Icon type='left' color='#00CC66'/>,
+      leftContent: <img src={LeftImg}/>,
       leftHandler: changeHeadHandler,
       middleContent: '软件版本',
     });

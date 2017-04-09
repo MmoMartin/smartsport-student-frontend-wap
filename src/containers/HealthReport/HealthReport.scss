@@ -15,18 +15,20 @@
   float: right;
   width: 76%;
   font-size: 0.22rem;
-  color: #e7e7e7;
   margin-top: 3px;
 }
 
 .info .infoDetails span{
   display: inline-block;
   margin-bottom: 0.3rem;
-  color: #363636;
+  color: #333;
 }
 .info .infoDetails i{
   margin: 0 0.15rem;
   color: #eaeaea;
+}
+.info .infoDetails span:nth-child(3) i{
+  display: none;
 }
 .report{
   background-color: #fff;
@@ -38,6 +40,7 @@
 .report .reportNameLeft{
   float: left;
   font-size: 0.3rem;
+  color: #333;
 }
 
 .reporData{

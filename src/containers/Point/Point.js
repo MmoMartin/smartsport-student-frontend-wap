@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import {connect} from 'react-redux';
 import {NavBar, Icon} from 'antd-mobile';
 const styles = require('./Point.scss');
+const LeftImg = require('img/return@2x.png');
 class Contact extends Component {
   static contextTypes = {
     router: PropTypes.object.isRequired
@@ -9,7 +10,7 @@ class Contact extends Component {
   componentWillMount() {
     const { changeNavBar, changeHeadHandler } = this.props;
     changeNavBar({
-      leftContent: <Icon type='left' color='#00CC66'/>,
+      leftContent: <img src={LeftImg}/>,
       leftHandler: changeHeadHandler,
       middleContent: '积分',
     });

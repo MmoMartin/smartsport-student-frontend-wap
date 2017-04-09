@@ -19,7 +19,7 @@ function createRecomItem(item, index) {
       </div>
       <div className='cycle'>
         <span style={{width: '30%'}}>{item.days}天</span>
-      <span style={{minWidth: '50%', float: 'right'}}>{item.content}</span>
+      <span style={{minWidth: '50%', float: 'right'}}>{item.content}米</span>
       </div>
     </div>
   );

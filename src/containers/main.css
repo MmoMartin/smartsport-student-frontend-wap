@@ -30,8 +30,8 @@ a:hover,a:focus {
 }
 
 .dropDownIcon .am-accordion-item .am-accordion-header i{
-  background-image: url(../img/shrinkyellow@2x.png);
-  top: 40%;
+  background-image: url(../img/shrinkyellow@3x.png);
+  top: 36%;
   right: 0.4rem;
   height: 0.3rem;
   width: 0.3rem;
@@ -58,7 +58,7 @@ a:hover,a:focus {
 .abnormal .am-accordion-item .am-accordion-header i,
 .planRecommend .am-accordion-item .am-accordion-header i{
   background-image: url(../img/dropgreen@2x.png);
-  top: 40%;
+  top: 36%;
   right: 0.4rem;
   height: 0.3rem;
   width: 0.3rem;
@@ -84,7 +84,7 @@ a:hover,a:focus {
 }
 .abnormal .reportNameRight{
   float: right;
-  font-size: 0.38rem;
+  font-size: 0.3rem;
   margin-right: 0.28rem;
   color: #4585b7;
 }
@@ -93,7 +93,7 @@ a:hover,a:focus {
 }
 .abnormal .scor{
   display: inline-block;
-  font-size: 0.28rem;
+  font-size: 0.24rem;
   color: #676767;
   margin-right: 0.1rem;
 }
@@ -136,7 +136,7 @@ a:hover,a:focus {
   width: 0;
 }
 .planRecommend .cycle{
-  min-width: 31%;
+  min-width: 34%;
   float: right;
 }
 .planRecommend .cycle span{
@@ -145,7 +145,20 @@ a:hover,a:focus {
 .DropDown .am-accordion .am-accordion-item .am-accordion-header{
   line-height: 1rem;
   height: 1rem;
-  padding: 0.1rem 0.6rem 0.05rem 0.3rem;
+}
+.planRecommend .am-accordion-item-active .am-accordion-header{
+  background-color: #f5fff8;
+}
+.dropDownIcon .am-accordion-item-active .am-accordion-header{
+  background-color: #fdf9f3;
+}
+.DropDown .am-accordion .am-accordion-item .am-accordion-header{
+  padding-left: 0.3rem;
+  padding-right: 0.6rem;
+  font-size: 0.34rem;
+}
+.constitution .am-accordion-item-active .am-accordion-header{
+  background-color: #fff;
 }
 .DropDown {
   overflow-y: scroll;
@@ -184,4 +197,8 @@ p{
 /*更改提示文字大小*/
 .am-toast-text{
   font-size: 0.25rem;
+}
+/*公共样式*/
+.am-list-item .am-input-label{
+  color: #333;
 }

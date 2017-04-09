@@ -48,6 +48,11 @@ html::-webkit-scrollbar{width:0px}
   justify-content: center;
   align-items: center;
 }
+.headNavBar .leftHeadNavBar .leftIcon img{
+  line-height: 0.88rem;
+  width: 0.42rem;
+  height:0.42rem;
+}
 .headNavBar .middleHeadNavBar{
   position: absolute;
   top:0;
@@ -126,6 +131,11 @@ html::-webkit-scrollbar{width:0px}
   width: 0.44rem;
   height: 0.44rem;
   background: url(../../img/calculator+@3x.png) center center /  0.42rem 0.42rem no-repeat;
+}
+.footTabBar .tabBarItem .tabBarMovementPlanText,
+.footTabBar .tabBarItem .tabcalculText,
+.footTabBar .tabBarItem .tabmineText{
+  color: #00CC66;
 }
 .footTabBar .tabBarItem .tabBarImg .tabBarMine{
   margin-top: 0.14rem;

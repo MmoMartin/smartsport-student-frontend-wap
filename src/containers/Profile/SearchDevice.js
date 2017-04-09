@@ -6,6 +6,7 @@ import * as searchDevicesAct from '../../redux/modules/Devices/SearchDevicesAct'
 const styles = require('./Profile.scss');
 const wristwatchImg = require('img/wristwatch@2x.png');
 const braceletImg = require('img/bracelet@2x.png');
+const LeftImg = require('img/return@2x.png');
 require('../main.css');
 let targetDevice = {};
 
@@ -32,7 +33,7 @@ export default class SearchDevice extends Component {
   componentWillMount() {
     const { changeNavBar, changeHeadHandler } = this.props;
     changeNavBar({
-      leftContent: <Icon type='left' color='#00CC66'/>,
+      leftContent: <img src={LeftImg}/>,
       leftHandler: changeHeadHandler,
       middleContent: '搜索设备',
     });

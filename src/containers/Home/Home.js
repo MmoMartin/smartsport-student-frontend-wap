@@ -71,6 +71,7 @@ class Home extends Component {
         this.changeNavBar({
           middleContent: '运动计划',
           selectedTab: 'movementPlan',
+          headDisplay: 'none'
         });
         this.context.router.push('/');
         break;
@@ -139,19 +140,21 @@ class Home extends Component {
                 <div className={this.state.selectedTab ===
                   'movementPlan' ? 'tabBarMovementPlanActive' : 'tabBarMovementPlan'}/>
               </div>
-              <span className='tabBarText'>运动计划</span>
+              <span className={this.state.selectedTab ===
+                'movementPlan' ? 'tabBarMovementPlanText tabBarText' : 'tabBarText'}>运动计划</span>
             </div>
             <div className='tabBarItem' onClick={this.changeRoute.bind(this, '1')}>
               <div className='tabBarImg'>
                 <div className={this.state.selectedTab === 'calcul' ? 'tabBarCalculActive' : 'tabBarCalcul'}/>
               </div>
-              <span className='tabBarText'>计算器</span>
+              <span className={this.state.selectedTab === 'calcul' ?
+                'tabcalculText tabBarText' : 'tabBarText'}>计算器</span>
             </div>
             <div className='tabBarItem' onClick={this.changeRoute.bind(this, '2')}>
               <div className='tabBarImg'>
                 <div className={this.state.selectedTab === 'mine' ? 'tabBarMineActive' : 'tabBarMine'}/>
               </div>
-              <span className='tabBarText'>我的</span>
+              <span className={this.state.selectedTab === 'mine' ? 'tabmineText tabBarText' : 'tabBarText'}>我的</span>
             </div>
          </div>
       </div>

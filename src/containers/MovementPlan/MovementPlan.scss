@@ -34,14 +34,13 @@
 .planBtnDisabled{
   color: #9d9d9d;
   border: 1px solid #9d9d9d;
-  margin-right: 0.28rem;
 }
 .Conduct{
   float: left;
   width: 25%;
-  margin-left: 0.1rem;
-  color: #5cbc7d;
+  color: #666;
   font-size: 0.22rem;
+  text-align: center;
 }
 .recommend{
   margin-left: 0.1rem;
@@ -66,33 +65,33 @@
 
 .planName {
   display: inline-block;
-  width: 10%;
+  width: 72%;
   height: 0.5rem;
   font-size: 0.28rem;
 }
 
 .planStatus {
   display: inline-block;
-  width: 85%;
+  width: 25%;
   height: 0.5rem;
   font-size: 0.22rem;
-  text-align: right;
   color: #666666;
+  text-align: center;
 }
 
 .planType {
   display: inline-block;
-  width: 20%;
+  width: 72%;
   height: 0.3rem;
   font-size: 0.22rem;
 }
 
 .planPercent {
   display: inline-block;
-  width: 73%;
+  width: 25%;
   height: 0.4rem;
   font-size: 0.22rem;
-  text-align: right;
+  text-align: center;
 }
 
 .stageItem {
@@ -111,26 +110,22 @@
   background-color: #ee6f50;
   vertical-align: text-top;
 }
-
+.stageItemList{
+  margin: 0.12rem 0;
+}
 .stageItemDate {
   width: 28%;
-  height: 0.8rem;
-  line-height: 0.8rem;
   margin-left: 1.12rem;
   display: inline-block;
 }
 
 .stageItemType {
   width: 25%;
-  height: 0.8rem;
-  line-height: 0.8rem;
   display: inline-block;
 }
 
 .stageItemStatus {
   width: 29%;
-  height: 0.8rem;
-  line-height: 0.8rem;
   display: inline-block;
   text-align: center;
 }

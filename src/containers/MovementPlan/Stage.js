@@ -42,7 +42,6 @@ export default class Stage extends Component {
     //   }
     // ];
     const { stageItems } = this.props;
-    console.log(stageItems)
     return (
       <div>
         {

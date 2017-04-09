@@ -3,6 +3,7 @@ import { Button, WingBlank, List, Toast, Icon } from 'antd-mobile';
 import {connect} from 'react-redux';
 import * as LoginAct from 'redux/modules/Login/LoginAct';
 require('./Login.css');
+const LeftImg = require('img/return@2x.png');
 
 const Item = List.Item;
 @connect(
@@ -16,7 +17,7 @@ class Settings extends Component {
   componentWillMount() {
     const { changeNavBar, changeHeadHandler } = this.props;
     changeNavBar({
-      leftContent: <Icon type='left' color='#00CC66'/>,
+      leftContent: <img src={LeftImg}/>,
       leftHandler: changeHeadHandler,
       middleContent: '设置',
     });

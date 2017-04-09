@@ -16,7 +16,15 @@ function createStageItem(item, index) {
     item.dotColor = '#4fb26b';
   }
   return (
-    <div style={{marginTop: '0.22rem', fontSize: '0.22rem'}} key={item.content + '' + index}>
+    <div
+      style={{
+        paddingTop: '0.22rem',
+        fontSize: '0.22rem',
+        borderBottom: '1px solid #e4e4e4',
+        backgroundColor: '#fdf9f3'
+      }}
+      key={item.content + '' + index}
+    >
       <div>
         <div className={styles.stageItemDot} style={{backgroundColor: item.dotColor}}></div>
         <span className={styles.stageItem}>阶段{item.seq}</span>
@@ -25,9 +33,9 @@ function createStageItem(item, index) {
         Object.entries(item.timeStatus) && Object.entries(item.timeStatus).map((timeItem) => {
           const color = timeItem[1] ? '#4fb26b' : '#f68461';
           return (
-            <div key={timeItem[0]}>
+            <div key={timeItem[0]} className={styles.stageItemList}>
               <span className={styles.stageItemDate}>{timeItem[0]}</span>
-              <span className={styles.stageItemType}>{item.content}</span>
+            <span className={styles.stageItemType}>{item.content}米</span>
               <span className={styles.stageItemStatus} style={{color: color}}>{timeItem[1] ? '已完成' : '未完成'}</span>
             </div>
           );

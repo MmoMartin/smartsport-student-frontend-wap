@@ -14,15 +14,14 @@ import moment from 'moment';
 import 'moment/locale/zh-cn';
 const Eject = Modal.alert;
 const styles = require('./MovementPlan.scss');
-const myPlanImg = require('img/my@2x.png');
-const planImg = require('img/recommend.png');
+const myPlanImg = require('img/my@3x.png');
+const planImg = require('img/recommend@3x.png');
 require('../main.css');
 require('echarts');
 require('echarts-liquidfill');
 // 日期组件
-// const zhNow = moment().locale('zh-cn').utcOffset(8);
 const zhNow = moment().locale('zh-cn');
-const minDate = moment('2015-08-06 +0800', 'YYYY-MM-DD Z');
+const minDate = moment(zhNow, 'YYYY-MM-DD Z');
 
 @connect(
   ({ movementPlanRed }) => (movementPlanRed),
@@ -53,7 +52,7 @@ class MovementPlan extends Component {
   componentWillMount() {
     const { changeNavBar, changeHeadHandler } = this.props;
     changeNavBar({
-      middleContent: '运动计划',
+      headDisplay: 'none'
     });
   }
   ExecutionTips() {
@@ -95,8 +94,9 @@ class MovementPlan extends Component {
   showTaskProcess(progressRate) {
     const rem = document.documentElement.style.fontSize.replace('px', '');
     const echartsFontSize = rem * 0.25;
+    const borderWith = rem * 0.1;
     const option = {
-      backgroundColor: '#7dc78d',
+      backgroundColor: '#8fcf9f',
       series: [{
         type: 'liquidFill',
         radius: '50%',
@@ -107,12 +107,12 @@ class MovementPlan extends Component {
         outline: {
           borderDistance: 0,
           itemStyle: {
-            borderWidth: 10,
-            borderColor: '#ddf5e6',
+            borderWidth: borderWith,
+            borderColor: 'rgba(255,255,255,0.68)',
           }
         },
         backgroundStyle: {
-          color: '#7dc78d',
+          color: '#8fcf9f',
         },
         label: {
           normal: {
@@ -121,7 +121,8 @@ class MovementPlan extends Component {
               name: 'hha',
               color: '#3e7846',
               insideColor: '#306637',
-              fontSize: echartsFontSize
+              fontSize: echartsFontSize,
+              fontWeight: 'normal'
             }
           }
         },
@@ -154,6 +155,8 @@ class MovementPlan extends Component {
     const { movementPlanList, RecommendData } = this.props;
     const { getFieldProps } = this.props.form;
     const { date } = this.state;
+    let len = movementPlanList.length - 1;
+    const {rate} = movementPlanList[len] || {};
     return (
       <div className='DropDown'>
           <div id='main' style={{width: '100%', height: '4rem'}}>
@@ -219,9 +222,10 @@ class MovementPlan extends Component {
                             className={styles.planBtn}
                             type="button"
                             onClick={
-                              movementPlanList.length > 0 ?
-                              this.ExecutionTips.bind(this) :
-                              this.onBegin.bind(this, item._id, item.status)}
+                              rate === 1 ?
+                              this.onBegin.bind(this, item._id, item.status) :
+                              this.ExecutionTips.bind(this)
+                            }
                           >
                             开始
                           </button>
@@ -236,7 +240,7 @@ class MovementPlan extends Component {
           </Accordion>
           <div className={styles.planTitleDiv}>
             <img src={myPlanImg}
-              style={{width: '0.27rem', height: '0.27rem', marginLeft: '0.3rem'}}>
+              style={{width: '0.27rem', height: '0.27rem', marginLeft: '0.3rem', marginTop: '-0.04rem'}}>
             </img>
             <span className={styles.myPlanTitle} style={{color: '#ebae55'}}>我的计划</span>
           </div>
@@ -265,7 +269,9 @@ class MovementPlan extends Component {
                           }
                           { `${competitiveAbility[0]}${competitiveAbility[1]}`}
                           </div>
-                          <div className={styles.planPercent}>{item.rate}</div>
+                          <div className={styles.planPercent}>
+                            {item.rate.toPrecision(4) * 100}%
+                          </div>
                         </div>
                       </div>
                     }>

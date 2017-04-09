@@ -3,11 +3,12 @@ import { Button, Flex, WhiteSpace, Icon } from 'antd-mobile';
 const knowledgebase1 = require('img/knowledgebase-pic-1@3x.png');
 const knowledgebase2 = require('img/knowledgebase-pic-2@3x.png');
 const knowledgebasePlay = require('img/knowledgebase-play@3x.png');
+const LeftImg = require('img/return@2x.png');
 export default class Home extends Component {
   componentWillMount() {
     const { changeNavBar, changeHeadHandler } = this.props;
     changeNavBar({
-      leftContent: <Icon type='left' color='#00CC66'/>,
+      leftContent: <img src={LeftImg}/>,
       leftHandler: changeHeadHandler,
       middleContent: '知识库',
     });

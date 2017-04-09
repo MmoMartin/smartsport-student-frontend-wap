@@ -6,6 +6,7 @@ import * as actions from 'redux/modules/Login/LoginAct';
 import { PASSWORD, PASSWORD_TIP, MOBILE, MOBILE_TIP} from 'utils/validation';
 import {changeState2Begin, changeState2Fail, changeState2Succ} from 'utils/tool';
 require('./ChangePassword.css');
+const LeftImg = require('img/return@2x.png');
 let form = [];
 
 @connect(()=>({}), actions)
@@ -17,7 +18,7 @@ class ChangePassword extends Component {
   componentWillMount() {
     const { changeNavBar, changeHeadHandler } = this.props;
     changeNavBar({
-      leftContent: <Icon type='left' color='#00CC66'/>,
+      leftContent: <img src={LeftImg}/>,
       leftHandler: changeHeadHandler,
       middleContent: '修改密码',
     });

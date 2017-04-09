@@ -7,6 +7,7 @@ import { MOBILE } from 'utils/validation';
 import {changeState2Begin, changeState2Fail, changeState2Succ} from 'utils/tool';
 import * as actions from 'redux/modules/Login/LoginAct';
 require('./ChangePassword.css');
+const LeftImg = require('img/return@2x.png');
 let form = [];
 let interval;
 const mobile = MOBILE;
@@ -28,7 +29,7 @@ class ChangeMobile extends Component {
   componentWillMount() {
     const { changeNavBar, changeHeadHandler } = this.props;
     changeNavBar({
-      leftContent: <Icon type='left' color='#00CC66'/>,
+      leftContent: <img src={LeftImg}/>,
       leftHandler: changeHeadHandler,
       middleContent: '手机绑定',
     });

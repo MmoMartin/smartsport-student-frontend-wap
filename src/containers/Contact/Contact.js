@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {NavBar, Icon} from 'antd-mobile';
 require('./Contact.css');
 const styles = require('./Contact.scss');
+const LeftImg = require('img/return@2x.png');
 class Contact extends Component {
   static contextTypes = {
     router: PropTypes.object.isRequired
@@ -10,7 +11,7 @@ class Contact extends Component {
   componentWillMount() {
     const { changeNavBar, changeHeadHandler } = this.props;
     changeNavBar({
-      leftContent: <Icon type='left' color='#00CC66'/>,
+      leftContent: <img src={LeftImg}/>,
       leftHandler: changeHeadHandler,
       middleContent: '联系我们',
     });

@@ -31,9 +31,9 @@ export default class HealthReport extends Component {
   componentWillMount() {
     const { changeNavBar, changeHeadHandler } = this.props;
     changeNavBar({
-      leftContent: <Icon type='left' color='#00CC66'/>,
+      leftContent: <img src={LeftImg}/>,
       leftHandler: changeHeadHandler,
-      middleContent: '健康报告',
+      middleContent: '查看报告',
     });
   }
   render() {
@@ -100,7 +100,7 @@ export default class HealthReport extends Component {
     });
 
     return (
-      <div className='DropDown'>
+      <div className='DropDown constitution'>
         <div className={styles.info}>
           <span style={{color: '#EBAE55'}}>基本个人信息:</span>
         <div className='clearfix' style={{marginTop: '0.3rem'}}>
