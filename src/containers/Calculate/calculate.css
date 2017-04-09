@@ -8,12 +8,13 @@
   margin-top: -0.12rem;
 }
 .selectProject{
-  background-color: #eee;
+  background-color: #eee !important;
 }
 .selectProject .am-icon {
   position: absolute;
   right: 1rem;
   margin-top: 0.18rem;
+  color: #aaa;
 }
 .leftScore {
   display: inline-block;

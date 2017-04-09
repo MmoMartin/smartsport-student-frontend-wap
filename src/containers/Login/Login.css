@@ -57,7 +57,7 @@
 .activeNow .am-button-primary{
 	background-color: #00cc66;
 	border: 1PX solid #00cc66;
-	margin: 0.3rem;
+	margin: 0;
 	font-size: 0.3rem;
 }
 .activeNow .am-list-item .am-list-line {
@@ -70,8 +70,8 @@
 }
 /*激活账号*/
 .activeList {
-  margin-top: 20px;
-  margin-bottom: 80px;
+  margin-top: 0.2rem;
+  margin-bottom: 0.8rem;
 }
 .activeList .am-list-item.am-input-item{
 	height: 0.9rem;

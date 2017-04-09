@@ -44,7 +44,7 @@ class Calcul extends Component {
   }
 
   showMessage(text) {
-    Toast.info(text, 1);
+    Toast.fail(text, 3);
   }
 
   selectProject(value) {
@@ -75,9 +75,9 @@ class Calcul extends Component {
     });
   }
 
-  handleCalculSucc() {
+  handleCalculSucc(msg) {
     if (this.props.score === undefined) {
-      this.showMessage('没有这个项目');
+      this.showMessage('你所处的年级不用考核该项目喔');
     }
   }
 
@@ -91,8 +91,9 @@ class Calcul extends Component {
     this.props.form.validateFields({ force: true }, (error) => {
       if (!error) {
         const {unit} = this.props.form.getFieldsValue();
-        if (unit.match(/^\d+.*\d{0,2}$/) === null) {
-          this.showMessage('请输入数字');
+        const myReg = /^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$/; // 正浮点数
+        if (myReg.test(unit) === false) {
+          this.showMessage('请输入正确的数字(数字为正浮点数)');
         } else {
           const filters = {subject, report: unit};
           const succ = this.handleCalculSucc.bind(this);
@@ -111,6 +112,7 @@ class Calcul extends Component {
 
   handleCalculFail(err) {
     this.showMessage(err);
+    // this.showMessage(code);
   }
 
   handleChange(event) {
