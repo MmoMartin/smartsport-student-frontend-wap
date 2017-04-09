@@ -100,6 +100,7 @@ class ChangePassword extends Component {
                 { required: true },
               ],
             })}
+            className="confirmPwd"
             clear
             type="password"
             pattern='[0-9]*'
@@ -107,7 +108,7 @@ class ChangePassword extends Component {
             maxLength="6"
             minLength="6"
           >确认密码</InputItem>
-          <Button style={{height: "0.9rem", margin: '0.60rem 0.3rem', lineHeight: '0.9rem', borderRadius: '0.1rem'}} className="btn" type="primary"
+          <Button style={{fontSize: '0.32rem', height: "0.9rem", margin: '0.60rem 0.3rem', lineHeight: '0.9rem', borderRadius: '0.1rem'}} className="btn" type="primary"
             activeStyle={false}
             onClick={this.handleChangePwd.bind(this)}
           >确定</Button>
