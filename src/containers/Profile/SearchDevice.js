@@ -91,23 +91,26 @@ export default class SearchDevice extends Component {
       });
     }
     if (this.props.bindStatus !== bindStatus) {
-      const obj = {
-        type: 'connectDeviceWhenBinding',
-        data: targetDevice
-      };
-      Toast.loading('绑定中...', 10000);
-      this.postData(obj).then((data) => {
-        Toast.hide();
-        Toast.info('绑定成功', 1);
-        this.context.router.push('/myDevices');
-      }).catch((err)=>{
-        Toast.hide();
-        Toast.info(err, 1);
-        this.setState({
-          err
-        });
-      });
+      Toast.info('绑定成功', 1);
+      this.context.router.push('/myDevices');
     }
+    //   const obj = {
+    //     type: 'connectDeviceWhenBinding',
+    //     data: targetDevice
+    //   };
+    //   Toast.loading('绑定中...', 10000);
+    //   this.postData(obj).then((data) => {
+    //     Toast.hide();
+    // Toast.info('绑定成功', 1);
+    // this.context.router.push('/myDevices');
+      // }).catch((err)=>{
+      //   Toast.hide();
+      //   Toast.info(err, 1);
+      //   this.setState({
+      //     err
+      //   });
+      // });
+    // }
   }
 
   render() {

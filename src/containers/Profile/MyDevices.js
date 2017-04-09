@@ -59,6 +59,15 @@ export default class MyDevices extends Component {
       this.props.chagneConnectStatus(params);
       listen.end();
     });
+
+    const bluetoothStatusData = {
+      type: 'bluetoothStatus'
+    };
+    const listen1 = listenData(bluetoothStatusData);
+    listen.begin((listenerData)=>{
+      Toast.info(listenerData.info, 1);
+      listen.end();
+    });
   }
 
   deviceManager(rowData, props) {
