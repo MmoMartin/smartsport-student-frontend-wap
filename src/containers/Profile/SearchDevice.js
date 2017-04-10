@@ -35,7 +35,7 @@ export default class SearchDevice extends Component {
     changeNavBar({
       leftContent: <img src={LeftImg}/>,
       leftHandler: changeHeadHandler,
-      middleContent: '搜索设备',
+      middleContent: '我的设备',
     });
   }
 

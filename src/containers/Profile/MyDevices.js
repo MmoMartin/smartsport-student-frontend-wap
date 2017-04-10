@@ -7,7 +7,6 @@ import * as myDevicesAct from '../../redux/modules/Devices/MyDevicesAct';
 const styles = require('./Profile.scss');
 const wristwatchImg = require('img/wristwatch@2x.png');
 const braceletImg = require('img/bracelet@2x.png');
-const LeftImg = require('img/return@2x.png');
 const { Item } = List;
 require('../main.css');
 
@@ -35,14 +34,6 @@ export default class MyDevices extends Component {
 
   static contextTypes = {
     router: PropTypes.object.isRequired
-  }
-  componentWillMount() {
-    const { changeNavBar, changeHeadHandler } = this.props;
-    changeNavBar({
-      leftContent: <img src={LeftImg}/>,
-      leftHandler: changeHeadHandler,
-      middleContent: '我的设备',
-    });
   }
   constructor(props) {
     super(props);
@@ -355,7 +346,7 @@ export default class MyDevices extends Component {
             renderFooter={() =>
               this.renderFooter()
             }
-            // renderSeparator={separator}
+            renderSeparator={separator}
             renderRow={(rowData) => this.renderRowData(rowData)}
             style={{height: height < 100 ? 100 : height}}
             className={styles.listView}/>
