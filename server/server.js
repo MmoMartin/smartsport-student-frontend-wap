@@ -50,12 +50,17 @@ app.use('/proxy3002', (req, res) => {
   pipe(req, res, targetUrl);
 });
 app.use('/proxy3003', (req, res) => {
-  const host = 'school';
+  const host = 'gov';
   const targetUrl = getUrl(host);
   pipe(req, res, targetUrl);
 });
 app.use('/proxy3004', (req, res) => {
   const host = 'student';
+  const targetUrl = getUrl(host);
+  pipe(req, res, targetUrl);
+});
+app.use('/proxy3005', (req, res) => {
+  const host = 'parent';
   const targetUrl = getUrl(host);
   pipe(req, res, targetUrl);
 });
