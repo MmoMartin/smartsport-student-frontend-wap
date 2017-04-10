@@ -129,7 +129,6 @@
     "mocha-jsdom": "^1.1.0",
     "node-sass": "^3.4.2",
     "opener": "1.4.2",
-    "phantomjs": "^1.9.18",
     "phantomjs-polyfill": "0.0.1",
     "react-a11y": "^0.2.6",
     "react-addons-test-utils": "0.14.8",
