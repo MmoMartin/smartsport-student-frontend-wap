@@ -57,7 +57,7 @@ a:hover,a:focus {
 .normal .am-accordion-item .am-accordion-header i,
 .abnormal .am-accordion-item .am-accordion-header i,
 .planRecommend .am-accordion-item .am-accordion-header i{
-  background-image: url(../img/dropgreen@2x.png);
+  background-image: url(../img/dropgreen@3x.png);
   top: 36%;
   right: 0.4rem;
   height: 0.3rem;
@@ -74,7 +74,7 @@ a:hover,a:focus {
   transform: rotate(180deg);
 }
 .abnormal .am-accordion-item .am-accordion-header i{
-  background-image: url(../img/dropblue@2x.png);
+  background-image: url(../img/dropblue@3x.png);
 }
 .normal .reportNameRight{
   float: right;
@@ -210,4 +210,26 @@ p{
 }
 .am-list-item .am-input-control input, .am-list-item .am-input-label{
   line-height: 0.3rem !important;
+}
+/*更改我的设备样式*/
+.bindDevices{
+  font-size: 0.28rem;
+  padding: 0;
+}
+.bindDevices .am-list-header{
+  padding: 0.3rem 0.3rem 0.18rem 0.3rem;
+  font-size: 0.32rem;
+  color: #333;
+}
+.bindDevices .am-list-body{
+  border: 0;
+}
+.bindDevices .am-list-body:after{
+  border: 0;
+}
+.bindDevices .am-list-footer{
+  font-size: 0.26rem !important;
+  margin-left: 0.6rem;
+  text-align: left;
+  padding: 0.2rem 0;
 }

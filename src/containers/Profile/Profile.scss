@@ -1,6 +1,6 @@
 .deviceHeaderBg {
   width: 100%;
-  height: 400px;
+  height: 4rem;
   background-color: #e1a043;
   display: inline-block;
 }
@@ -16,60 +16,64 @@
 }
 
 .wathchDiv {
-  width: 60%;
-  height: 320px;
+  width: 3.4rem;
+  height: 3.2rem;
   float: left;
   background-color: #7dc78d;
 }
 
 .watchImg {
-  width: 72px;
-  height: 100px;
-  margin-top: 25%;
-  margin-left: 55%;
+  width: 0.72rem;
+  height: 1rem;
+  margin: 1.1rem auto;
+  margin-left: 1.6rem;
 }
 
 .ringAndStatusDiv {
-  width: 40%;
-  height: 320px;
+  width: 3rem;
+  height: 3.2rem;
   float: left;
   background-color: #7dc78d;
 }
 
 .ringDiv {
-  height: 60px;
-  margin-top: 120px;
+  height: 0.6rem;
+  margin-top: 1.2rem;
   color: white;
+  font-size: 0.34rem;
+  font-weight: 100;
 }
 
 .statusDiv {
-  height: 60px;
-  font-size: 24px;
+  height: 0.6rem;
+  font-size: 0.26rem;
   color: white;
+  font-weight: 100;
 }
 
 .ringItemDiv {
   width: 100%;
-  height: 120px;
-  line-height: 120px;
+  height: 1.3rem;
+  line-height: 1.3rem;
 }
 
 .ringItemImg {
-  width: 28px;
-  height: 60px;
-  margin-left: 10%;
+  width: 0.28rem;
+  height: 0.6rem;
+  margin-left: 0.6rem;
 }
 
 .ringItemNum {
-  margin-left: 5%;
-  font-size: 24px;
-  color: #717171
+  margin-left: 0.3rem;
+  font-size: 0.28rem;
+  color: #717171;
 }
 
 .listView {
   width: 100%;
-  margin-bottom: 128px;
+  margin-bottom: 1.28rem;
   float: left;
+  overflow: visible !important;
 }
 
 .seperator {

@@ -7,6 +7,7 @@ import * as myDevicesAct from '../../redux/modules/Devices/MyDevicesAct';
 const styles = require('./Profile.scss');
 const wristwatchImg = require('img/wristwatch@2x.png');
 const braceletImg = require('img/bracelet@2x.png');
+const LeftImg = require('img/return@2x.png');
 const { Item } = List;
 require('../main.css');
 
@@ -35,7 +36,14 @@ export default class MyDevices extends Component {
   static contextTypes = {
     router: PropTypes.object.isRequired
   }
-
+  componentWillMount() {
+    const { changeNavBar, changeHeadHandler } = this.props;
+    changeNavBar({
+      leftContent: <img src={LeftImg}/>,
+      leftHandler: changeHeadHandler,
+      middleContent: '我的设备',
+    });
+  }
   constructor(props) {
     super(props);
     let dataSource = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
@@ -329,7 +337,7 @@ export default class MyDevices extends Component {
       <div key={`${sectionID}-${rowID}`} className={styles.seperator}/>
     );
     return (
-      <div>
+      <div className='bindDevices'>
         <div className={styles.cleadFix}>
           <div className={styles.wathchDiv}>
             <img src={wristwatchImg} className={styles.watchImg}></img>
@@ -347,9 +355,10 @@ export default class MyDevices extends Component {
             renderFooter={() =>
               this.renderFooter()
             }
-            renderSeparator={separator}
+            // renderSeparator={separator}
             renderRow={(rowData) => this.renderRowData(rowData)}
-            style={{height: height < 100 ? 100 : height}} className={styles.listView}/>
+            style={{height: height < 100 ? 100 : height}}
+            className={styles.listView}/>
       </div>
     );
   }
