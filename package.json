@@ -5,6 +5,8 @@
   "scripts": {
     "start": "concurrent --kill-others \"npm run start-prod\"",
     "start-prod": "better-npm-run start-prod",
+    "start-test": "concurrent --kill-others \"npm run start-prod-test\"",
+    "start-prod-test": "better-npm-run start-prod-test",
     "build": "better-npm-run build",
     "postinstall": "npm run build",
     "lint": "eslint -c .eslintrc src",
@@ -19,6 +21,15 @@
         "NODE_PATH": "./src",
         "NODE_ENV": "production",
         "PORT": 8084
+      }
+    },
+    "start-prod-test": {
+      "command": "node ./server/isomorphic.js",
+      "env": {
+        "NODE_PATH": "./src",
+        "NODE_ENV": "production",
+        "PORT": 8080,
+        "TEST": true
       }
     },
     "start-dev": {

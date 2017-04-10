@@ -22,6 +22,7 @@ const environment = {
 }[process.env.NODE_ENV || 'development'];
 
 module.exports = Object.assign({
+  isTestServer: process.env.TEST || false,
   // process.env给服务端调用的，客户端这个为空，所以要个默认值
   host: process.env.HOST || 'localhost', // 客户端主机
   port: process.env.PORT || 8084, // 客户端端口, 开发是3000， 生产改为8080
