@@ -11,6 +11,7 @@ const headportrait = require('../../img/headportrait@3x.png');
 const contactus = require('img/contactus@3x.png');
 const Integral = require('../../img/Integral@3x.png');
 const maillist = require('../../img/maillist@3x.png');
+const defaul = require('img/default.png'); // 存储默认头像
 const setup = require('../../img/setup@3x.png');
 const knowledgebase = require('../../img/knowledgebase-2@3x.png');
 const scoreranking = require('../../img/scoreranking-2@3x.png');
@@ -76,15 +77,20 @@ export default class Home extends Component {
     const imgBase64 = localStorage.getItem(config.headPortrait);
     const { userInfo } = this.props;
     return (<div className='myMine'>
-      <div style={{textAlign: 'center', paddingBottom: 20, background: '#fff'}}>
-        <div style={{display: "inline-block", padding: '0.2rem'}} onClick={this.onClickImagePicker.bind(this)}>
+      <div style={{textAlign: 'center', background: '#fff'}}>
+        <div style={{display: "inline-block", paddingTop: '0.2rem'}} onClick={this.onClickImagePicker.bind(this)}>
           <div className='outer-circle border-radius50'>
             <div className='inner-circle wh100 border-radius50'>
-              {imgBase64 && <img src={imgBase64} className='wh100 border-radius50'/>}
+              {imgBase64 &&
+                <img src={imgBase64 === 'undefined' ? defaul : imgBase64}
+                  className='wh100 border-radius50'/>
+              }
             </div>
           </div>
         </div>
-        <span className='h082 lh082 display-block'>{userInfo ? userInfo.name : '昂小米'}</span>
+        <span style={{fontSize: '0.36rem'}} className='h082 lh082 display-block studenName'>
+          {userInfo ? userInfo.name : '昂小米'}
+        </span>
         {/* <div style={{textAlign: 'center', paddingBottom: 20, background: '#fff'}}>
         </div> */}
       </div>
@@ -101,7 +107,7 @@ export default class Home extends Component {
       </Flex>
       <Flex direction='column' align='stretch' className='margin-right-nones'>
         <Flex.Item onClick={this.gotoChangePages.bind(this, '/point')}><Item name="积分" icon={Integral}/></Flex.Item>
-        <Flex.Item><Item name="通讯录" icon={maillist}/></Flex.Item>
+        {/* <Flex.Item><Item name="通讯录" icon={maillist}/></Flex.Item> */}
         <Flex.Item onClick={this.gotoChangePages.bind(this, '/healthReport')}>
           <Item name="健康报告" icon={healthreport}/>
         </Flex.Item>
